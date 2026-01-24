@@ -67,6 +67,7 @@
             text-transform: uppercase;
             box-sizing: border-box;
             transition: all 0.4s ease;
+            text-decoration: none;
         }
 
         /* Buttons Styles */
@@ -74,6 +75,7 @@
             border: 1px solid #ffffff;
             background: rgba(255, 255, 255, 0.03);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+            color: white;
         }
         .glow-btn:hover { 
             background-color: var(--cyan-accent);
@@ -86,6 +88,7 @@
         .secondary-btn {
             border: 1px solid rgba(255, 255, 255, 0.15);
             background: rgba(255, 255, 255, 0.03);
+            color: white;
         }
         .secondary-btn:hover { 
             border-color: var(--cyan-accent); 
@@ -126,7 +129,7 @@
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .hero-desc { font-size: 0.85rem !important; padding: 0 15px; }
-            #leaders, #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
+            #leaders, #contact, #core-techs { padding-left: 1.5rem; padding-right: 1.5rem; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
             .leadership-card { padding: 1.8rem 1rem; }
         }
@@ -134,7 +137,7 @@
 </head>
 <body>
 
-    <!-- Hero Section (Navigation Bar Removed) -->
+    <!-- Hero Section -->
     <main class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12">
         <div class="hero-video-container">
             <video autoplay muted loop playsinline>
@@ -144,7 +147,10 @@
         <div class="hero-overlay"></div>
 
         <div class="relative z-10 w-full max-w-5xl px-6 text-center">
-            <span class="orbitron text-[#00f2ff] text-[10px] md:text-sm font-bold tracking-[0.4em] mb-6 block uppercase opacity-80">Next-Generation Bio Materials</span>
+            <!-- Next-Generation 뒤에 md:hidden br 태그 추가하여 모바일에서 Bio Materials가 한 줄로 나오게 수정 -->
+            <span class="orbitron text-[#00f2ff] text-[10px] md:text-sm font-bold tracking-[0.4em] mb-6 block uppercase opacity-80">
+                Next-Generation <br class="md:hidden"> Bio Materials
+            </span>
             <h1 class="hero-title text-4xl sm:text-5xl md:text-8xl font-black orbitron mb-8 leading-tight tracking-tighter drop-shadow-2xl">
                 MEDIPEP <span class="text-[#00f2ff] italic underline decoration-white/10 underline-offset-[8px] md:underline-offset-[16px]">GLOBAL</span>
             </h1>
@@ -152,12 +158,22 @@
 
             <div class="flex flex-col items-center gap-3 w-full">
                 <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common glow-btn orbitron">Company Profile</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Core Techs Section -->
+    <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em]">Core Techs</h2>
+            
+            <div class="flex flex-col items-center gap-4">
                 <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn">CHITOGEN™ Solution</a>
                 <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">REGENMATRIX™ Solution</a>
                 <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">CHITOGENIX™ Solution</a>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Leaders Section -->
     <section id="leaders" class="py-24 md:py-40 bg-black relative">
@@ -199,7 +215,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 md:px-12 bg-neutral-900 overflow-hidden">
+    <section id="contact" class="py-24 px-6 md:py-40 bg-neutral-900 overflow-hidden">
         <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
             <h2 class="orbitron fluid-header font-black mb-12 tracking-widest">Contact</h2>
             <p class="text-white/40 mb-10 text-sm md:text-lg max-w-2xl">
@@ -220,7 +236,6 @@
     </footer>
 
     <script>
-        // Smooth scroll implementation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
