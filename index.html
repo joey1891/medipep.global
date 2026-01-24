@@ -133,7 +133,7 @@
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .hero-desc { font-size: 0.85rem !important; padding: 0 15px; }
-            #leaders, #contact, #core-techs { padding-left: 1.5rem; padding-right: 1.5rem; }
+            #leaders, #contact, #core-techs { padding-left: 0; padding-right: 0; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
             .leadership-card { padding: 1.8rem 1rem; }
         }
@@ -172,13 +172,26 @@
     </main>
 
     <!-- Core Techs Section -->
-    <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="orbitron fluid-header fluid-header-wrap font-black mb-16 tracking-[0.2em]">
+    <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative overflow-hidden">
+        <div class="w-full text-center">
+            <h2 class="orbitron fluid-header fluid-header-wrap font-black mb-16 tracking-[0.2em] px-6">
                 Core <br class="sm:hidden"> Techs
             </h2>
+
+            <!-- Full-Width Video Container (Controls Hidden) -->
+            <div class="w-full mb-20 bg-black relative">
+                <div class="w-full h-0 pb-[56.25%] relative shadow-[0_0_50px_rgba(0,242,255,0.05)]">
+                    <iframe
+                      src="https://player.cloudinary.com/embed/?cloud_name=dnzaz71su&public_id=resnovae_1_ixzxxb&autoplay=true&muted=true&controls=false&loop=true"
+                      class="absolute top-0 left-0 w-full h-full"
+                      allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                      allowfullscreen
+                      frameborder="0"
+                    ></iframe>
+                </div>
+            </div>
             
-            <div class="flex flex-col items-center gap-5">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-5">
                 <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn">
                     CHITOGEN™ <br> Solution
                 </a>
@@ -231,8 +244,8 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 md:py-40 bg-neutral-900 overflow-hidden">
+    <!-- Contact Section (Changed bg-neutral-900 to bg-black) -->
+    <section id="contact" class="py-24 px-6 md:py-40 bg-black overflow-hidden">
         <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
             <h2 class="orbitron fluid-header font-black mb-12 tracking-widest">Contact</h2>
             <p class="text-white/40 mb-10 text-sm md:text-lg max-w-2xl">
