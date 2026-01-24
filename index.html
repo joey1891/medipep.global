@@ -75,7 +75,6 @@
             line-height: 1.4;
         }
 
-        /* Buttons Styles */
         .glow-btn {
             border: 1px solid #ffffff;
             background: rgba(255, 255, 255, 0.03);
@@ -101,7 +100,6 @@
             background: rgba(0, 242, 255, 0.05); 
         }
 
-        /* Fluid Headers */
         .fluid-header {
             font-size: clamp(1.4rem, 9vw, 5rem);
             line-height: 1.1;
@@ -114,7 +112,6 @@
             word-break: keep-all;
         }
 
-        /* Leadership Cards */
         .leadership-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -122,7 +119,6 @@
             width: 100%;
         }
 
-        /* Email */
         .email-link {
             white-space: nowrap;
             display: inline-block;
@@ -162,7 +158,6 @@
                 MEDIPEP <span class="text-[#00f2ff] italic underline decoration-white/10 underline-offset-[8px] md:underline-offset-[16px]">GLOBAL</span>
             </h1>
             
-            <!-- 히어로 문구 줄바꿈 최적화: 의미 단위로 inline-block 적용 -->
             <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">
                 <span class="inline-block">Pioneering the future of</span>
                 <span class="inline-block">bio-synthesis through</span>
@@ -250,10 +245,19 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 bg-black border-t border-white/5 flex flex-col items-center gap-6">
+    <footer class="py-12 px-6 bg-black border-t border-white/5 flex flex-col items-center gap-8">
         <div class="orbitron text-2xl font-black text-white/40 tracking-tighter uppercase">MEDIFAB</div>
-        <div class="text-[9px] md:text-[11px] orbitron font-bold tracking-[0.4em] text-white/20 text-center uppercase">
-            &copy;2026. MEDIFAB. All Rights Reserved.
+        
+        <!-- 저작권 문구 줄바꿈 처리 -->
+        <div class="text-[9px] md:text-[11px] orbitron font-bold tracking-[0.4em] text-white/20 text-center uppercase leading-loose">
+            &copy;2026. MEDIFAB. <br> All Rights Reserved.
+        </div>
+
+        <!-- SNS 아이콘 순서 변경: 링크드인 -> 인스타그램 -> 유튜브 -->
+        <div class="flex gap-10 text-white/20">
+             <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+             <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+             <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
         </div>
     </footer>
 
