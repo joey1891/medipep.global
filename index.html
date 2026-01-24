@@ -178,19 +178,12 @@
                 Core <br class="sm:hidden"> Techs
             </h2>
 
-            <!-- Full-Width Video Container -->
+            <!-- Full-Width Native Video (No Player UI) -->
             <div class="w-full mb-20 bg-black relative">
                 <div class="w-full h-0 pb-[56.25%] relative shadow-[0_0_50px_rgba(0,242,255,0.05)]">
-                    <!-- Transparent Touch Shield: Prevents interaction triggers on mobile scroll -->
-                    <div class="absolute inset-0 z-20 bg-transparent"></div>
-                    
-                    <iframe
-                      src="https://player.cloudinary.com/embed/?cloud_name=dnzaz71su&public_id=resnovae_1_ixzxxb&autoplay=true&muted=true&controls=false&loop=true&interaction_areas=none"
-                      class="absolute top-0 left-0 w-full h-full z-10 pointer-events-none"
-                      allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                      allowfullscreen
-                      frameborder="0"
-                    ></iframe>
+                    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+                        <source src="https://res.cloudinary.com/dnzaz71su/video/upload/resnovae_1_ixzxxb.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
             
