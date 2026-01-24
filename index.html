@@ -17,7 +17,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome (SNS & Icons) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -59,7 +59,7 @@
             border-radius: 9999px; text-align: center; font-size: 0.7rem; font-weight: 700;
             letter-spacing: 0.15em; text-transform: uppercase; box-sizing: border-box;
             transition: all 0.4s ease; text-decoration: none; line-height: 1.4;
-            cursor: pointer; position: relative; z-index: 10;
+            cursor: pointer; position: relative; z-index: 50;
         }
         .glow-btn {
             border: 1px solid #ffffff; background: rgba(255, 255, 255, 0.03);
@@ -72,13 +72,13 @@
 
         /* Core Techs Button Style */
         .secondary-btn {
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
             background: rgba(255, 255, 255, 0.05);
             color: white;
             backdrop-filter: blur(10px);
         }
         .secondary-btn:hover { 
-            border-color: var(--cyan-accent); color: var(--cyan-accent); 
+            border-color: var(--cyan-accent) !important; color: var(--cyan-accent); 
             background: rgba(0, 242, 255, 0.05); 
         }
 
@@ -109,22 +109,19 @@
         }
         .email-link:hover { text-decoration: underline; opacity: 0.8; }
 
-        /* Tabs Styling */
-        .tab-btn {
+        /* Tabs Styling - Anchor-based for perfect mobile compatibility */
+        .tab-link {
             display: flex; align-items: center; justify-content: center;
             height: 50px; font-size: 0.75rem; font-weight: 700;
             letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.15);
             color: rgba(255,255,255,0.4); transition: all 0.3s ease;
             border-radius: 999px; text-transform: uppercase;
             width: 100%; max-width: 320px; margin: 0 auto;
-            cursor: pointer !important;
-            background: rgba(255, 255, 255, 0.03);
-            position: relative; z-index: 500;
-            pointer-events: auto !important;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
+            cursor: pointer; background: rgba(255, 255, 255, 0.03);
+            text-decoration: none;
+            position: relative; z-index: 100;
         }
-        .tab-btn.active {
+        .tab-link.active {
             border-color: var(--cyan-accent); color: var(--cyan-accent);
             background: rgba(0, 242, 255, 0.1); box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
         }
@@ -147,7 +144,7 @@
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .hero-desc { font-size: 0.85rem !important; padding: 0 15px; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            .tab-btn { height: 46px; font-size: 0.65rem; }
+            .tab-link { height: 46px; font-size: 0.65rem; }
         }
     </style>
 </head>
@@ -171,7 +168,6 @@
             </h1>
             
             <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">
-                <!-- Line break optimization for Mobile -->
                 <span class="block md:inline-block">Pioneering the future of bio-synthesis</span>
                 <span class="block md:inline-block">through revolutionary molecular architecture.</span>
             </p>
@@ -182,8 +178,8 @@
         </div>
     </main>
 
-    <!-- Core Techs Section -->
-    <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative z-10">
+    <!-- Core Techs Section (Fixed & Visible) -->
+    <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative z-20">
         <div class="w-full text-center">
             <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em] px-6">Core Techs</h2>
             
@@ -195,7 +191,7 @@
                 </div>
             </div>
             
-            <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6 relative z-20">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6 relative z-30">
                 <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">CHITOGEN™ <br> Solution</a>
                 <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">REGENMATRIX™ <br> Solution</a>
                 <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™ <br> Solution</a>
@@ -203,18 +199,18 @@
         </div>
     </section>
 
-    <!-- R&D Resource Section -->
+    <!-- R&D Resource Section (Corrected Click Logic) -->
     <section id="resources" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-20 overflow-visible">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="orbitron fluid-header font-black tracking-[0.2em] mb-4">R&D <br> RESOURCE</h2>
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-12">Patents & Scientific Publications</p>
                 
-                <!-- Solution Tabs - No active class initially -->
-                <div id="tab-container" class="flex flex-col gap-3 max-w-sm mx-auto orbitron relative z-[600]">
-                    <button data-solution="chitogen" class="tab-btn solution-tab">CHITOGEN™</button>
-                    <button data-solution="regenmatrix" class="tab-btn solution-tab">REGENMATRIX™</button>
-                    <button data-solution="chitogenix" class="tab-btn solution-tab">CHITOGENIX™</button>
+                <!-- Solution Tabs - Using <a> for same robust behavior as Core Techs -->
+                <div id="tab-container" class="flex flex-col gap-3 max-w-sm mx-auto orbitron relative z-[500]">
+                    <a href="javascript:void(0)" onclick="switchSolution('chitogen')" id="tab-chitogen" class="tab-link solution-tab-item">CHITOGEN™</a>
+                    <a href="javascript:void(0)" onclick="switchSolution('regenmatrix')" id="tab-regenmatrix" class="tab-link solution-tab-item">REGENMATRIX™</a>
+                    <a href="javascript:void(0)" onclick="switchSolution('chitogenix')" id="tab-chitogenix" class="tab-link solution-tab-item">CHITOGENIX™</a>
                 </div>
             </div>
 
@@ -282,7 +278,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 bg-black border-t border-white/5 text-center flex flex-col items-center gap-6">
+    <footer class="py-12 px-6 bg-black border-t border-white/5 text-center flex flex-col items-center gap-6 relative z-10">
         <div class="orbitron text-2xl font-black text-white/40 tracking-tighter uppercase">MEDIFAB</div>
         <div class="flex flex-col items-center gap-6">
             <button id="admin-access-trigger" class="text-[10px] orbitron text-white/20 hover:text-cyan-400 transition tracking-[0.2em] uppercase cursor-pointer">Admin Access</button>
@@ -343,31 +339,20 @@
 
         let user = null;
         let resources = [];
-        let activeTab = null; // Start with no selection
+        let activeTab = null;
         let unsubscribeResources = null;
 
-        // Switch Tab Logic
-        window.switchTab = (tab) => {
+        // --- THE SOLUTION: Global exposure and robust state handling ---
+        window.switchSolution = (tab) => {
             activeTab = tab;
-            document.querySelectorAll('.solution-tab').forEach(btn => {
-                const isMatch = btn.getAttribute('data-solution') === tab;
-                btn.classList.toggle('active', isMatch);
+            document.querySelectorAll('.solution-tab-item').forEach(btn => {
+                const id = btn.id.replace('tab-', '');
+                btn.classList.toggle('active', id === tab);
             });
             renderUI();
         };
 
-        function initTabListeners() {
-            document.querySelectorAll('.solution-tab').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const sol = btn.getAttribute('data-solution');
-                    if (sol) window.switchTab(sol);
-                });
-            });
-        }
-
         async function init() {
-            initTabListeners();
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
@@ -431,14 +416,15 @@
                         <span class="text-[8px] orbitron bg-white/10 px-2 py-1 rounded text-white/40 uppercase">${r.category}</span>
                         <div class="text-xs font-bold">${r.title}</div>
                     </div>
-                    <button class="delete-res-btn text-white/20 hover:text-red-400 cursor-pointer" data-id="${r.id}"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-res-btn text-white/20 hover:text-red-400 cursor-pointer" onclick="window.deleteItem('${r.id}')"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             `).join('');
-
-            document.querySelectorAll('.delete-res-btn').forEach(btn => {
-                btn.onclick = () => window.deleteItem(btn.dataset.id);
-            });
         }
+
+        window.deleteItem = async (id) => {
+            if (!user) return;
+            if (confirm("Delete this?")) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'resources', id));
+        };
 
         document.getElementById('add-btn').onclick = async () => {
             if (!user) return;
@@ -457,26 +443,19 @@
                 document.getElementById('res-link').value = "";
             } catch (e) { console.error(e); }
         };
-
-        window.deleteItem = async (id) => {
-            if (!user) return;
-            if (confirm("Delete this?")) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'resources', id));
-        };
     </script>
 
     <script>
-        // UI Navigation & Admin
+        // UI Navigation Logic
         const adminPanel = document.getElementById('admin-panel');
         const adminPassInput = document.getElementById('admin-password');
         
         function openAdmin() { 
             adminPanel.classList.add('active'); 
-            adminPanel.style.display = 'block';
             document.body.style.overflow = 'hidden'; 
         }
         function closeAdmin() { 
             adminPanel.classList.remove('active'); 
-            adminPanel.style.display = 'none';
             document.body.style.overflow = 'auto'; 
         }
         function verifyAdmin() { 
