@@ -110,13 +110,14 @@
         }
         .email-link:hover { text-decoration: underline; opacity: 0.8; }
 
-        /* Detail Page View Transition */
+        /* View State Management */
         .view-hidden { display: none !important; }
         .view-visible { display: block !important; }
 
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
-            .hero-desc { font-size: 0.85rem !important; padding: 0 15px; }
+            /* Z Fold Cover screen optimization for long text */
+            .hero-tagline { font-size: clamp(0.7rem, 4vw, 1rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
         }
     </style>
@@ -142,11 +143,10 @@
                     MEDIFAB <span class="text-[#00f2ff] italic underline decoration-white/10 underline-offset-[8px] md:underline-offset-[16px]">GLOBAL</span>
                 </h1>
                 
-                <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">
-                    <!-- Line 1: Pioneers -->
-                    <span class="block md:inline-block">Pioneering the future of bio-synthesis</span>
-                    <!-- Line 2: Through architecture -->
-                    <span class="block md:inline-block">through revolutionary molecular architecture.</span>
+                <!-- Tagline: Optimized for 2-line layout on all mobile screens -->
+                <p class="hero-tagline text-white/60 max-w-3xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed text-center">
+                    <span class="block whitespace-nowrap">Pioneering the future of bio-synthesis</span>
+                    <span class="block whitespace-nowrap md:mt-2">through revolutionary molecular architecture.</span>
                 </p>
 
                 <div class="flex flex-col items-center gap-3 w-full">
@@ -180,7 +180,8 @@
         <section id="rd-resource" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-20">
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <h2 class="orbitron fluid-header font-black mb-4 tracking-[0.2em]">R&D <br> RESOURCE</h2>
-                <!-- Subtitle moved here -->
+                
+                <!-- Subtitle: Relocated under title as requested -->
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-16">Patents & Scientific Publications</p>
                 
                 <div class="flex flex-col gap-5 max-w-sm mx-auto relative z-30">
@@ -250,7 +251,6 @@
     <!-- Resource Detail View Content -->
     <div id="detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            <!-- Header -->
             <div class="mb-16 flex flex-col items-center">
                 <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
                     <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
@@ -259,33 +259,24 @@
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Research & Development Archive</p>
             </div>
 
-            <!-- Content Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                <!-- Patents -->
                 <div class="space-y-8">
                     <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
                         <i class="fa-solid fa-certificate"></i> PATENTS
                     </h3>
-                    <div id="detail-patents" class="space-y-4">
-                        <!-- Dynamic Content -->
-                    </div>
+                    <div id="detail-patents" class="space-y-4"></div>
                 </div>
-
-                <!-- Papers -->
                 <div class="space-y-8">
                     <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
                         <i class="fa-solid fa-file-lines"></i> PUBLICATIONS
                     </h3>
-                    <div id="detail-papers" class="space-y-4">
-                        <!-- Dynamic Content -->
-                    </div>
+                    <div id="detail-papers" class="space-y-4"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Mock Resource Data
         const resourceData = {
             chitogen: {
                 title: "CHITOGEN™",
@@ -322,14 +313,11 @@
             }
         };
 
-        // Navigation Logic
         function navigateToDetails(category) {
             const data = resourceData[category];
             if (!data) return;
 
-            // Set content
             document.getElementById('detail-title').innerText = data.title;
-            
             const patentContainer = document.getElementById('detail-patents');
             const paperContainer = document.getElementById('detail-papers');
 
@@ -348,7 +336,6 @@
             patentContainer.innerHTML = data.patents.map(p => itemMapper(p, 'fa-download')).join('');
             paperContainer.innerHTML = data.papers.map(p => itemMapper(p, 'fa-arrow-up-right-from-square')).join('');
 
-            // Switch views
             document.getElementById('main-view').classList.add('view-hidden');
             document.getElementById('main-view').classList.remove('view-visible');
             document.getElementById('detail-view').classList.add('view-visible');
@@ -362,11 +349,9 @@
             document.getElementById('detail-view').classList.remove('view-visible');
             document.getElementById('main-view').classList.add('view-visible');
             document.getElementById('main-view').classList.remove('view-hidden');
-            
             window.scrollTo(0, 0);
         }
 
-        // Smooth Scroll Logic for Main View
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
