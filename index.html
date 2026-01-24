@@ -52,7 +52,7 @@
             z-index: 1;
         }
 
-        /* Common Button Sizing Logic */
+        /* Common Button */
         .btn-common {
             display: flex;
             flex-direction: column;
@@ -127,7 +127,6 @@
             width: 100%;
         }
 
-        /* Email Link */
         .email-link {
             white-space: nowrap;
             display: inline-block;
@@ -145,15 +144,7 @@
             background: #020205; z-index: 1000; overflow-y: auto;
         }
 
-        .loading-spinner {
-            border: 2px solid rgba(255,255,255,0.1);
-            border-top: 2px solid var(--cyan-accent);
-            border-radius: 50%; width: 20px; height: 20px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* Tabs Styling - Vertical Layout Fix */
+        /* Tabs Styling - Vertical Layout & Fix Clickability */
         .tab-btn {
             display: flex;
             align-items: center;
@@ -173,7 +164,8 @@
             cursor: pointer;
             background: rgba(255, 255, 255, 0.02);
             position: relative;
-            z-index: 100; /* Clickability fix */
+            z-index: 200; /* Extremely high to ensure click capture */
+            pointer-events: auto; /* Ensure clicks are captured */
         }
         .tab-btn.active {
             border-color: var(--cyan-accent);
@@ -210,7 +202,6 @@
             </h1>
             
             <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">
-                <!-- Line break optimization for Mobile (Galaxy Z Fold) -->
                 <span class="block md:inline-block">Pioneering the future of bio-synthesis</span>
                 <span class="block md:inline-block">through revolutionary molecular architecture.</span>
             </p>
@@ -225,7 +216,6 @@
     <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative overflow-hidden">
         <div class="w-full text-center">
             <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em] px-6">Core Techs</h2>
-            
             <div class="w-full mb-20 bg-black relative">
                 <div class="w-full h-0 pb-[56.25%] relative">
                     <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
@@ -233,7 +223,6 @@
                     </video>
                 </div>
             </div>
-            
             <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-5">
                 <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn">CHITOGEN™ <br> Solution</a>
                 <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">REGENMATRIX™ <br> Solution</a>
@@ -243,23 +232,21 @@
     </section>
 
     <!-- R&D Resources Section -->
-    <section id="resources" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-10">
+    <section id="resources" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <!-- Title: R&D RESOURCE with break -->
                 <h2 class="orbitron fluid-header font-black tracking-[0.2em] mb-4">R&D <br> RESOURCE</h2>
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-12">Patents & Scientific Publications</p>
                 
-                <!-- Category Filter Tabs - Vertical Stack Arrangement -->
+                <!-- Category Filter Tabs - Vertical Stack with explicit IDs and data-target -->
                 <div class="flex flex-col gap-3 max-w-sm mx-auto orbitron relative z-50">
-                    <button onclick="switchTab('chitogen')" id="tab-chitogen" class="tab-btn active">CHITOGEN™</button>
-                    <button onclick="switchTab('regenmatrix')" id="tab-regenmatrix" class="tab-btn">REGENMATRIX™</button>
-                    <button onclick="switchTab('chitogenix')" id="tab-chitogenix" class="tab-btn">CHITOGENIX™</button>
+                    <button id="tab-chitogen" data-solution="chitogen" class="tab-btn solution-tab active">CHITOGEN™</button>
+                    <button id="tab-regenmatrix" data-solution="regenmatrix" class="tab-btn solution-tab">REGENMATRIX™</button>
+                    <button id="tab-chitogenix" data-solution="chitogenix" class="tab-btn solution-tab">CHITOGENIX™</button>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Patents Column -->
                 <div>
                     <h3 class="orbitron text-cyan-400 text-lg font-bold mb-8 border-b border-cyan-400/20 pb-4 flex items-center gap-3">
                         <i class="fa-solid fa-certificate text-sm"></i> PATENTS
@@ -268,8 +255,6 @@
                         <div class="text-white/20 text-xs animate-pulse italic">Connecting to database...</div>
                     </div>
                 </div>
-
-                <!-- Papers Column -->
                 <div>
                     <h3 class="orbitron text-cyan-400 text-lg font-bold mb-8 border-b border-cyan-400/20 pb-4 flex items-center gap-3">
                         <i class="fa-solid fa-file-lines text-sm"></i> PAPERS
@@ -327,21 +312,18 @@
     <!-- Footer -->
     <footer class="py-12 px-6 bg-black border-t border-white/5 text-center flex flex-col items-center gap-6">
         <div class="orbitron text-2xl font-black text-white/40 tracking-tighter uppercase">MEDIFAB</div>
-        
         <div class="flex flex-col items-center gap-6">
             <button onclick="openAdmin()" class="text-[10px] orbitron text-white/20 hover:text-cyan-400 transition tracking-[0.2em] uppercase">Admin Access</button>
             <div class="text-[9px] orbitron font-bold tracking-[0.4em] text-white/10 uppercase">&copy;2026. MEDIFAB. ALL RIGHTS RESERVED.</div>
         </div>
-
-        <!-- SNS Icons Restored -->
         <div class="flex gap-10 text-white/20 mt-4">
-             <a href="#" class="hover:text-cyan-400 transition text-2xl" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-             <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-             <a href="#" class="hover:text-cyan-400 transition text-2xl" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+             <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+             <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+             <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
         </div>
     </footer>
 
-    <!-- Admin Panel Overlay -->
+    <!-- Admin Panel -->
     <div id="admin-panel">
         <div class="max-w-4xl mx-auto px-6 py-12">
             <div class="flex justify-between items-center mb-12 border-b border-white/10 pb-6">
@@ -385,7 +367,17 @@
         let activeTab = 'chitogen';
         let unsubscribeResources = null;
 
+        // Initialize App & Events
         async function init() {
+            // Attach Event Listeners to Solution Tabs (Fix for clickability)
+            document.querySelectorAll('.solution-tab').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const sol = e.currentTarget.getAttribute('data-solution');
+                    if (sol) switchTab(sol);
+                });
+            });
+
+            // Auth Priority (Rule 3)
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
@@ -394,7 +386,7 @@
 
             onAuthStateChanged(auth, (u) => {
                 user = u;
-                if (user) { startListening(); }
+                if (user) startListening();
             });
         }
         init();
@@ -444,18 +436,24 @@
                         <span class="text-[8px] orbitron bg-white/10 px-2 py-1 rounded text-white/40 uppercase">${r.category}</span>
                         <div class="text-xs font-bold">${r.title}</div>
                     </div>
-                    <button onclick="window.deleteItem('${r.id}')" class="text-white/20 hover:text-red-400"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-res-btn text-white/20 hover:text-red-400" data-id="${r.id}"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             `).join('');
+
+            // Re-attach delete listeners
+            document.querySelectorAll('.delete-res-btn').forEach(btn => {
+                btn.onclick = () => window.deleteItem(btn.dataset.id);
+            });
         }
 
-        window.switchTab = (tab) => {
+        // Module-scoped Switch Function
+        function switchTab(tab) {
             activeTab = tab;
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.solution-tab').forEach(btn => btn.classList.remove('active'));
             const activeBtn = document.getElementById(`tab-${tab}`);
             if (activeBtn) activeBtn.classList.add('active');
             renderUI();
-        };
+        }
 
         document.getElementById('add-btn').onclick = async () => {
             if (!user) return;
@@ -482,6 +480,7 @@
     </script>
 
     <script>
+        // UI Navigation Logic
         function openAdmin() { document.getElementById('admin-panel').style.display = 'block'; document.body.style.overflow = 'hidden'; }
         function closeAdmin() { document.getElementById('admin-panel').style.display = 'none'; document.body.style.overflow = 'auto'; }
         function verifyAdmin() { 
