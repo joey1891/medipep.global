@@ -178,11 +178,12 @@
                 Core <br class="sm:hidden"> Techs
             </h2>
 
-            <!-- Full-Width Video Container (Controls Hidden) -->
+            <!-- Full-Width Video Container -->
             <div class="w-full mb-20 bg-black relative">
-                <div class="w-full h-0 pb-[56.25%] relative shadow-[0_0_50px_rgba(0,242,255,0.05)]">
+                <!-- pointer-events-none added to prevent play/pause button overlays from interaction -->
+                <div class="w-full h-0 pb-[56.25%] relative shadow-[0_0_50px_rgba(0,242,255,0.05)] pointer-events-none">
                     <iframe
-                      src="https://player.cloudinary.com/embed/?cloud_name=dnzaz71su&public_id=resnovae_1_ixzxxb&autoplay=true&muted=true&controls=false&loop=true"
+                      src="https://player.cloudinary.com/embed/?cloud_name=dnzaz71su&public_id=resnovae_1_ixzxxb&autoplay=true&muted=true&controls=false&loop=true&interaction_areas=none"
                       class="absolute top-0 left-0 w-full h-full"
                       allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                       allowfullscreen
@@ -244,7 +245,7 @@
         </div>
     </section>
 
-    <!-- Contact Section (Changed bg-neutral-900 to bg-black) -->
+    <!-- Contact Section -->
     <section id="contact" class="py-24 px-6 md:py-40 bg-black overflow-hidden">
         <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
             <h2 class="orbitron fluid-header font-black mb-12 tracking-widest">Contact</h2>
