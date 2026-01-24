@@ -127,6 +127,18 @@
             width: 100%;
         }
 
+        /* Email Link */
+        .email-link {
+            white-space: nowrap;
+            display: inline-block;
+            font-size: clamp(0.6rem, 4.3vw, 1.8rem); 
+            color: var(--cyan-accent);
+            text-decoration: none;
+            transition: 0.3s;
+            max-width: 100%;
+        }
+        .email-link:hover { text-decoration: underline; opacity: 0.8; }
+
         /* Admin Overlay */
         #admin-panel {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -161,7 +173,7 @@
             cursor: pointer;
             background: rgba(255, 255, 255, 0.02);
             position: relative;
-            z-index: 50;
+            z-index: 100; /* Clickability fix */
         }
         .tab-btn.active {
             border-color: var(--cyan-accent);
@@ -198,8 +210,9 @@
             </h1>
             
             <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">
-                <span class="inline-block">Pioneering the future of bio-synthesis</span>
-                <span class="inline-block">through revolutionary molecular architecture.</span>
+                <!-- Line break optimization for Mobile (Galaxy Z Fold) -->
+                <span class="block md:inline-block">Pioneering the future of bio-synthesis</span>
+                <span class="block md:inline-block">through revolutionary molecular architecture.</span>
             </p>
 
             <div class="flex flex-col items-center gap-3 w-full">
@@ -233,12 +246,12 @@
     <section id="resources" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <!-- Title changed to R&D RESOURCE with break -->
+                <!-- Title: R&D RESOURCE with break -->
                 <h2 class="orbitron fluid-header font-black tracking-[0.2em] mb-4">R&D <br> RESOURCE</h2>
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-12">Patents & Scientific Publications</p>
                 
                 <!-- Category Filter Tabs - Vertical Stack Arrangement -->
-                <div class="flex flex-col gap-3 max-w-sm mx-auto orbitron">
+                <div class="flex flex-col gap-3 max-w-sm mx-auto orbitron relative z-50">
                     <button onclick="switchTab('chitogen')" id="tab-chitogen" class="tab-btn active">CHITOGEN™</button>
                     <button onclick="switchTab('regenmatrix')" id="tab-regenmatrix" class="tab-btn">REGENMATRIX™</button>
                     <button onclick="switchTab('chitogenix')" id="tab-chitogenix" class="tab-btn">CHITOGENIX™</button>
@@ -298,12 +311,33 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 md:py-40 bg-black overflow-hidden relative z-10">
+        <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+            <h2 class="orbitron fluid-header font-black mb-12 tracking-widest">Contact</h2>
+            <p class="text-white/40 mb-10 text-sm md:text-lg max-w-2xl">
+                Please reach out to us for global partnerships and inquiries.
+            </p>
+            <div class="w-full flex justify-center px-4">
+                <a href="mailto:contact@imedifab.com" class="email-link orbitron font-bold uppercase tracking-tight">contact@imedifab.com</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="py-24 px-6 bg-black border-t border-white/5 text-center">
-        <h2 class="orbitron text-2xl font-black text-white mb-12 tracking-widest uppercase">MEDIFAB</h2>
+    <footer class="py-12 px-6 bg-black border-t border-white/5 text-center flex flex-col items-center gap-6">
+        <div class="orbitron text-2xl font-black text-white/40 tracking-tighter uppercase">MEDIFAB</div>
+        
         <div class="flex flex-col items-center gap-6">
             <button onclick="openAdmin()" class="text-[10px] orbitron text-white/20 hover:text-cyan-400 transition tracking-[0.2em] uppercase">Admin Access</button>
             <div class="text-[9px] orbitron font-bold tracking-[0.4em] text-white/10 uppercase">&copy;2026. MEDIFAB. ALL RIGHTS RESERVED.</div>
+        </div>
+
+        <!-- SNS Icons Restored -->
+        <div class="flex gap-10 text-white/20 mt-4">
+             <a href="#" class="hover:text-cyan-400 transition text-2xl" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+             <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+             <a href="#" class="hover:text-cyan-400 transition text-2xl" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
     </footer>
 
@@ -334,7 +368,7 @@
         </div>
     </div>
 
-    <!-- Firebase -->
+    <!-- Firebase Integration -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -418,22 +452,31 @@
         window.switchTab = (tab) => {
             activeTab = tab;
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`tab-${tab}`).classList.add('active');
+            const activeBtn = document.getElementById(`tab-${tab}`);
+            if (activeBtn) activeBtn.classList.add('active');
             renderUI();
         };
 
         document.getElementById('add-btn').onclick = async () => {
+            if (!user) return;
             const title = document.getElementById('res-title').value;
             const category = document.getElementById('res-category').value;
             const type = document.getElementById('res-type').value;
             const year = document.getElementById('res-year').value;
             const link = document.getElementById('res-link').value;
             if (!title || !link) return;
-            await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'resources'), { title, category, type, year, link, timestamp: Date.now() });
-            document.getElementById('res-title').value = ""; document.getElementById('res-year').value = ""; document.getElementById('res-link').value = "";
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'resources'), { 
+                    title, category, type, year, link, timestamp: Date.now() 
+                });
+                document.getElementById('res-title').value = ""; 
+                document.getElementById('res-year').value = ""; 
+                document.getElementById('res-link').value = "";
+            } catch (e) { console.error(e); }
         };
 
         window.deleteItem = async (id) => {
+            if (!user) return;
             if (confirm("Delete this?")) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'resources', id));
         };
     </script>
@@ -441,8 +484,26 @@
     <script>
         function openAdmin() { document.getElementById('admin-panel').style.display = 'block'; document.body.style.overflow = 'hidden'; }
         function closeAdmin() { document.getElementById('admin-panel').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        function verifyAdmin() { if (document.getElementById('admin-password').value === 'medifabadmin') { document.getElementById('admin-login').classList.add('hidden'); document.getElementById('admin-dashboard').classList.remove('hidden'); } }
+        function verifyAdmin() { 
+            const pw = document.getElementById('admin-password').value;
+            if (pw === 'medifabadmin') { 
+                document.getElementById('admin-login').classList.add('hidden'); 
+                document.getElementById('admin-dashboard').classList.remove('hidden'); 
+            } 
+        }
         document.getElementById('admin-password')?.addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyAdmin(); });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === "#") return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
