@@ -6,7 +6,7 @@
     <title>Medifab | Bio-Material Innovation</title>
     
     <!-- SEO & SNS Share Tags -->
-    <meta name="description" content="Pioneering the future of bio-synthesis through revolutionary molecular architecture.">
+    <meta name="description" content="Revolutionary Molecular Architecture. Next-Generation Bio Materials.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Medifab | Bio-Material Innovation">
     <meta property="og:description" content="Next-Generation Bio Materials & Molecular Engineering.">
@@ -87,6 +87,14 @@
             line-height: 1.1; text-transform: uppercase; letter-spacing: 0.15em; display: inline-block;
         }
 
+        /* Tagline Optimization for Z Fold */
+        .hero-tagline {
+            font-size: clamp(1rem, 5vw, 1.8rem);
+            line-height: 1.2;
+            letter-spacing: 0.2em;
+            word-break: keep-all;
+        }
+
         .leadership-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -110,14 +118,12 @@
         }
         .email-link:hover { text-decoration: underline; opacity: 0.8; }
 
-        /* View State Management */
+        /* View State Transition */
         .view-hidden { display: none !important; }
         .view-visible { display: block !important; }
 
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
-            /* Z Fold Cover screen optimization for long text */
-            .hero-tagline { font-size: clamp(0.7rem, 4vw, 1rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
         }
     </style>
@@ -143,10 +149,10 @@
                     MEDIFAB <span class="text-[#00f2ff] italic underline decoration-white/10 underline-offset-[8px] md:underline-offset-[16px]">GLOBAL</span>
                 </h1>
                 
-                <!-- Tagline: Optimized for 2-line layout on all mobile screens -->
-                <p class="hero-tagline text-white/60 max-w-3xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed text-center">
-                    <span class="block whitespace-nowrap">Pioneering the future of bio-synthesis</span>
-                    <span class="block whitespace-nowrap md:mt-2">through revolutionary molecular architecture.</span>
+                <!-- Tagline: Updated to Revolutionary Molecular Architecture -->
+                <p class="hero-tagline orbitron text-white max-w-3xl mx-auto font-black mb-12 text-center uppercase">
+                    <span class="block">Revolutionary</span>
+                    <span class="block mt-1 md:mt-2 text-white/50 text-[0.7em] tracking-[0.3em]">Molecular Architecture</span>
                 </p>
 
                 <div class="flex flex-col items-center gap-3 w-full">
@@ -181,7 +187,7 @@
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <h2 class="orbitron fluid-header font-black mb-4 tracking-[0.2em]">R&D <br> RESOURCE</h2>
                 
-                <!-- Subtitle: Relocated under title as requested -->
+                <!-- Subtitle: Positioned under title -->
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-16">Patents & Scientific Publications</p>
                 
                 <div class="flex flex-col gap-5 max-w-sm mx-auto relative z-30">
@@ -349,6 +355,7 @@
             document.getElementById('detail-view').classList.remove('view-visible');
             document.getElementById('main-view').classList.add('view-visible');
             document.getElementById('main-view').classList.remove('view-hidden');
+            
             window.scrollTo(0, 0);
         }
 
