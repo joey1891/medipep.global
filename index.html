@@ -107,10 +107,6 @@
             letter-spacing: 0.15em;
             display: inline-block;
         }
-        .fluid-header-wrap {
-            white-space: normal;
-            word-break: keep-all;
-        }
 
         /* Resource Styles */
         .resource-card {
@@ -131,17 +127,6 @@
             width: 100%;
         }
 
-        .email-link {
-            white-space: nowrap;
-            display: inline-block;
-            font-size: clamp(0.6rem, 4.3vw, 1.8rem); 
-            color: var(--cyan-accent);
-            text-decoration: none;
-            transition: 0.3s;
-            max-width: 100%;
-        }
-        .email-link:hover { text-decoration: underline; opacity: 0.8; }
-
         /* Admin Overlay */
         #admin-panel {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -156,39 +141,40 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Tabs Styling - Equal sizes & Click fix */
+        /* Tabs Styling - Vertical Layout Fix */
         .tab-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 44px;
-            font-size: clamp(0.55rem, 2vw, 0.65rem);
+            height: 50px;
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             border: 1px solid rgba(255,255,255,0.1);
             color: rgba(255,255,255,0.4);
             transition: all 0.3s ease;
             border-radius: 999px;
             text-transform: uppercase;
-            width: 100%; /* Fill grid cell */
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
             cursor: pointer;
-            position: relative;
-            z-index: 20;
             background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            z-index: 50;
         }
         .tab-btn.active {
             border-color: var(--cyan-accent);
             color: var(--cyan-accent);
-            background: rgba(0, 242, 255, 0.05);
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+            background: rgba(0, 242, 255, 0.08);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
         }
 
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .hero-desc { font-size: 0.85rem !important; padding: 0 15px; }
-            #leaders, #contact, #core-techs, #resources { padding-left: 0; padding-right: 0; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            .leadership-card { padding: 1.8rem 1rem; }
+            .tab-btn { height: 44px; font-size: 0.65rem; }
         }
     </style>
 </head>
@@ -212,10 +198,8 @@
             </h1>
             
             <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">
-                <span class="inline-block">Pioneering the future of</span>
-                <span class="inline-block">bio-synthesis through</span>
-                <span class="inline-block">revolutionary molecular architecture</span>
-                <span class="inline-block">and engineering.</span>
+                <span class="inline-block">Pioneering the future of bio-synthesis</span>
+                <span class="inline-block">through revolutionary molecular architecture.</span>
             </p>
 
             <div class="flex flex-col items-center gap-3 w-full">
@@ -227,13 +211,10 @@
     <!-- Core Techs Section -->
     <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative overflow-hidden">
         <div class="w-full text-center">
-            <h2 class="orbitron fluid-header fluid-header-wrap font-black mb-16 tracking-[0.2em] px-6">
-                Core <br class="sm:hidden"> Techs
-            </h2>
-
-            <!-- Full-Width Native Video (No Player UI) -->
+            <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em] px-6">Core Techs</h2>
+            
             <div class="w-full mb-20 bg-black relative">
-                <div class="w-full h-0 pb-[56.25%] relative shadow-[0_0_50px_rgba(0,242,255,0.05)]">
+                <div class="w-full h-0 pb-[56.25%] relative">
                     <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
                         <source src="https://res.cloudinary.com/dnzaz71su/video/upload/resnovae_1_ixzxxb.mp4" type="video/mp4">
                     </video>
@@ -241,15 +222,9 @@
             </div>
             
             <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-5">
-                <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn">
-                    CHITOGEN™ <br> Solution
-                </a>
-                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">
-                    REGENMATRIX™ <br> Solution
-                </a>
-                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">
-                    CHITOGENIX™ <br> Solution
-                </a>
+                <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn">CHITOGEN™ <br> Solution</a>
+                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">REGENMATRIX™ <br> Solution</a>
+                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">CHITOGENIX™ <br> Solution</a>
             </div>
         </div>
     </section>
@@ -258,11 +233,12 @@
     <section id="resources" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="orbitron fluid-header font-black tracking-[0.2em] mb-4">RESOURCES</h2>
+                <!-- Title changed to R&D RESOURCE with break -->
+                <h2 class="orbitron fluid-header font-black tracking-[0.2em] mb-4">R&D <br> RESOURCE</h2>
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-12">Patents & Scientific Publications</p>
                 
-                <!-- Category Filter Tabs - Equal sizes using grid -->
-                <div class="grid grid-cols-3 gap-2 md:gap-4 max-w-2xl mx-auto orbitron">
+                <!-- Category Filter Tabs - Vertical Stack Arrangement -->
+                <div class="flex flex-col gap-3 max-w-sm mx-auto orbitron">
                     <button onclick="switchTab('chitogen')" id="tab-chitogen" class="tab-btn active">CHITOGEN™</button>
                     <button onclick="switchTab('regenmatrix')" id="tab-regenmatrix" class="tab-btn">REGENMATRIX™</button>
                     <button onclick="switchTab('chitogenix')" id="tab-chitogenix" class="tab-btn">CHITOGENIX™</button>
@@ -298,33 +274,23 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em]">Leaders</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- CEO: Dr. Cha -->
                 <div class="leadership-card flex flex-col items-center">
-                    <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10">
-                        <img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" alt="Dr. Cha" class="w-full h-full object-cover">
-                    </div>
+                    <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6"><img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" class="w-full h-full object-cover"></div>
                     <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CEO</div>
                     <div class="text-xl font-bold">Dr. Cha</div>
                 </div>
-                <!-- COO: Mr. Shin -->
                 <div class="leadership-card flex flex-col items-center">
-                    <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10">
-                        <img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256314/1756798003402_vy2tho.jpg" alt="Mr. Shin" class="w-full h-full object-cover">
-                    </div>
+                    <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6"><img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256314/1756798003402_vy2tho.jpg" class="w-full h-full object-cover"></div>
                     <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">COO</div>
                     <div class="text-xl font-bold">Mr. Shin</div>
                 </div>
-                <!-- CFO -->
                 <div class="leadership-card flex flex-col items-center">
                     <div class="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-cyan-400"><i class="fa-solid fa-chart-line text-3xl"></i></div>
                     <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CFO</div>
                     <div class="text-xl font-bold">Mr. Seo</div>
                 </div>
-                <!-- CTO: Dr. Kim -->
                 <div class="leadership-card flex flex-col items-center">
-                    <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10">
-                        <img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256504/0048222_1_bfy67k.png" alt="Dr. Kim" class="w-full h-full object-cover">
-                    </div>
+                    <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6"><img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256504/0048222_1_bfy67k.png" class="w-full h-full object-cover"></div>
                     <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CTO</div>
                     <div class="text-xl font-bold">Dr. Kim</div>
                 </div>
@@ -332,34 +298,12 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 md:py-40 bg-black overflow-hidden">
-        <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
-            <h2 class="orbitron fluid-header font-black mb-12 tracking-widest">Contact</h2>
-            <p class="text-white/40 mb-10 text-sm md:text-lg max-w-2xl">
-                Please reach out to us for global partnerships and inquiries.
-            </p>
-            <div class="w-full flex justify-center px-4">
-                <a href="mailto:contact@imedifab.com" class="email-link orbitron font-bold uppercase tracking-tight">contact@imedifab.com</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="py-12 px-6 bg-black border-t border-white/5 flex flex-col items-center gap-8">
-        <div class="orbitron text-2xl font-black text-white/40 tracking-tighter uppercase">MEDIFAB</div>
-        
-        <div class="flex flex-col items-center gap-4">
+    <footer class="py-24 px-6 bg-black border-t border-white/5 text-center">
+        <h2 class="orbitron text-2xl font-black text-white mb-12 tracking-widest uppercase">MEDIFAB</h2>
+        <div class="flex flex-col items-center gap-6">
             <button onclick="openAdmin()" class="text-[10px] orbitron text-white/20 hover:text-cyan-400 transition tracking-[0.2em] uppercase">Admin Access</button>
-            <div class="text-[9px] md:text-[11px] orbitron font-bold tracking-[0.4em] text-white/20 text-center uppercase leading-loose">
-                &copy;2026. MEDIFAB. <br> All Rights Reserved.
-            </div>
-        </div>
-
-        <div class="flex gap-10 text-white/20">
-             <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
-             <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
-             <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
+            <div class="text-[9px] orbitron font-bold tracking-[0.4em] text-white/10 uppercase">&copy;2026. MEDIFAB. ALL RIGHTS RESERVED.</div>
         </div>
     </footer>
 
@@ -370,53 +314,27 @@
                 <h1 class="orbitron text-2xl font-black text-cyan-400 tracking-widest">ADMIN DASHBOARD</h1>
                 <button onclick="closeAdmin()" class="text-white/40 hover:text-white"><i class="fa-solid fa-xmark text-2xl"></i></button>
             </div>
-
-            <!-- Login View -->
             <div id="admin-login" class="flex flex-col items-center py-20">
-                <p class="orbitron text-xs text-white/40 mb-4 tracking-widest uppercase">Restricted Area</p>
-                <input type="password" id="admin-password" placeholder="ENTER ACCESS CODE" class="bg-white/5 border border-white/10 px-6 py-4 rounded-full orbitron text-center text-sm tracking-widest w-full max-w-xs mb-4 focus:outline-none focus:border-cyan-400 transition text-white">
+                <input type="password" id="admin-password" placeholder="ACCESS CODE" class="bg-white/5 border border-white/10 px-6 py-4 rounded-full orbitron text-center text-sm w-full max-w-xs mb-4 focus:outline-none focus:border-cyan-400 text-white">
                 <button onclick="verifyAdmin()" class="btn-common glow-btn orbitron !min-h-[50px] !max-w-[200px] !text-[10px]">Verify</button>
-                <p class="text-[9px] text-white/10 mt-6 orbitron uppercase tracking-widest">Hint: medifabadmin</p>
             </div>
-
-            <!-- Dashboard View -->
             <div id="admin-dashboard" class="hidden text-white">
                 <div class="bg-white/5 border border-white/10 p-8 rounded-2xl mb-12">
-                    <h3 class="orbitron text-sm font-bold mb-6 text-cyan-400 uppercase tracking-widest">Add New Resource</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <div class="flex flex-col gap-1">
-                            <label class="text-[9px] orbitron text-white/40 px-2 uppercase tracking-widest">Concept Solution</label>
-                            <select id="res-category" class="bg-black/40 border border-white/10 p-4 rounded-lg text-sm focus:outline-none focus:border-cyan-400 text-white">
-                                <option value="chitogen">CHITOGEN™</option>
-                                <option value="regenmatrix">REGENMATRIX™</option>
-                                <option value="chitogenix">CHITOGENIX™</option>
-                            </select>
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <label class="text-[9px] orbitron text-white/40 px-2 uppercase tracking-widest">Category Type</label>
-                            <select id="res-type" class="bg-black/40 border border-white/10 p-4 rounded-lg text-sm focus:outline-none focus:border-cyan-400 text-white">
-                                <option value="patent">Patent</option>
-                                <option value="paper">Paper</option>
-                            </select>
-                        </div>
-                        <input type="text" id="res-title" placeholder="Document Title" class="bg-black/40 border border-white/10 p-4 rounded-lg text-sm text-white focus:outline-none focus:border-cyan-400">
-                        <input type="text" id="res-year" placeholder="Year (e.g. 2026)" class="bg-black/40 border border-white/10 p-4 rounded-lg text-sm text-white focus:outline-none focus:border-cyan-400">
-                        <input type="text" id="res-link" placeholder="Download Link (URL)" class="bg-black/40 border border-white/10 p-4 rounded-lg text-sm text-white focus:outline-none focus:border-cyan-400 md:col-span-2">
+                        <select id="res-category" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white"><option value="chitogen">CHITOGEN™</option><option value="regenmatrix">REGENMATRIX™</option><option value="chitogenix">CHITOGENIX™</option></select>
+                        <select id="res-type" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white"><option value="patent">Patent</option><option value="paper">Paper</option></select>
+                        <input type="text" id="res-title" placeholder="Title" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white">
+                        <input type="text" id="res-year" placeholder="Year" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white">
+                        <input type="text" id="res-link" placeholder="Link" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white md:col-span-2">
                     </div>
-                    <button id="add-btn" class="w-full bg-cyan-400 text-black font-bold orbitron py-4 rounded-lg hover:bg-white transition text-xs tracking-widest">
-                        UPLOAD RESOURCE
-                    </button>
+                    <button id="add-btn" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-lg orbitron text-xs">UPLOAD RESOURCE</button>
                 </div>
-
-                <div class="space-y-4">
-                    <h3 class="orbitron text-sm font-bold mb-6 text-white/40 uppercase tracking-widest">Manage Entries</h3>
-                    <div id="admin-list" class="space-y-2"></div>
-                </div>
+                <div id="admin-list" class="space-y-2"></div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase Integration -->
+    <!-- Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -433,25 +351,16 @@
         let activeTab = 'chitogen';
         let unsubscribeResources = null;
 
-        // Auth & Initial Load
         async function init() {
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-            } catch (error) {
-                console.error("Auth failed:", error);
-            }
+                } else { await signInAnonymously(auth); }
+            } catch (error) { console.error("Auth failed:", error); }
 
             onAuthStateChanged(auth, (u) => {
                 user = u;
-                if (user) {
-                    startListening();
-                } else {
-                    if (unsubscribeResources) unsubscribeResources();
-                }
+                if (user) { startListening(); }
             });
         }
         init();
@@ -463,147 +372,77 @@
             unsubscribeResources = onSnapshot(resCol, (snapshot) => {
                 resources = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 renderUI();
-            }, (err) => console.error("Firestore error:", err));
+            });
         }
 
         function renderUI() {
             const patentContainer = document.getElementById('patent-list');
             const paperContainer = document.getElementById('paper-list');
-            
-            // Filter by Active Tab (Solution)
-            const filteredResources = resources.filter(r => r.category === activeTab);
-            
-            const patents = filteredResources.filter(r => r.type === 'patent');
-            const papers = filteredResources.filter(r => r.type === 'paper');
+            const filtered = resources.filter(r => r.category === activeTab);
+            const patents = filtered.filter(r => r.type === 'patent');
+            const papers = filtered.filter(r => r.type === 'paper');
 
-            const tabDisplayName = activeTab === 'chitogen' ? 'CHITOGEN™' : (activeTab === 'regenmatrix' ? 'REGENMATRIX™' : 'CHITOGENIX™');
+            const tabName = activeTab === 'chitogen' ? 'CHITOGEN™' : (activeTab === 'regenmatrix' ? 'REGENMATRIX™' : 'CHITOGENIX™');
 
-            // Resource title: Remove line-clamp to allow wrapping, set whitespace-normal
             patentContainer.innerHTML = patents.length ? patents.map(p => `
                 <div class="resource-card group">
                     <div class="flex-1 pr-4">
                         <div class="text-[10px] text-cyan-400 font-bold orbitron mb-1">${p.year}</div>
-                        <div class="text-xs md:text-sm font-semibold text-white/90 group-hover:text-cyan-400 transition whitespace-normal break-words leading-snug">${p.title}</div>
+                        <div class="text-xs md:text-sm font-semibold text-white group-hover:text-cyan-400 transition whitespace-normal break-words leading-snug">${p.title}</div>
                     </div>
-                    <a href="${p.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0">
-                        <i class="fa-solid fa-download text-xs"></i>
-                    </a>
+                    <a href="${p.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0"><i class="fa-solid fa-download text-xs"></i></a>
                 </div>
-            `).join('') : `<p class="text-white/20 text-xs italic">No patents for ${tabDisplayName}.</p>`;
+            `).join('') : `<p class="text-white/20 text-xs italic">No patents for ${tabName}.</p>`;
 
             paperContainer.innerHTML = papers.length ? papers.map(p => `
                 <div class="resource-card group">
                     <div class="flex-1 pr-4">
                         <div class="text-[10px] text-cyan-400 font-bold orbitron mb-1">${p.year}</div>
-                        <div class="text-xs md:text-sm font-semibold text-white/90 group-hover:text-cyan-400 transition whitespace-normal break-words leading-snug">${p.title}</div>
+                        <div class="text-xs md:text-sm font-semibold text-white group-hover:text-cyan-400 transition whitespace-normal break-words leading-snug">${p.title}</div>
                     </div>
-                    <a href="${p.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0">
-                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                    </a>
+                    <a href="${p.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
                 </div>
-            `).join('') : `<p class="text-white/20 text-xs italic">No papers for ${tabDisplayName}.</p>`;
+            `).join('') : `<p class="text-white/20 text-xs italic">No papers for ${tabName}.</p>`;
 
-            const adminList = document.getElementById('admin-list');
-            const sortedResources = [...resources].sort((a,b) => (a.category || '').localeCompare(b.category || ''));
-            adminList.innerHTML = sortedResources.map(r => {
-                const categoryLabel = r.category === 'chitogen' ? 'CHITOGEN™' : (r.category === 'regenmatrix' ? 'REGENMATRIX™' : (r.category === 'chitogenix' ? 'CHITOGENIX™' : 'N/A'));
-                return `
+            document.getElementById('admin-list').innerHTML = resources.map(r => `
                 <div class="flex items-center justify-between bg-white/5 p-4 rounded-lg border border-white/5">
                     <div class="flex items-center gap-4">
-                        <span class="text-[8px] orbitron bg-white/10 px-2 py-1 rounded text-white/40 uppercase">${categoryLabel}</span>
-                        <span class="text-[8px] orbitron bg-cyan-400/10 px-2 py-1 rounded text-cyan-400 uppercase">${r.type}</span>
-                        <div class="text-xs font-bold">${r.title} <span class="text-white/20 ml-2">(${r.year})</span></div>
+                        <span class="text-[8px] orbitron bg-white/10 px-2 py-1 rounded text-white/40 uppercase">${r.category}</span>
+                        <div class="text-xs font-bold">${r.title}</div>
                     </div>
-                    <button onclick="window.deleteItem('${r.id}')" class="text-white/20 hover:text-red-400 transition"><i class="fa-solid fa-trash-can"></i></button>
+                    <button onclick="window.deleteItem('${r.id}')" class="text-white/20 hover:text-red-400"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
-                `;
-            }).join('');
+            `).join('');
         }
 
-        // Click Fix: Ensure window exposure and proper state handling
         window.switchTab = (tab) => {
-            console.log("Switching to tab:", tab); // Debug check
             activeTab = tab;
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = document.getElementById(`tab-${tab}`);
-            if (activeBtn) activeBtn.classList.add('active');
+            document.getElementById(`tab-${tab}`).classList.add('active');
             renderUI();
         };
 
         document.getElementById('add-btn').onclick = async () => {
-            if (!user) return;
+            const title = document.getElementById('res-title').value;
             const category = document.getElementById('res-category').value;
             const type = document.getElementById('res-type').value;
-            const title = document.getElementById('res-title').value;
             const year = document.getElementById('res-year').value;
             const link = document.getElementById('res-link').value;
-            
-            if (!title || !link || !year) return;
-            
-            const btn = document.getElementById('add-btn');
-            btn.disabled = true;
-            btn.innerHTML = '<div class="loading-spinner mx-auto"></div>';
-            
-            try {
-                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'resources'), {
-                    category, type, title, year, link, timestamp: Date.now()
-                });
-                document.getElementById('res-title').value = "";
-                document.getElementById('res-year').value = "";
-                document.getElementById('res-link').value = "";
-            } catch (e) { console.error("Add failed:", e); }
-            btn.disabled = false;
-            btn.innerText = "UPLOAD RESOURCE";
+            if (!title || !link) return;
+            await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'resources'), { title, category, type, year, link, timestamp: Date.now() });
+            document.getElementById('res-title').value = ""; document.getElementById('res-year').value = ""; document.getElementById('res-link').value = "";
         };
 
         window.deleteItem = async (id) => {
-            if (!user) return;
-            if (!confirm("Are you sure?")) return;
-            try {
-                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'resources', id));
-            } catch (e) { console.error("Delete failed:", e); }
+            if (confirm("Delete this?")) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'resources', id));
         };
     </script>
 
     <script>
-        // UI Logic
-        function openAdmin() {
-            document.getElementById('admin-panel').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            document.getElementById('admin-login').classList.remove('hidden');
-            document.getElementById('admin-dashboard').classList.add('hidden');
-            document.getElementById('admin-password').value = "";
-        }
-        function closeAdmin() {
-            document.getElementById('admin-panel').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        function verifyAdmin() {
-            const pw = document.getElementById('admin-password').value;
-            if (pw === 'medifabadmin') {
-                document.getElementById('admin-login').classList.add('hidden');
-                document.getElementById('admin-dashboard').classList.remove('hidden');
-            } else {
-                document.getElementById('admin-password').style.borderColor = '#ff4b4b';
-                setTimeout(() => document.getElementById('admin-password').style.borderColor = 'rgba(255,255,255,0.1)', 1000);
-            }
-        }
-
-        document.getElementById('admin-password')?.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') verifyAdmin();
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if(targetId === "#") return;
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+        function openAdmin() { document.getElementById('admin-panel').style.display = 'block'; document.body.style.overflow = 'hidden'; }
+        function closeAdmin() { document.getElementById('admin-panel').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function verifyAdmin() { if (document.getElementById('admin-password').value === 'medifabadmin') { document.getElementById('admin-login').classList.add('hidden'); document.getElementById('admin-dashboard').classList.remove('hidden'); } }
+        document.getElementById('admin-password')?.addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyAdmin(); });
     </script>
 </body>
 </html>
