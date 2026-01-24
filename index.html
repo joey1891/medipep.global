@@ -70,7 +70,6 @@
             box-shadow: 0 0 35px rgba(0, 242, 255, 0.6); transform: scale(1.02); 
         }
 
-        /* Core Techs Button Style */
         .secondary-btn {
             border: 1px solid rgba(255, 255, 255, 0.3) !important;
             background: rgba(255, 255, 255, 0.05);
@@ -109,8 +108,8 @@
         }
         .email-link:hover { text-decoration: underline; opacity: 0.8; }
 
-        /* Tabs Styling - Anchor-based for perfect mobile compatibility */
-        .tab-link {
+        /* Tabs Styling - Button based for better event handling */
+        .tab-btn-ui {
             display: flex; align-items: center; justify-content: center;
             height: 50px; font-size: 0.75rem; font-weight: 700;
             letter-spacing: 0.15em; border: 1px solid rgba(255,255,255,0.15);
@@ -118,194 +117,195 @@
             border-radius: 999px; text-transform: uppercase;
             width: 100%; max-width: 320px; margin: 0 auto;
             cursor: pointer; background: rgba(255, 255, 255, 0.03);
-            text-decoration: none;
             position: relative; z-index: 100;
+            outline: none;
         }
-        .tab-link.active {
+        .tab-btn-ui.active {
             border-color: var(--cyan-accent); color: var(--cyan-accent);
-            background: rgba(0, 242, 255, 0.1); box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+            background: rgba(0, 242, 255, 0.12); box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
         }
 
-        /* Admin Overlay */
+        /* Admin Overlay - High Isolation */
         #admin-panel {
             display: none;
             visibility: hidden;
             pointer-events: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #020205; z-index: 2000; overflow-y: auto;
+            background: #020205; z-index: 9999; overflow-y: auto;
         }
-        #admin-panel.active {
-            display: block;
-            visibility: visible;
-            pointer-events: auto;
+        #admin-panel.is-visible {
+            display: block !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
         }
+
+        .loading-spinner {
+            border: 2px solid rgba(255,255,255,0.1);
+            border-top: 2px solid var(--cyan-accent);
+            border-radius: 50%; width: 20px; height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .hero-desc { font-size: 0.85rem !important; padding: 0 15px; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            .tab-link { height: 46px; font-size: 0.65rem; }
+            .tab-btn-ui { height: 46px; font-size: 0.65rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <main class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12">
-        <div class="hero-video-container">
-            <video autoplay muted loop playsinline>
-                <source src="https://res.cloudinary.com/dnzaz71su/video/upload/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e_n1stst.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="hero-overlay"></div>
-
-        <div class="relative z-10 w-full max-w-5xl px-6 text-center">
-            <span class="orbitron text-[#00f2ff] text-[10px] md:text-sm font-bold tracking-[0.4em] mb-6 block uppercase opacity-80">
-                Next-Generation <br class="md:hidden"> Bio Materials
-            </span>
-            <h1 class="hero-title text-4xl sm:text-5xl md:text-8xl font-black orbitron mb-8 leading-tight tracking-tighter drop-shadow-2xl">
-                MEDIFAB <span class="text-[#00f2ff] italic underline decoration-white/10 underline-offset-[8px] md:underline-offset-[16px]">GLOBAL</span>
-            </h1>
-            
-            <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">
-                <span class="block md:inline-block">Pioneering the future of bio-synthesis</span>
-                <span class="block md:inline-block">through revolutionary molecular architecture.</span>
-            </p>
-
-            <div class="flex flex-col items-center gap-3 w-full">
-                <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common glow-btn orbitron">Company Profile</a>
+    <div id="main-content-wrapper">
+        <!-- Hero Section -->
+        <main class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12">
+            <div class="hero-video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="https://res.cloudinary.com/dnzaz71su/video/upload/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e_n1stst.mp4" type="video/mp4">
+                </video>
             </div>
-        </div>
-    </main>
+            <div class="hero-overlay"></div>
 
-    <!-- Core Techs Section (Fixed & Visible) -->
-    <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative z-20">
-        <div class="w-full text-center">
-            <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em] px-6">Core Techs</h2>
-            
-            <div class="w-full mb-20 bg-black relative">
-                <div class="w-full h-0 pb-[56.25%] relative">
-                    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-                        <source src="https://res.cloudinary.com/dnzaz71su/video/upload/resnovae_1_ixzxxb.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-            
-            <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6 relative z-30">
-                <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">CHITOGEN™ <br> Solution</a>
-                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">REGENMATRIX™ <br> Solution</a>
-                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™ <br> Solution</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- R&D Resource Section (Corrected Click Logic) -->
-    <section id="resources" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-20 overflow-visible">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="orbitron fluid-header font-black tracking-[0.2em] mb-4">R&D <br> RESOURCE</h2>
-                <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-12">Patents & Scientific Publications</p>
+            <div class="relative z-10 w-full max-w-5xl px-6 text-center">
+                <span class="orbitron text-[#00f2ff] text-[10px] md:text-sm font-bold tracking-[0.4em] mb-6 block uppercase opacity-80">
+                    Next-Generation <br class="md:hidden"> Bio Materials
+                </span>
+                <h1 class="hero-title text-4xl sm:text-5xl md:text-8xl font-black orbitron mb-8 leading-tight tracking-tighter drop-shadow-2xl">
+                    MEDIFAB <span class="text-[#00f2ff] italic underline decoration-white/10 underline-offset-[8px] md:underline-offset-[16px]">GLOBAL</span>
+                </h1>
                 
-                <!-- Solution Tabs - Using <a> for same robust behavior as Core Techs -->
-                <div id="tab-container" class="flex flex-col gap-3 max-w-sm mx-auto orbitron relative z-[500]">
-                    <a href="javascript:void(0)" onclick="switchSolution('chitogen')" id="tab-chitogen" class="tab-link solution-tab-item">CHITOGEN™</a>
-                    <a href="javascript:void(0)" onclick="switchSolution('regenmatrix')" id="tab-regenmatrix" class="tab-link solution-tab-item">REGENMATRIX™</a>
-                    <a href="javascript:void(0)" onclick="switchSolution('chitogenix')" id="tab-chitogenix" class="tab-link solution-tab-item">CHITOGENIX™</a>
+                <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">
+                    <span class="block md:inline-block">Pioneering the future of bio-synthesis</span>
+                    <span class="block md:inline-block">through revolutionary molecular architecture.</span>
+                </p>
+
+                <div class="flex flex-col items-center gap-3 w-full">
+                    <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common glow-btn orbitron">Company Profile</a>
                 </div>
             </div>
+        </main>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="orbitron text-cyan-400 text-lg font-bold mb-8 border-b border-cyan-400/20 pb-4 flex items-center gap-3">
-                        <i class="fa-solid fa-certificate text-sm"></i> PATENTS
-                    </h3>
-                    <div id="patent-list" class="space-y-4 min-h-[100px]">
-                        <div class="text-white/20 text-xs italic">Please select a solution to view patents.</div>
+        <!-- Core Techs Section -->
+        <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative z-20">
+            <div class="w-full text-center">
+                <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em] px-6">Core Techs</h2>
+                <div class="w-full mb-20 bg-black relative">
+                    <div class="w-full h-0 pb-[56.25%] relative">
+                        <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+                            <source src="https://res.cloudinary.com/dnzaz71su/video/upload/resnovae_1_ixzxxb.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
-                <div>
-                    <h3 class="orbitron text-cyan-400 text-lg font-bold mb-8 border-b border-cyan-400/20 pb-4 flex items-center gap-3">
-                        <i class="fa-solid fa-file-lines text-sm"></i> PAPERS
-                    </h3>
-                    <div id="paper-list" class="space-y-4 min-h-[100px]">
-                        <div class="text-white/20 text-xs italic">Please select a solution to view papers.</div>
+                <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6 relative z-30">
+                    <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">CHITOGEN™ <br> Solution</a>
+                    <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">REGENMATRIX™ <br> Solution</a>
+                    <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™ <br> Solution</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- R&D Resource Section -->
+        <section id="resources" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="orbitron fluid-header font-black tracking-[0.2em] mb-4">R&D <br> RESOURCE</h2>
+                    <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-12">Patents & Scientific Publications</p>
+                    
+                    <div id="tab-container" class="flex flex-col gap-3 max-w-sm mx-auto orbitron relative z-50">
+                        <button id="btn-chitogen" class="tab-btn-ui solution-tab-trigger">CHITOGEN™</button>
+                        <button id="btn-regenmatrix" class="tab-btn-ui solution-tab-trigger">REGENMATRIX™</button>
+                        <button id="btn-chitogenix" class="tab-btn-ui solution-tab-trigger">CHITOGENIX™</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="orbitron text-cyan-400 text-lg font-bold mb-8 border-b border-cyan-400/20 pb-4 flex items-center gap-3">
+                            <i class="fa-solid fa-certificate text-sm"></i> PATENTS
+                        </h3>
+                        <div id="patent-list" class="space-y-4 min-h-[100px]">
+                            <div class="text-white/20 text-xs italic">Please select a solution to view patents.</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="orbitron text-cyan-400 text-lg font-bold mb-8 border-b border-cyan-400/20 pb-4 flex items-center gap-3">
+                            <i class="fa-solid fa-file-lines text-sm"></i> PAPERS
+                        </h3>
+                        <div id="paper-list" class="space-y-4 min-h-[100px]">
+                            <div class="text-white/20 text-xs italic">Please select a solution to view papers.</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Leaders Section -->
-    <section id="leaders" class="py-24 md:py-40 bg-black relative z-10">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em]">Leaders</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="leadership-card flex flex-col items-center">
-                    <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6"><img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" class="w-full h-full object-cover"></div>
-                    <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CEO</div>
-                    <div class="text-xl font-bold">Dr. Cha</div>
-                </div>
-                <div class="leadership-card flex flex-col items-center">
-                    <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6"><img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256314/1756798003402_vy2tho.jpg" class="w-full h-full object-cover"></div>
-                    <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">COO</div>
-                    <div class="text-xl font-bold">Mr. Shin</div>
-                </div>
-                <div class="leadership-card flex flex-col items-center">
-                    <div class="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-cyan-400"><i class="fa-solid fa-chart-line text-3xl"></i></div>
-                    <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CFO</div>
-                    <div class="text-xl font-bold">Mr. Seo</div>
-                </div>
-                <div class="leadership-card flex flex-col items-center">
-                    <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6"><img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256504/0048222_1_bfy67k.png" class="w-full h-full object-cover"></div>
-                    <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CTO</div>
-                    <div class="text-xl font-bold">Dr. Kim</div>
+        <!-- Leaders Section -->
+        <section id="leaders" class="py-24 md:py-40 bg-black relative z-10">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em]">Leaders</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="leadership-card flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6"><img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" class="w-full h-full object-cover"></div>
+                        <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CEO</div>
+                        <div class="text-xl font-bold">Dr. Cha</div>
+                    </div>
+                    <div class="leadership-card flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6"><img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256314/1756798003402_vy2tho.jpg" class="w-full h-full object-cover"></div>
+                        <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">COO</div>
+                        <div class="text-xl font-bold">Mr. Shin</div>
+                    </div>
+                    <div class="leadership-card flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6 text-cyan-400"><i class="fa-solid fa-chart-line text-3xl"></i></div>
+                        <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CFO</div>
+                        <div class="text-xl font-bold">Mr. Seo</div>
+                    </div>
+                    <div class="leadership-card flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6"><img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256504/0048222_1_bfy67k.png" class="w-full h-full object-cover"></div>
+                        <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CTO</div>
+                        <div class="text-xl font-bold">Dr. Kim</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 md:py-40 bg-black relative z-10 border-t border-white/5">
-        <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-6 md:py-40 bg-black relative z-10 border-t border-white/5 text-center">
             <h2 class="orbitron fluid-header font-black mb-12 tracking-widest">Contact</h2>
-            <p class="text-white/40 mb-10 text-sm md:text-lg max-w-2xl">
-                Please reach out to us for global partnerships and inquiries.
-            </p>
-            <div class="w-full flex justify-center px-4">
-                <a href="mailto:contact@imedifab.com" class="email-link orbitron font-bold uppercase tracking-tight">contact@imedifab.com</a>
+            <p class="text-white/40 mb-10 text-sm md:text-lg max-w-2xl mx-auto">Please reach out to us for global partnerships and inquiries.</p>
+            <a href="mailto:contact@imedifab.com" class="email-link orbitron font-bold uppercase tracking-tight">contact@imedifab.com</a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6 bg-black border-t border-white/5 text-center flex flex-col items-center gap-6 relative z-10">
+            <div class="orbitron text-2xl font-black text-white/40 tracking-tighter uppercase">MEDIFAB</div>
+            <div class="flex flex-col items-center gap-4">
+                <button id="admin-trigger" class="text-[10px] orbitron text-white/20 hover:text-cyan-400 transition tracking-[0.2em] uppercase cursor-pointer">Admin Access</button>
+                <div class="text-[9px] orbitron font-bold tracking-[0.4em] text-white/10 uppercase">&copy;2026. MEDIFAB. ALL RIGHTS RESERVED.</div>
             </div>
-        </div>
-    </section>
+            <div class="flex gap-10 text-white/20 mt-4">
+                 <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+                 <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+                 <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </footer>
+    </div>
 
-    <!-- Footer -->
-    <footer class="py-12 px-6 bg-black border-t border-white/5 text-center flex flex-col items-center gap-6 relative z-10">
-        <div class="orbitron text-2xl font-black text-white/40 tracking-tighter uppercase">MEDIFAB</div>
-        <div class="flex flex-col items-center gap-6">
-            <button id="admin-access-trigger" class="text-[10px] orbitron text-white/20 hover:text-cyan-400 transition tracking-[0.2em] uppercase cursor-pointer">Admin Access</button>
-            <div class="text-[9px] orbitron font-bold tracking-[0.4em] text-white/10 uppercase">&copy;2026. MEDIFAB. ALL RIGHTS RESERVED.</div>
-        </div>
-        <div class="flex gap-10 text-white/20 mt-4">
-             <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
-             <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
-             <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-    </footer>
-
-    <!-- Admin Panel -->
+    <!-- Admin Panel Overlay - Isolated at the end of body -->
     <div id="admin-panel">
         <div class="max-w-4xl mx-auto px-6 py-12">
             <div class="flex justify-between items-center mb-12 border-b border-white/10 pb-6">
                 <h1 class="orbitron text-2xl font-black text-cyan-400 tracking-widest">ADMIN DASHBOARD</h1>
-                <button id="close-admin-btn" class="text-white/40 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark text-2xl"></i></button>
+                <button id="admin-close" class="text-white/40 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark text-2xl"></i></button>
             </div>
-            <div id="admin-login" class="flex flex-col items-center py-20">
-                <input type="password" id="admin-password" placeholder="ACCESS CODE" class="bg-white/5 border border-white/10 px-6 py-4 rounded-full orbitron text-center text-sm w-full max-w-xs mb-4 focus:outline-none focus:border-cyan-400 text-white">
-                <button id="verify-btn" class="btn-common glow-btn orbitron !min-h-[50px] !max-w-[200px] !text-[10px]">Verify</button>
+            <div id="admin-login-view" class="flex flex-col items-center py-20">
+                <input type="password" id="admin-pass" placeholder="ACCESS CODE" class="bg-white/5 border border-white/10 px-6 py-4 rounded-full orbitron text-center text-sm w-full max-w-xs mb-4 focus:outline-none focus:border-cyan-400 text-white">
+                <button id="admin-verify-btn" class="btn-common glow-btn orbitron !min-h-[50px] !max-w-[200px] !text-[10px]">Verify</button>
             </div>
-            <div id="admin-dashboard" class="hidden text-white">
+            <div id="admin-dashboard-view" class="hidden text-white">
                 <div class="bg-white/5 border border-white/10 p-8 rounded-2xl mb-12">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <select id="res-category" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white">
+                        <select id="res-cat" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white">
                             <option value="chitogen">CHITOGEN™</option>
                             <option value="regenmatrix">REGENMATRIX™</option>
                             <option value="chitogenix">CHITOGENIX™</option>
@@ -316,16 +316,16 @@
                         </select>
                         <input type="text" id="res-title" placeholder="Title" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white">
                         <input type="text" id="res-year" placeholder="Year" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white">
-                        <input type="text" id="res-link" placeholder="Link" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white md:col-span-2">
+                        <input type="text" id="res-link" placeholder="Download URL" class="bg-black border border-white/10 p-4 rounded-lg text-sm text-white md:col-span-2">
                     </div>
-                    <button id="add-btn" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-lg orbitron text-xs">UPLOAD RESOURCE</button>
+                    <button id="admin-upload-btn" class="w-full bg-cyan-400 text-black font-bold py-4 rounded-lg orbitron text-xs hover:bg-white transition duration-300">UPLOAD RESOURCE</button>
                 </div>
-                <div id="admin-list" class="space-y-2"></div>
+                <div id="admin-list-container" class="space-y-2"></div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase Integration -->
+    <!-- Firebase Scripts -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -339,148 +339,154 @@
 
         let user = null;
         let resources = [];
-        let activeTab = null;
-        let unsubscribeResources = null;
+        let currentTab = null;
 
-        // --- THE SOLUTION: Global exposure and robust state handling ---
-        window.switchSolution = (tab) => {
-            activeTab = tab;
-            document.querySelectorAll('.solution-tab-item').forEach(btn => {
-                const id = btn.id.replace('tab-', '');
-                btn.classList.toggle('active', id === tab);
+        // UI Event Listeners (Failsafe binding)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Admin Panel UI
+            document.getElementById('admin-trigger').onclick = () => {
+                const panel = document.getElementById('admin-panel');
+                panel.classList.add('is-visible');
+                document.body.style.overflow = 'hidden';
+            };
+            document.getElementById('admin-close').onclick = () => {
+                const panel = document.getElementById('admin-panel');
+                panel.classList.remove('is-visible');
+                document.body.style.overflow = 'auto';
+            };
+            document.getElementById('admin-verify-btn').onclick = () => {
+                if (document.getElementById('admin-pass').value === 'medifabadmin') {
+                    document.getElementById('admin-login-view').classList.add('hidden');
+                    document.getElementById('admin-dashboard-view').classList.remove('hidden');
+                }
+            };
+            document.getElementById('admin-pass').onkeypress = (e) => {
+                if(e.key === 'Enter') document.getElementById('admin-verify-btn').click();
+            };
+
+            // R&D Solution Tabs
+            document.querySelectorAll('.solution-tab-trigger').forEach(btn => {
+                btn.onclick = (e) => {
+                    const sol = btn.id.replace('btn-', '');
+                    setActiveTab(sol);
+                };
             });
-            renderUI();
-        };
 
-        async function init() {
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if(targetId === "#") return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        function setActiveTab(sol) {
+            currentTab = sol;
+            document.querySelectorAll('.solution-tab-trigger').forEach(btn => {
+                btn.classList.toggle('active', btn.id === `btn-${sol}`);
+            });
+            renderPublicView();
+        }
+
+        async function initAuth() {
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
                 } else { await signInAnonymously(auth); }
-            } catch (error) { console.error("Auth failed:", error); }
+            } catch (err) { console.error("Auth error:", err); }
 
             onAuthStateChanged(auth, (u) => {
                 user = u;
-                if (user) startListening();
+                if (user) {
+                    const resCol = collection(db, 'artifacts', appId, 'public', 'data', 'resources');
+                    onSnapshot(resCol, (snapshot) => {
+                        resources = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                        renderPublicView();
+                        renderAdminView();
+                    });
+                }
             });
         }
-        init();
+        initAuth();
 
-        function startListening() {
-            if (!user) return;
-            const resCol = collection(db, 'artifacts', appId, 'public', 'data', 'resources');
-            if (unsubscribeResources) unsubscribeResources();
-            unsubscribeResources = onSnapshot(resCol, (snapshot) => {
-                resources = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                renderUI();
-            });
-        }
-
-        function renderUI() {
-            const patentContainer = document.getElementById('patent-list');
-            const paperContainer = document.getElementById('paper-list');
+        function renderPublicView() {
+            const patentEl = document.getElementById('patent-list');
+            const paperEl = document.getElementById('paper-list');
             
-            if (!activeTab) {
-                patentContainer.innerHTML = '<div class="text-white/20 text-xs italic">Please select a solution to view patents.</div>';
-                paperContainer.innerHTML = '<div class="text-white/20 text-xs italic">Please select a solution to view papers.</div>';
-            } else {
-                const filtered = resources.filter(r => r.category === activeTab);
-                const patents = filtered.filter(r => r.type === 'patent');
-                const papers = filtered.filter(r => r.type === 'paper');
-                const tabName = activeTab === 'chitogen' ? 'CHITOGEN™' : (activeTab === 'regenmatrix' ? 'REGENMATRIX™' : 'CHITOGENIX™');
+            if (!currentTab) return;
 
-                patentContainer.innerHTML = patents.length ? patents.map(p => `
-                    <div class="resource-card group">
-                        <div class="flex-1 pr-4">
-                            <div class="text-[10px] text-cyan-400 font-bold orbitron mb-1">${p.year}</div>
-                            <div class="text-xs md:text-sm font-semibold text-white group-hover:text-cyan-400 transition whitespace-normal break-words leading-snug">${p.title}</div>
-                        </div>
-                        <a href="${p.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0"><i class="fa-solid fa-download text-xs"></i></a>
+            const filtered = resources.filter(r => r.category === currentTab);
+            const patents = filtered.filter(r => r.type === 'patent');
+            const papers = filtered.filter(r => r.type === 'paper');
+            const solName = currentTab.toUpperCase() + '™';
+
+            const mapper = (item) => `
+                <div class="resource-card group">
+                    <div class="flex-1 pr-4">
+                        <div class="text-[10px] text-cyan-400 font-bold orbitron mb-1">${item.year}</div>
+                        <div class="text-xs md:text-sm font-semibold text-white group-hover:text-cyan-400 transition whitespace-normal break-words leading-snug">${item.title}</div>
                     </div>
-                `).join('') : `<p class="text-white/20 text-xs italic">No patents for ${tabName}.</p>`;
+                    <a href="${item.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0">
+                        <i class="fa-solid ${item.type === 'patent' ? 'fa-download' : 'fa-arrow-up-right-from-square'} text-xs"></i>
+                    </a>
+                </div>`;
 
-                paperContainer.innerHTML = papers.length ? papers.map(p => `
-                    <div class="resource-card group">
-                        <div class="flex-1 pr-4">
-                            <div class="text-[10px] text-cyan-400 font-bold orbitron mb-1">${p.year}</div>
-                            <div class="text-xs md:text-sm font-semibold text-white group-hover:text-cyan-400 transition whitespace-normal break-words leading-snug">${p.title}</div>
-                        </div>
-                        <a href="${p.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0"><i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
-                    </div>
-                `).join('') : `<p class="text-white/20 text-xs italic">No papers for ${tabName}.</p>`;
-            }
+            patentEl.innerHTML = patents.length ? patents.map(mapper).join('') : `<p class="text-white/20 text-xs italic">No patents for ${solName}.</p>`;
+            paperEl.innerHTML = papers.length ? papers.map(mapper).join('') : `<p class="text-white/20 text-xs italic">No papers for ${solName}.</p>`;
+        }
 
-            document.getElementById('admin-list').innerHTML = resources.map(r => `
+        function renderAdminView() {
+            const listEl = document.getElementById('admin-list-container');
+            listEl.innerHTML = resources.map(r => `
                 <div class="flex items-center justify-between bg-white/5 p-4 rounded-lg border border-white/5">
                     <div class="flex items-center gap-4">
                         <span class="text-[8px] orbitron bg-white/10 px-2 py-1 rounded text-white/40 uppercase">${r.category}</span>
                         <div class="text-xs font-bold">${r.title}</div>
                     </div>
-                    <button class="delete-res-btn text-white/20 hover:text-red-400 cursor-pointer" onclick="window.deleteItem('${r.id}')"><i class="fa-solid fa-trash-can"></i></button>
+                    <button class="delete-btn text-white/20 hover:text-red-400 cursor-pointer" data-id="${r.id}"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             `).join('');
+
+            listEl.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.onclick = async () => {
+                    if (confirm("Delete this?")) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'resources', btn.dataset.id));
+                };
+            });
         }
 
-        window.deleteItem = async (id) => {
+        // Admin Action: Upload
+        document.getElementById('admin-upload-btn').onclick = async () => {
             if (!user) return;
-            if (confirm("Delete this?")) await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'resources', id));
-        };
-
-        document.getElementById('add-btn').onclick = async () => {
-            if (!user) return;
-            const title = document.getElementById('res-title').value;
-            const category = document.getElementById('res-category').value;
+            const btn = document.getElementById('admin-upload-btn');
+            const category = document.getElementById('res-cat').value;
             const type = document.getElementById('res-type').value;
+            const title = document.getElementById('res-title').value;
             const year = document.getElementById('res-year').value;
             const link = document.getElementById('res-link').value;
-            if (!title || !link) return;
+
+            if (!title || !link || !year) return;
+
+            btn.disabled = true;
+            btn.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+
             try {
                 await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'resources'), { 
-                    title, category, type, year, link, timestamp: Date.now() 
+                    category, type, title, year, link, timestamp: Date.now() 
                 });
-                document.getElementById('res-title').value = ""; 
-                document.getElementById('res-year').value = ""; 
+                document.getElementById('res-title').value = "";
+                document.getElementById('res-year').value = "";
                 document.getElementById('res-link').value = "";
-            } catch (e) { console.error(e); }
+            } catch (err) { console.error(err); }
+            
+            btn.disabled = false;
+            btn.innerText = "UPLOAD RESOURCE";
         };
-    </script>
-
-    <script>
-        // UI Navigation Logic
-        const adminPanel = document.getElementById('admin-panel');
-        const adminPassInput = document.getElementById('admin-password');
-        
-        function openAdmin() { 
-            adminPanel.classList.add('active'); 
-            document.body.style.overflow = 'hidden'; 
-        }
-        function closeAdmin() { 
-            adminPanel.classList.remove('active'); 
-            document.body.style.overflow = 'auto'; 
-        }
-        function verifyAdmin() { 
-            if (adminPassInput.value === 'medifabadmin') { 
-                document.getElementById('admin-login').classList.add('hidden'); 
-                document.getElementById('admin-dashboard').classList.remove('hidden'); 
-            } 
-        }
-
-        document.getElementById('admin-access-trigger').addEventListener('click', openAdmin);
-        document.getElementById('close-admin-btn').addEventListener('click', closeAdmin);
-        document.getElementById('verify-btn').addEventListener('click', verifyAdmin);
-        adminPassInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyAdmin(); });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if(targetId === "#") return;
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
     </script>
 </body>
 </html>
