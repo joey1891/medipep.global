@@ -54,9 +54,13 @@
 
         /* Common Button Sizing Logic */
         .btn-common {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             width: 100%;
             max-width: 280px;
+            min-height: 85px;
             padding: 1rem;
             margin: 0 auto;
             border-radius: 9999px;
@@ -68,6 +72,7 @@
             box-sizing: border-box;
             transition: all 0.4s ease;
             text-decoration: none;
+            line-height: 1.4;
         }
 
         /* Buttons Styles */
@@ -102,8 +107,11 @@
             line-height: 1.1;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            white-space: nowrap;
             display: inline-block;
+        }
+        .fluid-header-wrap {
+            white-space: normal;
+            word-break: keep-all;
         }
 
         /* Leadership Cards */
@@ -147,14 +155,20 @@
         <div class="hero-overlay"></div>
 
         <div class="relative z-10 w-full max-w-5xl px-6 text-center">
-            <!-- Next-Generation 뒤에 md:hidden br 태그 추가하여 모바일에서 Bio Materials가 한 줄로 나오게 수정 -->
             <span class="orbitron text-[#00f2ff] text-[10px] md:text-sm font-bold tracking-[0.4em] mb-6 block uppercase opacity-80">
                 Next-Generation <br class="md:hidden"> Bio Materials
             </span>
             <h1 class="hero-title text-4xl sm:text-5xl md:text-8xl font-black orbitron mb-8 leading-tight tracking-tighter drop-shadow-2xl">
                 MEDIPEP <span class="text-[#00f2ff] italic underline decoration-white/10 underline-offset-[8px] md:underline-offset-[16px]">GLOBAL</span>
             </h1>
-            <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">Pioneering the future of bio-synthesis through revolutionary molecular architecture and engineering.</p>
+            
+            <!-- 히어로 문구 줄바꿈 최적화: 의미 단위로 inline-block 적용 -->
+            <p class="hero-desc text-white/60 max-w-2xl mx-auto text-sm md:text-xl font-light mb-12 leading-relaxed">
+                <span class="inline-block">Pioneering the future of</span>
+                <span class="inline-block">bio-synthesis through</span>
+                <span class="inline-block">revolutionary molecular architecture</span>
+                <span class="inline-block">and engineering.</span>
+            </p>
 
             <div class="flex flex-col items-center gap-3 w-full">
                 <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common glow-btn orbitron">Company Profile</a>
@@ -165,12 +179,20 @@
     <!-- Core Techs Section -->
     <section id="core-techs" class="py-24 md:py-40 bg-[#050508] relative">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em]">Core Techs</h2>
+            <h2 class="orbitron fluid-header fluid-header-wrap font-black mb-16 tracking-[0.2em]">
+                Core <br class="sm:hidden"> Techs
+            </h2>
             
-            <div class="flex flex-col items-center gap-4">
-                <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn">CHITOGEN™ Solution</a>
-                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">REGENMATRIX™ Solution</a>
-                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">CHITOGENIX™ Solution</a>
+            <div class="flex flex-col items-center gap-5">
+                <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn">
+                    CHITOGEN™ <br> Solution
+                </a>
+                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">
+                    REGENMATRIX™ <br> Solution
+                </a>
+                <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn">
+                    CHITOGENIX™ <br> Solution
+                </a>
             </div>
         </div>
     </section>
