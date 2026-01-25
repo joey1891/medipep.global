@@ -139,13 +139,17 @@
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
             
-            /* 대응: 갤럭시 폴드 전면 화면과 같은 매우 좁은 너비 */
+            /* 대응: 갤럭시 폴드 전면 화면과 같은 매우 좁은 너비에서 텍스트 줄바꿈 방지 */
             #detail-title { 
-                font-size: clamp(1.1rem, 7.5vw, 3rem) !important; /* 최소 폰트 사이즈 하향 */
-                letter-spacing: 0.05em !important; /* 글자 간격 축소하여 가로 공간 확보 */
-                white-space: nowrap; /* 줄바꿈 절대 방지 */
-                word-break: keep-all;
-                padding: 0 5px;
+                /* 최소 폰트 크기를 더 낮추고 자간을 좁혀서 공간 확보 */
+                font-size: clamp(0.95rem, 6.8vw, 3rem) !important; 
+                letter-spacing: -0.01em !important; 
+                white-space: nowrap !important; 
+                word-break: keep-all !important;
+                display: inline-block;
+                width: auto;
+                max-width: 100vw;
+                padding: 0 10px;
             }
         }
     </style>
