@@ -167,7 +167,7 @@
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            #detail-title, #product-title, #product-plus-title, #profile-title { 
+            #detail-title, #product-title, #product-plus-title, #product-scalp-title, #profile-title { 
                 font-size: clamp(0.8rem, 7vw, 3rem) !important; 
                 letter-spacing: -0.01em !important; 
                 line-height: 1.2 !important;
@@ -557,7 +557,7 @@
                     <i class="fa-solid fa-wind"></i> SCALP SOLUTION
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="leadership-card group border-white/10 hover:border-cyan-400/50 transition-all">
+                    <div onclick="navigateToProduct('scalp')" class="leadership-card group border-white/10 hover:border-cyan-400/50 transition-all cursor-pointer">
                         <div class="text-[10px] text-cyan-400 orbitron font-bold mb-2 tracking-widest">SCALP CARE</div>
                         <h3 class="text-lg sm:text-xl md:text-2xl font-black orbitron mb-4 uppercase leading-tight tracking-tighter whitespace-nowrap overflow-hidden text-ellipsis">resnovae scalpMD®</h3>
                         <p class="text-white/60 text-sm leading-relaxed mb-6">A professional scalp regeneration solution that fundamentally improves the scalp environment and supports healthy hair growth.</p>
@@ -774,6 +774,130 @@
         </div>
     </div>
 
+    <!-- Product Detail View Content (Resnovae Scalp MD) -->
+    <div id="product-scalp-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- HEADER SECTION -->
+            <div class="mb-16 flex flex-col items-center">
+                <button onclick="navigateToPortfolio('skinbooster')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
+                </button>
+                <h1 id="product-scalp-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">resnovae <br> <span class="whitespace-nowrap text-lg sm:text-2xl md:text-5xl">scalpMD®</span></h1>
+                <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Anti-Inflammatory Scalp Regeneration Medical Device</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 items-center mb-24">
+                <div class="w-full md:w-1/2 rounded-[3rem] overflow-hidden border border-white/5 bg-gradient-to-b from-white/5 to-transparent p-12 flex justify-center items-center relative group min-h-[400px]">
+                    <div class="absolute w-48 h-48 bg-cyan-400/10 blur-[80px] rounded-full group-hover:bg-cyan-400/20 transition-all duration-700"></div>
+                    
+                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/restmb_allidxmake-removebg-preview.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9yZXN0bWJfYWxsaWR4bWFrZS1yZW1vdmViZy1wcmV2aWV3LnBuZyIsImlhdCI6MTc2OTMyNDU1OSwiZXhwIjoxOTI3MDA0NTU5fQ.FSk2pxYr43ZSYdomrfNc9EtsVVvw7LIS9H3K3BQsI04" 
+                         alt="resnovae scalpMD product" 
+                         class="max-w-[85%] h-auto relative z-10 drop-shadow-[0_25px_50px_rgba(0,242,255,0.2)] transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-2">
+                </div>
+                <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
+                    <div class="flex gap-2 justify-center md:justify-start">
+                        <span class="text-[9px] bg-cyan-400 text-black font-bold px-2 py-1 orbitron uppercase">KFDA Class II</span>
+                        <span class="text-[9px] border border-cyan-400 text-cyan-400 font-bold px-2 py-1 orbitron uppercase">CE Certified</span>
+                    </div>
+                    <h2 class="orbitron text-2xl font-bold tracking-widest border-l-4 border-cyan-400 pl-4 uppercase leading-tight">ROOT CAUSE <br> MICROENVIRONMENT</h2>
+                    <p class="text-white/60 leading-relaxed">Resnovae ScalpMD® shifts the paradigm of hair loss treatment from the follicle itself to the surrounding microenvironment. By addressing chronic inflammation, oxidative stress, and ECM collapse, it restores the biological soil necessary for healthy hair growth.</p>
+                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                        <span class="text-[10px] orbitron font-bold bg-cyan-400/10 border border-cyan-400/30 px-4 py-2 rounded-full uppercase tracking-widest">Anti-Inflammatory</span>
+                        <span class="text-[10px] orbitron font-bold bg-white/5 border border-white/10 px-4 py-2 rounded-full uppercase tracking-widest">Post-Transplant Recovery</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-20">
+                <!-- CORE TECHNOLOGY -->
+                <section class="insight-section">
+                    <h2 class="orbitron text-cyan-400 text-xl font-bold mb-10 flex items-center gap-3 uppercase">
+                        <i class="fa-solid fa-dna"></i> CORE TECHNOLOGY: CHITOGENIX™
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="insight-point">
+                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">LTG (Liquid-to-Gel) Chitosan</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">A patented water-soluble chitosan that remains liquid for easy application but transforms into a stable gel upon contact with the scalp. This ensures high fixation and continuous suppression of TNF-α.</p>
+                        </div>
+                        <div class="insight-point">
+                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">Purified Sc-sECM</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">Incorporates purified decellularized extracellular matrix (Sc-sECM) to provide the essential structural scaffold and signaling molecules needed to rebuild the collapsed dermal matrix around hair follicles.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- MECHANISM OF ACTION -->
+                <section>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">01</div>
+                        <h2 class="orbitron text-xl font-bold tracking-widest uppercase">MECHANISM OF ACTION</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="feature-box text-center">
+                            <i class="fa-solid fa-shield-virus text-cyan-400 text-3xl mb-4"></i>
+                            <h3 class="text-white text-sm font-bold mb-2 orbitron uppercase">TNF-α Suppression</h3>
+                            <p class="text-white/50 text-xs leading-relaxed">Directly inhibits inflammatory cytokines to prevent follicular degradation and chronic scalp irritation.</p>
+                        </div>
+                        <div class="feature-box text-center">
+                            <i class="fa-solid fa-fire-burner text-cyan-400 text-3xl mb-4"></i>
+                            <h3 class="text-white text-sm font-bold mb-2 orbitron uppercase">ROS Management</h3>
+                            <p class="text-white/50 text-xs leading-relaxed">Powerful antioxidant action neutralizes Reactive Oxygen Species (ROS) that trigger premature hair thinning.</p>
+                        </div>
+                        <div class="feature-box text-center">
+                            <i class="fa-solid fa-microchip text-cyan-400 text-3xl mb-4"></i>
+                            <h3 class="text-white text-sm font-bold mb-2 orbitron uppercase">ECM Reconstruction</h3>
+                            <p class="text-white/50 text-xs leading-relaxed">Rebuilds the extracellular matrix, providing physical support and a fertile environment for graft survival.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CLINICAL INDICATIONS -->
+                <section>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">02</div>
+                        <h2 class="orbitron text-xl font-bold tracking-widest uppercase">CLINICAL INDICATIONS</h2>
+                    </div>
+                    <div class="leadership-card bg-white/5 border-white/10 p-8">
+                        <ul class="space-y-6 text-sm text-white/70">
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-cyan-400/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white block mb-1 uppercase tracking-wider text-xs">Post-Hair Transplant Recovery</strong>
+                                    Significant reduction in inflammation and oxidative stress during the critical first phase of follicle engraftment.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-cyan-400/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white block mb-1 uppercase tracking-wider text-xs">Chronic Scalp Regeneration</strong>
+                                    Ideal for thinning hair and sensitive scalps where traditional chemical treatments may cause irritation.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-cyan-400/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white block mb-1 uppercase tracking-wider text-xs">Scientific Validation</strong>
+                                    Mechanism of action and clinical efficacy data are currently pending publication in peer-reviewed medical journals.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <div class="text-center pt-12 border-t border-white/5">
+                    <p class="text-white/40 text-sm italic mb-8 italic">"Bio-Regenerative Solution for Advanced Scalp Medicine."</p>
+                    <a href="mailto:contact@imedifab.com" class="btn-common glow-btn orbitron">INQUIRE MEDICAL DATA</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const notionLink = "https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=74";
 
@@ -879,6 +1003,10 @@
                 document.getElementById('product-plus-detail-view').classList.add('view-visible');
                 document.getElementById('product-plus-detail-view').classList.remove('view-hidden');
                 safePushState({ type: 'product', key: 'plus' });
+            } else if(productKey === 'scalp') {
+                document.getElementById('product-scalp-detail-view').classList.add('view-visible');
+                document.getElementById('product-scalp-detail-view').classList.remove('view-hidden');
+                safePushState({ type: 'product', key: 'scalp' });
             }
             window.scrollTo(0, 0);
         }
@@ -951,7 +1079,11 @@
         }
 
         function hideAllViews() {
-            const views = ['main-view', 'detail-view', 'portfolio-view', 'product-detail-view', 'product-plus-detail-view', 'company-profile-view'];
+            const views = [
+                'main-view', 'detail-view', 'portfolio-view', 
+                'product-detail-view', 'product-plus-detail-view', 
+                'product-scalp-detail-view', 'company-profile-view'
+            ];
             views.forEach(v => {
                 const el = document.getElementById(v);
                 if(el) {
