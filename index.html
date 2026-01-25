@@ -61,8 +61,10 @@
             transition: all 0.4s ease; text-decoration: none; line-height: 1.4;
             cursor: pointer; position: relative; z-index: 50;
         }
+        
         .glow-btn {
-            border: 1px solid #ffffff; background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #ffffff; 
+            background: transparent;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); color: white;
         }
         .glow-btn:hover { 
@@ -72,9 +74,9 @@
 
         .secondary-btn {
             border: 1px solid rgba(255, 255, 255, 0.3) !important;
-            background: rgba(255, 255, 255, 0.05);
+            background: transparent;
             color: white;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
         }
         .secondary-btn:hover { 
             border-color: var(--cyan-accent) !important; color: var(--cyan-accent); 
@@ -133,7 +135,6 @@
         .view-hidden { display: none !important; }
         .view-visible { display: block !important; }
 
-        /* Feature Card for Product Detail */
         .feature-box {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(0, 242, 255, 0.1);
@@ -415,10 +416,8 @@
                 <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">The 5th Generation Skin Booster</p>
             </div>
 
-            <!-- Product Showcase Section (Updated with Transparent PNG & Floating Effect) -->
             <div class="flex flex-col md:flex-row gap-12 items-center mb-24">
                 <div class="w-full md:w-1/2 rounded-[3rem] overflow-hidden border border-white/5 bg-gradient-to-b from-white/5 to-transparent p-12 flex justify-center items-center relative group">
-                    <!-- Subtle Glow Backdrop -->
                     <div class="absolute w-48 h-48 bg-cyan-400/10 blur-[80px] rounded-full group-hover:bg-cyan-400/20 transition-all duration-700"></div>
                     
                     <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/cc492d238d1dc-removebg-preview.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9jYzQ5MmQyMzhkMWRjLXJlbW92ZWJnLXByZXZpZXcucG5nIiwiaWF0IjoxNzY5MzE5OTgxLCJleHAiOjE5MjY5OTk5ODF9.p-96RHgIhc21DB_WAthHvodJ_w3yxT3dryd4kJno3yo" 
@@ -482,7 +481,7 @@
 
                 <section>
                     <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">03</div>
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">02</div>
                         <h2 class="orbitron text-xl font-bold tracking-widest uppercase">KEY BENEFITS</h2>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -524,11 +523,9 @@
                 <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Stem-Cell Activation & Boosting Formula</p>
             </div>
 
-            <!-- Product Showcase Section -->
             <div class="flex flex-col md:flex-row gap-12 items-center mb-24">
                 <div class="w-full md:w-1/2 rounded-3xl overflow-hidden border border-white/5 bg-white/5 p-8 flex justify-center items-center shadow-2xl shadow-cyan-500/10">
                     <div class="relative w-full aspect-square flex items-center justify-center">
-                        <i class="fa-solid fa-vial-circle-check text-cyan-400/10 text-[12rem] absolute"></i>
                         <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/f8ead94e5360b.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9mOGVhZDk0ZTUzNjBiLnBuZyIsImlhdCI6MTc2OTMxOTIyMiwiZXhwIjoxOTI2OTk5MjIyfQ.oHhH2kK_UUgbuKUufp9igjYZS6XdGd5DMJQXB9gSsdw" alt="resnovae crystal plus product" class="max-w-full h-auto drop-shadow-[0_20px_60px_rgba(0,242,255,0.4)] relative z-10 brightness-110">
                     </div>
                 </div>
@@ -602,7 +599,6 @@
                     <p class="text-center text-white/30 text-[10px] orbitron mt-8 tracking-[0.2em]">Validated through 30g/4mm needle injection studies showing increased dermal thickness vs standard HA.</p>
                 </section>
 
-                <!-- Footer Summary -->
                 <div class="text-center pt-12 border-t border-white/5">
                     <p class="text-white/40 text-sm italic mb-8 italic">"The Ultimate Catalyst for Cellular Skin Regeneration."</p>
                     <a href="mailto:contact@imedifab.com" class="btn-common glow-btn orbitron">REQUEST CLINICAL DATA</a>
@@ -689,14 +685,24 @@
             }
         };
 
-        let lastSectionId = 'business-portfolio'; // Default to portfolio section
+        let lastSectionId = 'business-portfolio';
+
+        // Safe History Push to prevent SecurityError in sandboxed environments
+        function safePushState(state) {
+            try {
+                // Pass null as the 3rd argument (URL) to avoid cross-origin/blob URL security restrictions
+                window.history.pushState(state, "");
+            } catch (e) {
+                // Silently fail if browser blocks history manipulation
+            }
+        }
 
         function navigateToPortfolio(category, sourceSectionId = null) {
             if (sourceSectionId) lastSectionId = sourceSectionId;
             hideAllViews();
             document.getElementById('portfolio-view').classList.add('view-visible');
             document.getElementById('portfolio-view').classList.remove('view-hidden');
-            history.pushState({ type: 'portfolio', sourceSectionId: lastSectionId }, "", "#portfolio");
+            safePushState({ type: 'portfolio', sourceSectionId: lastSectionId });
             window.scrollTo(0, 0);
         }
 
@@ -705,11 +711,11 @@
             if(productKey === 'crystal') {
                 document.getElementById('product-detail-view').classList.add('view-visible');
                 document.getElementById('product-detail-view').classList.remove('view-hidden');
-                history.pushState({ type: 'product', key: 'crystal' }, "", "#product-crystal");
+                safePushState({ type: 'product', key: 'crystal' });
             } else if(productKey === 'plus') {
                 document.getElementById('product-plus-detail-view').classList.add('view-visible');
                 document.getElementById('product-plus-detail-view').classList.remove('view-hidden');
-                history.pushState({ type: 'product', key: 'plus' }, "", "#product-plus");
+                safePushState({ type: 'product', key: 'plus' });
             }
             window.scrollTo(0, 0);
         }
@@ -749,7 +755,7 @@
             hideAllViews();
             document.getElementById('detail-view').classList.add('view-visible');
             document.getElementById('detail-view').classList.remove('view-hidden');
-            history.pushState({ type: 'detail', category, fromCoreTech, sourceSectionId: lastSectionId }, "", "#detail");
+            safePushState({ type: 'detail', category, fromCoreTech, sourceSectionId: lastSectionId });
             window.scrollTo(0, 0);
         }
 
@@ -783,25 +789,11 @@
             });
         }
 
-        function handleManualBack() {
-            // Check state to determine where to go back
-            if (window.history.state) {
-                if (window.history.state.type === 'product') {
-                    navigateToPortfolio('skinbooster');
-                } else {
-                    navigateToMain();
-                }
-            } else {
-                navigateToMain();
-            }
-        }
-
         function navigateToMain() {
             hideAllViews();
             document.getElementById('main-view').classList.add('view-visible');
             document.getElementById('main-view').classList.remove('view-hidden');
             
-            // Fixed: Explicitly scroll to the portfolio section when coming back
             const sourceId = lastSectionId || 'business-portfolio';
             const section = document.getElementById(sourceId);
             
@@ -813,10 +805,10 @@
                 window.scrollTo(0, 0);
             }
             
-            // Clean up browser history hash
-            if (window.location.hash) {
-                history.pushState(null, "", window.location.pathname);
-            }
+            // Avoid changing URL to prevent SecurityError in sandboxed blob URLs
+            try {
+                window.history.pushState(null, "");
+            } catch (e) {}
         }
 
         window.addEventListener('popstate', function(event) {
