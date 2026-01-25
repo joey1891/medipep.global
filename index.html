@@ -196,10 +196,25 @@
             line-height: 1.2;
         }
 
+        /* Cosmetic Grid Style */
+        .cosmetic-category-label {
+            display: inline-block;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--cyan-accent);
+            color: var(--cyan-accent);
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            #detail-title, #product-title, #product-plus-title, #product-scalp-title, #profile-title, #beauty-detail-title { 
+            #detail-title, #product-title, #product-plus-title, #product-scalp-title, #profile-title, #beauty-detail-title, #cosmetics-title { 
                 font-size: clamp(0.8rem, 7vw, 3rem) !important; 
                 letter-spacing: -0.01em !important; 
                 line-height: 1.2 !important;
@@ -292,7 +307,7 @@
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-16">Product Categories</p>
                 <div class="flex flex-col gap-5 max-w-sm mx-auto relative z-30">
                     <a href="javascript:void(0)" onclick="navigateToPortfolio('skinbooster', 'business-portfolio')" class="btn-common secondary-btn orbitron font-bold">SKIN BOOSTER</a>
-                    <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common secondary-btn orbitron font-bold">COSMETICS</a>
+                    <a href="javascript:void(0)" onclick="navigateToPortfolio('cosmetics', 'business-portfolio')" class="btn-common secondary-btn orbitron font-bold">COSMETICS</a>
                     <a href="javascript:void(0)" onclick="navigateToPortfolio('beautydevice', 'business-portfolio')" class="btn-common secondary-btn orbitron font-bold">BEAUTY DEVICE</a>
                 </div>
             </div>
@@ -354,6 +369,104 @@
                  <a href="https://www.youtube.com/@MEDIFAB-vk6cb" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </footer>
+    </div>
+
+    <!-- Cosmetics View Content -->
+    <div id="cosmetics-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 flex flex-col items-center">
+                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
+                </button>
+                <h1 id="cosmetics-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">COSMETICS</h1>
+                <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Business Portfolio</p>
+            </div>
+
+            <!-- Face Solution Section -->
+            <div class="mb-24">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 border-b border-white/10 pb-4">
+                    <h2 class="orbitron text-cyan-400 text-2xl font-black flex items-center gap-3 uppercase">
+                        <i class="fa-solid fa-face-smile"></i> FACE SOLUTION
+                    </h2>
+                    <span class="orbitron text-[10px] text-white/30 tracking-widest font-bold">HS CODE: 3304.99</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Ampoule -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Ampoule</span>
+                        <ul class="space-y-4 mt-4">
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Plan Tox Lifting Ampoule 30ml</li>
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Phyto Protein Volumizing Ampoule 30ml</li>
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Melano Cut Brightening Ampoule 30ml</li>
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Blue Crystal Hydrating Ampoule 30ml</li>
+                        </ul>
+                    </div>
+                    <!-- Ampoule Booster -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Ampoule Booster</span>
+                        <ul class="space-y-4 mt-4">
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Cellular Water Ampoule Booster 60ml</li>
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Cellular Water Ampoule Booster 120ml</li>
+                        </ul>
+                    </div>
+                    <!-- Mask Pack -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Mask Pack</span>
+                        <ul class="space-y-4 mt-4">
+                            <li class="text-sm font-semibold text-white/80 leading-tight">EV Shot Skin Boosting Mask 5ea</li>
+                        </ul>
+                    </div>
+                    <!-- Cream -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Cream</span>
+                        <ul class="space-y-4 mt-4">
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Active Barrier Hydrating Cream 50ml</li>
+                        </ul>
+                    </div>
+                    <!-- Sunscreen -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Sunscreen</span>
+                        <ul class="space-y-4 mt-4">
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Refreshing Toning Sun Protector Cream 40ml</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scalp Solution Section -->
+            <div>
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 border-b border-white/10 pb-4">
+                    <h2 class="orbitron text-cyan-400 text-2xl font-black flex items-center gap-3 uppercase">
+                        <i class="fa-solid fa-wind"></i> SCALP CARE
+                    </h2>
+                    <span class="orbitron text-[10px] text-white/30 tracking-widest font-bold">HS CODE: 3305</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Ampoule -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Ampoule</span>
+                        <ul class="space-y-4 mt-4">
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Expert Shot Scalp Ampoule 15ml</li>
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Expert Shot Scalp Ampoule 15ml *3ea</li>
+                        </ul>
+                    </div>
+                    <!-- Shampoo -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Shampoo</span>
+                        <ul class="space-y-4 mt-4">
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Root Vitality Volume Shampoo 100ml</li>
+                            <li class="text-sm font-semibold text-white/80 leading-tight">Root Vitality Volume Shampoo 300ml</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-24">
+                <button onclick="navigateToMain()" class="btn-common secondary-btn orbitron">BACK TO VISION</button>
+            </div>
+        </div>
     </div>
 
     <!-- Company Profile View Content -->
@@ -1132,7 +1245,11 @@
         function navigateToPortfolio(category, sourceSectionId = null) {
             if (sourceSectionId) lastSectionId = sourceSectionId;
             hideAllViews();
-            const viewId = category === 'beautydevice' ? 'beauty-device-view' : 'portfolio-view';
+            let viewId = '';
+            if (category === 'beautydevice') viewId = 'beauty-device-view';
+            else if (category === 'cosmetics') viewId = 'cosmetics-view';
+            else viewId = 'portfolio-view';
+            
             const el = document.getElementById(viewId);
             if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
             safePushState({ type: 'portfolio', category, sourceSectionId: lastSectionId });
@@ -1210,7 +1327,7 @@
 
         function hideAllViews() {
             const views = [
-                'main-view', 'detail-view', 'portfolio-view', 'beauty-device-view',
+                'main-view', 'detail-view', 'portfolio-view', 'beauty-device-view', 'cosmetics-view',
                 'product-detail-view', 'product-plus-detail-view', 
                 'product-scalp-detail-view', 'core-impact-detail-view', 'hyper-shot-detail-view',
                 'company-profile-view'
