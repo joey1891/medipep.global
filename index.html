@@ -145,10 +145,22 @@
         }
         .feature-box:hover { border-color: var(--cyan-accent); transform: translateY(-5px); }
 
+        /* Timeline Styles for Company Profile */
+        .timeline-container { position: relative; padding-left: 2rem; }
+        .timeline-container::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+            width: 1px; background: linear-gradient(to bottom, transparent, var(--cyan-accent), transparent);
+        }
+        .timeline-year-dot {
+            position: absolute; left: -5px; top: 0;
+            width: 11px; height: 11px; border-radius: 50%;
+            background: var(--cyan-accent); box-shadow: 0 0 10px var(--cyan-accent);
+        }
+
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            #detail-title, #product-title, #product-plus-title { 
+            #detail-title, #product-title, #product-plus-title, #profile-title { 
                 font-size: clamp(0.8rem, 7vw, 3rem) !important; 
                 letter-spacing: -0.01em !important; 
                 line-height: 1.2 !important;
@@ -165,7 +177,7 @@
     <!-- Main View Content -->
     <div id="main-view" class="view-visible">
         <!-- Hero Section -->
-        <main class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12">
+        <main id="hero" class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12">
             <div class="hero-video-container">
                 <video autoplay muted loop playsinline>
                     <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9ncm9rLXZpZGVvLWE4OTkxYzg1LTg5MDYtNGRlNi05NmVhLWE3MmNmMDY0M2M0ZS5tcDQiLCJpYXQiOjE3NjkzMTQ4NzgsImV4cCI6MTg2MzkyMjg3OH0.2fV2yNvY9p1W9JoGVCXatFvKY2wXyIaOx6mZEyb9AhU" type="video/mp4">
@@ -187,7 +199,7 @@
                 </p>
 
                 <div class="flex flex-col items-center gap-3 w-full">
-                    <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common glow-btn orbitron">Company Profile</a>
+                    <button onclick="navigateToCompanyProfile()" class="btn-common glow-btn orbitron">Company Profile</button>
                 </div>
             </div>
         </main>
@@ -293,6 +305,154 @@
                  <a href="https://www.youtube.com/@MEDIFAB-vk6cb" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </footer>
+    </div>
+
+    <!-- Company Profile View Content -->
+    <div id="company-profile-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-16 flex flex-col items-center">
+                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
+                </button>
+                <h1 id="profile-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">Company Profile</h1>
+                <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Growth Journey & Milestones</p>
+            </div>
+
+            <!-- General Information Section -->
+            <section class="mb-24">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-bullseye text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Mission</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">Providing anti-aging solutions based on innovative materials</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-calendar-check text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Founded</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">January 12, 2016</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-vault text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Capital</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">USD 0.1 M</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-user-tie text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">CEO</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">Cha Mi-seon</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-users-gear text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Employees</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">50 Persons</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="space-y-24">
+                <!-- Stage 3: Scale-Up -->
+                <section>
+                    <div class="flex items-center gap-4 mb-12">
+                        <span class="orbitron text-cyan-400 font-bold border-b-2 border-cyan-400 pb-2 tracking-widest">2024 ~ Present</span>
+                        <h2 class="orbitron text-2xl font-black uppercase">Scale-Up Stage</h2>
+                    </div>
+                    <div class="space-y-12">
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot"></div>
+                            <h3 class="orbitron text-cyan-400 text-lg font-bold mb-4">2025</h3>
+                            <ul class="space-y-3 text-sm text-white/70">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Res Novae Scalp MD: kFDA approval & FDA Listing</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Applied for clinical trial IND for chitosan LTG-Syno</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot"></div>
+                            <h3 class="orbitron text-cyan-400 text-lg font-bold mb-4">2024</h3>
+                            <ul class="space-y-3 text-sm text-white/70">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Launched Res Novae beauty business division</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Applied for clinical trial IND for chitosan LTG-S</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Selected for govt-funded R&D project (USD 1.55M)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stage 2: Preparation -->
+                <section>
+                    <div class="flex items-center gap-4 mb-12">
+                        <span class="orbitron text-white/40 font-bold border-b-2 border-white/10 pb-2 tracking-widest">2020 ~ 2023</span>
+                        <h2 class="orbitron text-2xl font-black uppercase text-white/80">Preparation Stage</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2023</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Launched Res Novae product brand</li>
+                                <li>Entered into export agreement (US$5 Mil.)</li>
+                                <li>Obtained regulatory approval from Thailand (Husteon)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2022</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Selected for govt-funded R&D project (USD 0.44M)</li>
+                                <li>Relocation & expansion, factory registration</li>
+                                <li>Entered into export agreement (US$2 Mil.)</li>
+                                <li>Obtained kFDA approval for Husteon Mesh/Nasal</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2021</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Selected as "Innovation Enterprise National Representative 1000"</li>
+                                <li>Obtained kFDA approval for Husteon Mesh</li>
+                                <li>Completed FDA listing for Husteon Nasal</li>
+                                <li>Launched Echrever (for export)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2020</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Obtained medical device manufacturing license</li>
+                                <li>Acquired export approval for Husteon</li>
+                                <li>Obtained ISO13485 certification</li>
+                                <li>Selected for govt-funded R&D project (USD 1.7M)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stage 1: Early Stage -->
+                <section class="opacity-60">
+                    <div class="flex items-center gap-4 mb-12">
+                        <span class="orbitron text-white/20 font-bold border-b-2 border-white/5 pb-2 tracking-widest">~ 2019</span>
+                        <h2 class="orbitron text-2xl font-black uppercase text-white/40">Early Stage</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                        <div class="p-6 border border-white/5 rounded-2xl">
+                            <div class="orbitron text-white/40 font-bold mb-2">2019</div>
+                            <p class="text-[10px] text-white/30 leading-relaxed">Govt-funded R&D project (USD 0.5M)<br>ISO9001, ISO14001 Certification</p>
+                        </div>
+                        <div class="p-6 border border-white/5 rounded-2xl">
+                            <div class="orbitron text-white/40 font-bold mb-2">2018</div>
+                            <p class="text-[10px] text-white/30 leading-relaxed">Govt-funded R&D project (USD 0.6M)<br>Certified as venture enterprise</p>
+                        </div>
+                        <div class="p-6 border border-white/5 rounded-2xl">
+                            <div class="orbitron text-white/40 font-bold mb-2">2016</div>
+                            <p class="text-[10px] text-white/30 leading-relaxed">Medifab incorporated</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="text-center pt-24 border-t border-white/5 mt-24">
+                <button onclick="navigateToMain()" class="btn-common secondary-btn orbitron">Back to Vision</button>
+            </div>
+        </div>
     </div>
 
     <!-- Resource Detail View Content -->
@@ -685,16 +845,14 @@
             }
         };
 
-        let lastSectionId = 'business-portfolio';
+        // Initialize with 'hero' to ensure first navigation defaults to top
+        let lastSectionId = 'hero';
 
         // Safe History Push to prevent SecurityError in sandboxed environments
         function safePushState(state) {
             try {
-                // Pass null as the 3rd argument (URL) to avoid cross-origin/blob URL security restrictions
                 window.history.pushState(state, "");
-            } catch (e) {
-                // Silently fail if browser blocks history manipulation
-            }
+            } catch (e) {}
         }
 
         function navigateToPortfolio(category, sourceSectionId = null) {
@@ -717,6 +875,16 @@
                 document.getElementById('product-plus-detail-view').classList.remove('view-hidden');
                 safePushState({ type: 'product', key: 'plus' });
             }
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToCompanyProfile() {
+            // When going to profile, set return point to top (hero)
+            lastSectionId = 'hero';
+            hideAllViews();
+            document.getElementById('company-profile-view').classList.add('view-visible');
+            document.getElementById('company-profile-view').classList.remove('view-hidden');
+            safePushState({ type: 'profile' });
             window.scrollTo(0, 0);
         }
 
@@ -779,7 +947,7 @@
         }
 
         function hideAllViews() {
-            const views = ['main-view', 'detail-view', 'portfolio-view', 'product-detail-view', 'product-plus-detail-view'];
+            const views = ['main-view', 'detail-view', 'portfolio-view', 'product-detail-view', 'product-plus-detail-view', 'company-profile-view'];
             views.forEach(v => {
                 const el = document.getElementById(v);
                 if(el) {
@@ -794,7 +962,8 @@
             document.getElementById('main-view').classList.add('view-visible');
             document.getElementById('main-view').classList.remove('view-hidden');
             
-            const sourceId = lastSectionId || 'business-portfolio';
+            // sourceId will be 'hero' if coming from Company Profile
+            const sourceId = lastSectionId || 'hero';
             const section = document.getElementById(sourceId);
             
             if (section) {
@@ -805,7 +974,6 @@
                 window.scrollTo(0, 0);
             }
             
-            // Avoid changing URL to prevent SecurityError in sandboxed blob URLs
             try {
                 window.history.pushState(null, "");
             } catch (e) {}
@@ -819,6 +987,8 @@
                     navigateToPortfolio('skinbooster', event.state.sourceSectionId);
                 } else if (event.state.type === 'product') {
                     navigateToProduct(event.state.key);
+                } else if (event.state.type === 'profile') {
+                    navigateToCompanyProfile();
                 } else {
                     navigateToMain();
                 }
