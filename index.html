@@ -520,7 +520,7 @@
                 <button onclick="navigateToPortfolio('skinbooster')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
                     <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
                 </button>
-                <h1 id="product-plus-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">resnovae <br> <span class="whitespace-nowrap">crystal plus®</span></h1>
+                <h1 id="product-plus-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">resnovae <br> <span class="whitespace-nowrap text-lg sm:text-2xl md:text-5xl">crystal plus®</span></h1>
                 <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Stem-Cell Activation & Boosting Formula</p>
             </div>
 
@@ -562,7 +562,7 @@
 
                 <section class="insight-section">
                     <h2 class="orbitron text-cyan-400 text-xl font-bold mb-10 flex items-center gap-3 uppercase">
-                        <i class="fa-solid fa-atom"></i> ACTIVE INGREDIENT SYNERGY
+                        <i class="fa-solid fa-microscope"></i> ACTIVE INGREDIENT SYNERGY
                     </h2>
                     <div class="space-y-8">
                         <div class="insight-point">
@@ -689,26 +689,28 @@
             }
         };
 
-        let lastSectionId = 'business-portfolio';
-
-        // NOTE: history.pushState is disabled due to blob URL security constraints in this environment.
-        // Navigation is handled via direct DOM manipulation.
+        let lastSectionId = 'business-portfolio'; // Default to portfolio section
 
         function navigateToPortfolio(category, sourceSectionId = null) {
             if (sourceSectionId) lastSectionId = sourceSectionId;
             hideAllViews();
-            const view = document.getElementById('portfolio-view');
-            view.classList.add('view-visible');
-            view.classList.remove('view-hidden');
+            document.getElementById('portfolio-view').classList.add('view-visible');
+            document.getElementById('portfolio-view').classList.remove('view-hidden');
+            history.pushState({ type: 'portfolio', sourceSectionId: lastSectionId }, "", "#portfolio");
             window.scrollTo(0, 0);
         }
 
         function navigateToProduct(productKey) {
             hideAllViews();
-            let viewId = productKey === 'crystal' ? 'product-detail-view' : 'product-plus-detail-view';
-            const view = document.getElementById(viewId);
-            view.classList.add('view-visible');
-            view.classList.remove('view-hidden');
+            if(productKey === 'crystal') {
+                document.getElementById('product-detail-view').classList.add('view-visible');
+                document.getElementById('product-detail-view').classList.remove('view-hidden');
+                history.pushState({ type: 'product', key: 'crystal' }, "", "#product-crystal");
+            } else if(productKey === 'plus') {
+                document.getElementById('product-plus-detail-view').classList.add('view-visible');
+                document.getElementById('product-plus-detail-view').classList.remove('view-hidden');
+                history.pushState({ type: 'product', key: 'plus' }, "", "#product-plus");
+            }
             window.scrollTo(0, 0);
         }
 
@@ -745,9 +747,9 @@
             renderColumn('detail-brochures', data.brochures, 'fa-book-open');
 
             hideAllViews();
-            const view = document.getElementById('detail-view');
-            view.classList.add('view-visible');
-            view.classList.remove('view-hidden');
+            document.getElementById('detail-view').classList.add('view-visible');
+            document.getElementById('detail-view').classList.remove('view-hidden');
+            history.pushState({ type: 'detail', category, fromCoreTech, sourceSectionId: lastSectionId }, "", "#detail");
             window.scrollTo(0, 0);
         }
 
@@ -781,12 +783,25 @@
             });
         }
 
+        function handleManualBack() {
+            // Check state to determine where to go back
+            if (window.history.state) {
+                if (window.history.state.type === 'product') {
+                    navigateToPortfolio('skinbooster');
+                } else {
+                    navigateToMain();
+                }
+            } else {
+                navigateToMain();
+            }
+        }
+
         function navigateToMain() {
             hideAllViews();
-            const mainView = document.getElementById('main-view');
-            mainView.classList.add('view-visible');
-            mainView.classList.remove('view-hidden');
+            document.getElementById('main-view').classList.add('view-visible');
+            document.getElementById('main-view').classList.remove('view-hidden');
             
+            // Fixed: Explicitly scroll to the portfolio section when coming back
             const sourceId = lastSectionId || 'business-portfolio';
             const section = document.getElementById(sourceId);
             
@@ -797,9 +812,29 @@
             } else {
                 window.scrollTo(0, 0);
             }
+            
+            // Clean up browser history hash
+            if (window.location.hash) {
+                history.pushState(null, "", window.location.pathname);
+            }
         }
 
-        // Standard smooth scroll for anchor links
+        window.addEventListener('popstate', function(event) {
+            if (event.state) {
+                if (event.state.type === 'detail') {
+                    navigateToDetails(event.state.category, event.state.fromCoreTech, event.state.sourceSectionId);
+                } else if (event.state.type === 'portfolio') {
+                    navigateToPortfolio('skinbooster', event.state.sourceSectionId);
+                } else if (event.state.type === 'product') {
+                    navigateToProduct(event.state.key);
+                } else {
+                    navigateToMain();
+                }
+            } else {
+                navigateToMain();
+            }
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
