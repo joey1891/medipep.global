@@ -85,7 +85,7 @@
         }
 
         .fluid-header {
-            font-size: clamp(1.4rem, 8.5vw, 5rem);
+            font-size: clamp(1.1rem, 8vw, 5rem); /* 최소 크기를 1.1rem으로 소폭 하향 조정 */
             line-height: 1.1; text-transform: uppercase; letter-spacing: 0.15em; display: inline-block;
             word-wrap: break-word; overflow-wrap: break-word; max-width: 100%;
         }
@@ -299,10 +299,12 @@
             </div>
         </section>
 
-        <!-- Corporate Leaders Section -->
+        <!-- Corporate Leaders Section - FIXED FOR Z FOLD COVER SCREEN -->
         <section id="leaders" class="py-24 md:py-40 bg-black relative z-10">
             <div class="max-w-7xl mx-auto px-6 text-center">
-                <h2 class="orbitron fluid-header font-black mb-16 tracking-[0.2em]">CORPORATE <br> LEADERS</h2>
+                <h2 class="orbitron fluid-header font-black mb-16 tracking-tight sm:tracking-[0.2em] uppercase">
+                    CORPORATE <br> LEADERS
+                </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="leadership-card flex flex-col items-center">
                         <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10">
