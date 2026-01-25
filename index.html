@@ -10,7 +10,8 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Medifab | Bio-Material Innovation">
     <meta property="og:description" content="Next-Generation Bio Materials & Molecular Engineering.">
-    <meta property="og:image" content="https://res.cloudinary.com/dnzaz71su/image/upload/v1769250622/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2026-01-24_142154_eam5qh.png">
+    <!-- Updated Thumbnail Image -->
+    <meta property="og:image" content="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/23814081458a59fbc688e56bb4ef6808%20(1).jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS8yMzgxNDA4MTQ1OGE1OWZiYzY4OGU1NmJiNGVmNjgwOCAoMSkuanBnIiwiaWF0IjoxNzY5MzE0NTg3LCJleHAiOjE5MjY5OTQ1ODd9.noHW5pjs1Ly7Q1lWvpQ-J1P3Y_l8_o0sORFL21C-2FM">
     <meta property="og:url" content="https://medifab.co.kr">
 
     <!-- Tailwind CSS -->
@@ -133,12 +134,12 @@
         .view-hidden { display: none !important; }
         .view-visible { display: block !important; }
 
-        /* Mobile specific adjustments (including Fold) */
+        /* Mobile specific adjustments (including Galaxy Fold) */
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
             
-            /* 갤럭시 폴드 전면 화면 대응 (매우 좁은 너비) */
+            /* 대응: 갤럭시 폴드 전면 화면과 같은 매우 좁은 너비 */
             #detail-title { 
                 font-size: clamp(1.1rem, 7.5vw, 3rem) !important; /* 최소 폰트 사이즈 하향 */
                 letter-spacing: 0.05em !important; /* 글자 간격 축소하여 가로 공간 확보 */
@@ -157,7 +158,8 @@
         <main class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12">
             <div class="hero-video-container">
                 <video autoplay muted loop playsinline>
-                    <source src="https://res.cloudinary.com/dnzaz71su/video/upload/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e_n1stst.mp4" type="video/mp4">
+                    <!-- Updated Cover Video URL -->
+                    <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9ncm9rLXZpZGVvLWE4OTkxYzg1LTg5MDYtNGRlNi05NmVhLWE3MmNmMDY0M2M0ZS5tcDQiLCJpYXQiOjE3NjkzMTQ4NzgsImV4cCI6MTg2MzkyMjg3OH0.2fV2yNvY9p1W9JoGVCXatFvKY2wXyIaOx6mZEyb9AhU" type="video/mp4">
                 </video>
             </div>
             <div class="hero-overlay"></div>
@@ -188,8 +190,9 @@
                 
                 <div class="w-full mb-20 bg-black relative">
                     <div class="w-full h-0 pb-[56.25%] relative">
+                        <!-- Updated Core Tech Video URL -->
                         <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-                            <source src="https://res.cloudinary.com/dnzaz71su/video/upload/resnovae_1_ixzxxb.mp4" type="video/mp4">
+                            <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/resnovae%20(1).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9yZXNub3ZhZSAoMSkubXA0IiwiaWF0IjoxNzY5MzE0NzEzLCJleHAiOjE4NjM5MjI3MTN9.9NhMoOepna_0HyVHrXUzXqCC9nT7JC1ddONVcNEdz4o" type="video/mp4">
                         </video>
                     </div>
                 </div>
