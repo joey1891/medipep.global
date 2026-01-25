@@ -97,6 +97,39 @@
             word-break: keep-all;
         }
 
+        /* R&D Archive Immersive Design */
+        .rd-archive-section {
+            position: relative;
+            background-color: #000;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        .rd-bg-image {
+            position: absolute;
+            top: 0; right: 0;
+            width: 100%; height: 100%;
+            background-image: url('https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/model2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9tb2RlbDIucG5nIiwiaWF0IjoxNzY5MzI4MDc2LCJleHAiOjE5MjcwMDgwNzZ9.pR7ZUUmDGOhgpJXsi2f9cSuurCxwkmtc17UKQU4-5pk');
+            background-size: cover;
+            background-position: center right;
+            background-repeat: no-repeat;
+            opacity: 0.6;
+            z-index: 1;
+            filter: grayscale(30%) brightness(0.8);
+        }
+        .rd-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, #000 20%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.2) 100%);
+            z-index: 2;
+        }
+        .rd-content {
+            position: relative;
+            z-index: 10;
+        }
+
         .leadership-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -119,31 +152,31 @@
         }
         .email-link:hover { text-decoration: underline; opacity: 0.8; }
 
-        /* R&D Archive Background Styles */
-        #rd-archive {
-            position: relative;
-            background-image: 
-                linear-gradient(to bottom, #020205 0%, transparent 20%, transparent 80%, #050508 100%),
-                linear-gradient(to right, rgba(2, 2, 5, 0.95) 0%, rgba(2, 2, 5, 0.4) 50%, rgba(2, 2, 5, 0.95) 100%),
-                url('https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/model2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9tb2RlbDIucG5nIiwiaWF0IjoxNzY5MzI2OTA0LCJleHAiOjE5MjcwMDY5MDR9.eBH4l3ojDzFYjhvk7GWLbAZyK2lGmy7IbY6kvDz3Dnc');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            overflow: hidden;
+        .insight-section {
+            background: rgba(0, 242, 255, 0.02);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        .insight-point {
+            border-left: 2px solid var(--cyan-accent);
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* Business Portfolio Background Styles - EXTREME CROPPED POSITIONING */
-        #business-portfolio {
-            position: relative;
-            background-image: 
-                linear-gradient(to bottom, #050508 0%, transparent 15%, transparent 85%, #000000 100%),
-                linear-gradient(to right, rgba(5, 5, 8, 0.95) 0%, rgba(5, 5, 8, 0.5) 40%, rgba(5, 5, 8, 0.1) 100%),
-                url('https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/model%202.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9tb2RlbCAyLnBuZyIsImlhdCI6MTc2OTMyNzA2OCwiZXhwIjoxOTI3MDA3MDY4fQ.EM22VK3mklBM62rMFPR1VdJk9OYZ9BywQGJWe6Fpako');
-            background-size: cover;
-            background-position: 115% center; /* Extreme right alignment to crop the face */
-            background-attachment: fixed;
-            overflow: hidden;
+        .view-hidden { display: none !important; }
+        .view-visible { display: block !important; }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            height: 100%;
+            transition: 0.3s;
         }
+        .feature-box:hover { border-color: var(--cyan-accent); transform: translateY(-5px); }
 
         /* Timeline Styles for Company Profile */
         .timeline-container { position: relative; padding-left: 2rem; }
@@ -176,14 +209,8 @@
                 max-width: 100vw;
                 padding: 0 5px;
             }
-            #rd-archive {
-                background-attachment: scroll;
-                background-position: 80% center;
-            }
-            #business-portfolio {
-                background-attachment: scroll;
-                background-position: 125% center; /* Push even further on mobile */
-            }
+            .rd-bg-image { background-position: center; opacity: 0.4; }
+            .rd-overlay { background: linear-gradient(0deg, #000 30%, rgba(0,0,0,0.6) 100%); }
         }
     </style>
 </head>
@@ -240,30 +267,34 @@
             </div>
         </section>
 
-        <!-- R&D Archive Section -->
-        <section id="rd-archive" class="py-32 md:py-60 border-t border-white/5 relative z-20 flex items-center justify-center">
-            <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-                <h2 class="orbitron fluid-header font-black mb-4 tracking-[0.2em] drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">R&D <br> ARCHIVE</h2>
-                <p class="text-[#00f2ff] orbitron text-[10px] tracking-[0.5em] uppercase mb-16 font-bold drop-shadow-md">Molecular Innovation Library</p>
-                <div class="flex flex-col gap-5 max-w-sm mx-auto">
-                    <a href="javascript:void(0)" onclick="navigateToDetails('chitogen', false, 'rd-archive')" class="btn-common secondary-btn orbitron font-bold !bg-black/20 hover:!bg-cyan-400/10">CHITOGEN™</a>
-                    <a href="javascript:void(0)" onclick="navigateToDetails('regenmatrix', false, 'rd-archive')" class="btn-common secondary-btn orbitron font-bold !bg-black/20 hover:!bg-cyan-400/10">REGENMATRIX™</a>
-                    <a href="javascript:void(0)" onclick="navigateToDetails('chitogenix', false, 'rd-archive')" class="btn-common secondary-btn orbitron font-bold !bg-black/20 hover:!bg-cyan-400/10">CHITOGENIX™</a>
+        <!-- R&D Archive Section - UPDATED WITH BACKGROUND IMAGE -->
+        <section id="rd-archive" class="rd-archive-section border-t border-white/5 relative z-20">
+            <div class="rd-bg-image"></div>
+            <div class="rd-overlay"></div>
+            
+            <div class="rd-content max-w-7xl mx-auto px-6 w-full py-24 md:py-40">
+                <div class="text-left md:text-center">
+                    <h2 class="orbitron fluid-header font-black mb-4 tracking-[0.2em]">R&D <br> ARCHIVE</h2>
+                    <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mb-16 font-bold">Scientific Innovation Evidence</p>
+                    
+                    <div class="flex flex-col gap-5 max-w-sm mx-auto md:mx-auto relative z-30">
+                        <a href="javascript:void(0)" onclick="navigateToDetails('chitogen', false, 'rd-archive')" class="btn-common secondary-btn orbitron font-bold">CHITOGEN™</a>
+                        <a href="javascript:void(0)" onclick="navigateToDetails('regenmatrix', false, 'rd-archive')" class="btn-common secondary-btn orbitron font-bold">REGENMATRIX™</a>
+                        <a href="javascript:void(0)" onclick="navigateToDetails('chitogenix', false, 'rd-archive')" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Business Portfolio Section - CENTERED TEXT & EXTREME RIGHT CROPPED IMAGE -->
-        <section id="business-portfolio" class="py-32 md:py-60 border-t border-white/5 relative z-20 flex items-center justify-center">
-            <div class="relative z-10 w-full max-w-7xl mx-auto px-6 text-center">
-                <div class="mx-auto max-w-2xl">
-                    <h2 class="orbitron fluid-header font-black mb-4 tracking-[0.2em] drop-shadow-lg">BUSINESS <br> PORTFOLIO</h2>
-                    <p class="text-[#00f2ff] orbitron text-[10px] tracking-[0.4em] uppercase mb-16 font-bold">Curated Product Categories</p>
-                    <div class="flex flex-col gap-5 max-w-sm mx-auto relative z-30">
-                        <a href="javascript:void(0)" onclick="navigateToPortfolio('skinbooster', 'business-portfolio')" class="btn-common secondary-btn orbitron font-bold !bg-black/40 hover:!bg-cyan-400/10">SKIN BOOSTER</a>
-                        <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common secondary-btn orbitron font-bold !bg-black/40 hover:!bg-cyan-400/10">COSMETICS</a>
-                        <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common secondary-btn orbitron font-bold !bg-black/40 hover:!bg-cyan-400/10">BEAUTY DEVICE</a>
-                    </div>
+        <!-- Business Portfolio Section -->
+        <section id="business-portfolio" class="py-24 md:py-40 bg-[#050508] border-t border-white/5 relative z-20">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="orbitron fluid-header font-black mb-4 tracking-[0.2em]">BUSINESS <br> PORTFOLIO</h2>
+                <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-16">Product Categories</p>
+                <div class="flex flex-col gap-5 max-w-sm mx-auto relative z-30">
+                    <a href="javascript:void(0)" onclick="navigateToPortfolio('skinbooster', 'business-portfolio')" class="btn-common secondary-btn orbitron font-bold">SKIN BOOSTER</a>
+                    <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common secondary-btn orbitron font-bold">COSMETICS</a>
+                    <a href="https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=73" target="_blank" class="btn-common secondary-btn orbitron font-bold">BEAUTY DEVICE</a>
                 </div>
             </div>
         </section>
@@ -324,52 +355,835 @@
         </footer>
     </div>
 
-    <!-- Script and Other Views Omitted for Brevity but remain fully functional -->
+    <!-- Company Profile View Content -->
+    <div id="company-profile-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-16 flex flex-col items-center">
+                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
+                </button>
+                <h1 id="profile-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">Company Profile</h1>
+                <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Growth Journey</p>
+            </div>
+
+            <!-- General Information Section -->
+            <section class="mb-24">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-bullseye text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Mission</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">Providing anti-aging solutions based on innovative materials</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-calendar-check text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Founded</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">January 12, 2016</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-vault text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Capital</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">USD 0.1 M</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-user-tie text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">CEO</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">Cha Mi-seon</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-users-gear text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Employees</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">50 Persons</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="space-y-24">
+                <!-- Stage 3: Scale-Up -->
+                <section>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+                        <span class="orbitron text-cyan-400 font-bold border-b-2 border-cyan-400 pb-2 tracking-widest text-sm sm:text-base w-fit">2024 ~ Present</span>
+                        <h2 class="orbitron stage-title font-black uppercase text-white">Scale-Up Stage</h2>
+                    </div>
+                    <div class="space-y-12">
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot"></div>
+                            <h3 class="orbitron text-cyan-400 text-lg font-bold mb-4">2025</h3>
+                            <ul class="space-y-3 text-sm text-white/70">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Res Novae Scalp MD: kFDA approval & FDA Listing</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Applied for clinical trial IND for chitosan LTG-Syno</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot"></div>
+                            <h3 class="orbitron text-cyan-400 text-lg font-bold mb-4">2024</h3>
+                            <ul class="space-y-3 text-sm text-white/70">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Launched Res Novae beauty business division</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Applied for clinical trial IND for chitosan LTG-S</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i> Selected for govt-funded R&D project (USD 1.55M)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stage 2: Preparation -->
+                <section>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+                        <span class="orbitron text-white/40 font-bold border-b-2 border-white/10 pb-2 tracking-widest text-sm sm:text-base w-fit">2020 ~ 2023</span>
+                        <h2 class="orbitron stage-title font-black uppercase text-white/80">Preparation Stage</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2023</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Launched Res Novae product brand</li>
+                                <li>Entered into export agreement (US$5 Mil.)</li>
+                                <li>Obtained regulatory approval from Thailand (Husteon)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2022</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Selected for govt-funded R&D project (USD 0.44M)</li>
+                                <li>Relocation & expansion, factory registration</li>
+                                <li>Entered into export agreement (US$2 Mil.)</li>
+                                <li>Obtained kFDA approval for Husteon Mesh/Nasal</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2021</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Selected as "Innovation Enterprise National Representative 1000"</li>
+                                <li>Obtained kFDA approval for Husteon Mesh</li>
+                                <li>Completed FDA listing for Husteon Nasal</li>
+                                <li>Launched Echrever (for export)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2020</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Obtained medical device manufacturing license</li>
+                                <li>Acquired export approval for Husteon</li>
+                                <li>Obtained ISO13485 certification</li>
+                                <li>Selected for govt-funded R&D project (USD 1.7M)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stage 1: Early Stage -->
+                <section class="opacity-60">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+                        <span class="orbitron text-white/20 font-bold border-b-2 border-white/5 pb-2 tracking-widest text-sm sm:text-base w-fit">~ 2019</span>
+                        <h2 class="orbitron stage-title font-black uppercase text-white/40">Early Stage</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                        <div class="p-6 border border-white/5 rounded-2xl">
+                            <div class="orbitron text-white/40 font-bold mb-2">2019</div>
+                            <p class="text-[10px] text-white/30 leading-relaxed">Govt-funded R&D project (USD 0.5M)<br>ISO9001, ISO14001 Certification</p>
+                        </div>
+                        <div class="p-6 border border-white/5 rounded-2xl">
+                            <div class="orbitron text-white/40 font-bold mb-2">2018</div>
+                            <p class="text-[10px] text-white/30 leading-relaxed">Govt-funded R&D project (USD 0.6M)<br>Certified as venture enterprise</p>
+                        </div>
+                        <div class="p-6 border border-white/5 rounded-2xl">
+                            <div class="orbitron text-white/40 font-bold mb-2">2016</div>
+                            <p class="text-[10px] text-white/30 leading-relaxed">Medifab incorporated</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="text-center pt-24 border-t border-white/5 mt-24">
+                <button onclick="navigateToMain()" class="btn-common secondary-btn orbitron">Back to Vision</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resource Detail View Content -->
+    <div id="detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 flex flex-col items-center">
+                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
+                </button>
+                <div class="w-full overflow-hidden flex justify-center">
+                    <h1 id="detail-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">SOLUTION™</h1>
+                </div>
+                <p id="detail-subtitle" class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">R&D ARCHIVE</p>
+            </div>
+
+            <div id="research-insights" class="view-hidden">
+                <div class="insight-section">
+                    <h3 class="orbitron text-cyan-400 text-lg font-bold mb-8 flex items-center gap-3">
+                        <i class="fa-solid fa-microscope"></i> RESEARCH OVERVIEW
+                    </h3>
+                    <div id="insight-content" class="space-y-6 text-sm md:text-base leading-relaxed text-white/80"></div>
+                </div>
+            </div>
+
+            <div id="archive-grid" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                <div class="space-y-8">
+                    <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-certificate"></i> PATENTS
+                    </h3>
+                    <div id="detail-patents" class="space-y-4"></div>
+                </div>
+                <div class="space-y-8">
+                    <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-file-lines"></i> PUBLICATIONS
+                    </h3>
+                    <div id="detail-papers" class="space-y-4"></div>
+                </div>
+                <div class="space-y-8">
+                    <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-handshake"></i> GOV PROJECTS
+                    </h3>
+                    <div id="detail-projects" class="space-y-4"></div>
+                </div>
+                <div class="space-y-8">
+                    <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-book-open"></i> BROCHURES
+                    </h3>
+                    <div id="detail-brochures" class="space-y-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio View Content (Skin Booster) -->
+    <div id="portfolio-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 flex flex-col items-center">
+                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
+                </button>
+                <h1 class="orbitron fluid-header font-black tracking-widest text-center">SKIN BOOSTER</h1>
+                <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Business Portfolio</p>
+            </div>
+
+            <!-- Face Solution Section -->
+            <div class="mb-24">
+                <h2 class="orbitron text-cyan-400 text-xl font-bold mb-10 flex items-center gap-3">
+                    <i class="fa-solid fa-face-smile"></i> FACE SOLUTION
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div onclick="navigateToProduct('crystal')" class="leadership-card group border-white/10 hover:border-cyan-400/50 transition-all cursor-pointer">
+                        <div class="text-[10px] text-cyan-400 orbitron font-bold mb-2 tracking-widest">PREMIUM LINE</div>
+                        <h3 class="text-lg sm:text-xl md:text-2xl font-black orbitron mb-4 uppercase leading-tight tracking-tighter whitespace-nowrap overflow-hidden text-ellipsis">resnovae crystal®</h3>
+                        <p class="text-white/60 text-sm leading-relaxed mb-6">A premium face solution that combines the finest active ingredients to restore the skin's natural radiance and elasticity.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[9px] border border-white/20 px-2 py-1 rounded text-white/40 orbitron">REGENMATRIX™</span>
+                            <span class="text-[9px] border border-white/20 px-2 py-1 rounded text-white/40 orbitron">HYDRATION</span>
+                        </div>
+                    </div>
+                    <div onclick="navigateToProduct('plus')" class="leadership-card group border-white/10 hover:border-cyan-400/50 transition-all cursor-pointer">
+                        <div class="text-[10px] text-cyan-400 orbitron font-bold mb-2 tracking-widest">ADVANCED LINE</div>
+                        <h3 class="text-lg sm:text-xl md:text-2xl font-black orbitron mb-4 uppercase leading-tight tracking-tighter whitespace-nowrap overflow-hidden text-ellipsis">resnovae crystal plus®</h3>
+                        <p class="text-white/60 text-sm leading-relaxed mb-6">An advanced line that adds highly concentrated nutrients to the Crystal formula for more powerful lifting and skin barrier strengthening.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[9px] border border-white/20 px-2 py-1 rounded text-white/40 orbitron">ENHANCED FORMULA</span>
+                            <span class="text-[9px] border border-white/20 px-2 py-1 rounded text-white/40 orbitron">LIFTING</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scalp Solution Section -->
+            <div>
+                <h2 class="orbitron text-cyan-400 text-xl font-bold mb-10 flex items-center gap-3">
+                    <i class="fa-solid fa-wind"></i> SCALP SOLUTION
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div onclick="navigateToProduct('scalp')" class="leadership-card group border-white/10 hover:border-cyan-400/50 transition-all cursor-pointer">
+                        <div class="text-[10px] text-cyan-400 orbitron font-bold mb-2 tracking-widest">SCALP CARE</div>
+                        <h3 class="text-lg sm:text-xl md:text-2xl font-black orbitron mb-4 uppercase leading-tight tracking-tighter whitespace-nowrap overflow-hidden text-ellipsis">resnovae scalpMD®</h3>
+                        <p class="text-white/60 text-sm leading-relaxed mb-6">A professional scalp regeneration solution that fundamentally improves the scalp environment and supports healthy hair growth.</p>
+                        <div class="flex gap-2">
+                            <span class="text-[9px] border border-white/20 px-2 py-1 rounded text-white/40 orbitron">CHITOGENIX™</span>
+                            <span class="text-[9px] border border-white/20 px-2 py-1 rounded text-white/40 orbitron">HAIR REVITAL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail View Content (Resnovae Crystal) -->
+    <div id="product-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- HEADER SECTION -->
+            <div class="mb-16 flex flex-col items-center">
+                <button onclick="navigateToPortfolio('skinbooster')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
+                </button>
+                <h1 id="product-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">resnovae <br> <span class="whitespace-nowrap">crystal®</span></h1>
+                <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">The 5th Generation Skin Booster</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 items-center mb-24">
+                <div class="w-full md:w-1/2 rounded-[3rem] overflow-hidden border border-white/5 bg-gradient-to-b from-white/5 to-transparent p-12 flex justify-center items-center relative group">
+                    <div class="absolute w-48 h-48 bg-cyan-400/10 blur-[80px] rounded-full group-hover:bg-cyan-400/20 transition-all duration-700"></div>
+                    
+                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/cc492d238d1dc-removebg-preview.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9jYzQ5MmQyMzhkMWRjLXJlbW92ZWJnLXByZXZpZXcucG5nIiwiaWF0IjoxNzY5MzE5OTgxLCJleHAiOjE5MjY5OTk5ODF9.p-96RHgIhc21DB_WAthHvodJ_w3yxT3dryd4kJno3yo" 
+                         alt="resnovae crystal product" 
+                         class="max-w-[85%] h-auto relative z-10 drop-shadow-[0_25px_50px_rgba(0,242,255,0.2)] transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-2">
+                </div>
+                <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
+                    <h2 class="orbitron text-2xl font-bold tracking-widest border-l-4 border-cyan-400 pl-4 uppercase leading-tight">REDEFINING <br> SKIN REGENERATION</h2>
+                    <p class="text-white/60 leading-relaxed">Experience the ultimate molecular architecture for skin vitality. Resnovae Crystal uses temperature-responsive technology to ensure that the most potent ingredients stay exactly where your skin needs them most.</p>
+                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                        <span class="text-[10px] orbitron font-bold bg-cyan-400/10 border border-cyan-400/30 px-4 py-2 rounded-full uppercase tracking-widest">Medical Grade</span>
+                        <span class="text-[10px] orbitron font-bold bg-white/5 border border-white/10 px-4 py-2 rounded-full uppercase tracking-widest">CHITOGEN™ Base</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-20">
+                <section>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">01</div>
+                        <h2 class="orbitron text-xl font-bold tracking-widest uppercase">WHY 5th GENERATION?</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="feature-box">
+                            <h3 class="text-cyan-400 text-sm font-bold mb-4 orbitron uppercase">Evolution</h3>
+                            <p class="text-white/70 text-sm leading-relaxed">A next-generation solution that goes beyond traditional HA (1st gen), PDRN (2nd gen), Exosome (3rd gen), and PN (4th gen). It reconfigures the skin environment itself rather than just providing nutrition.</p>
+                        </div>
+                        <div class="feature-box">
+                            <h3 class="text-cyan-400 text-sm font-bold mb-4 orbitron uppercase">Stability</h3>
+                            <p class="text-white/70 text-sm leading-relaxed">Minimizes loss of active ingredients through temperature-responsive hydrogel technology, ensuring stable delivery deep into the skin for long-lasting effects.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="insight-section">
+                    <h2 class="orbitron text-cyan-400 text-xl font-bold mb-10 flex items-center gap-3 uppercase">
+                        <i class="fa-solid fa-atom"></i> CORE TECHNOLOGY: CHITOGEN™
+                    </h2>
+                    <div class="space-y-8">
+                        <div class="insight-point">
+                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">Phase Transition Mechanism</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">Liquid at room temperature for easy injection, it instantly transforms into a gel-like state upon contact with body temperature. This fixation mechanism enhances ingredient retention and helps build facial volume.</p>
+                        </div>
+                        <div class="insight-point">
+                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">Multi-layered Repair</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">Physically protects the damaged skin barrier while simultaneously inducing collagen production to activate the fundamental skin regeneration process.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">02</div>
+                        <h2 class="orbitron text-xl font-bold tracking-widest uppercase">CLINICAL PERFORMANCE</h2>
+                    </div>
+                    <div class="w-full rounded-2xl overflow-hidden border border-white/5 bg-white/5">
+                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/3fe462e5b2d38828188105e25c657dea_Ko4AXxf8_0c6519b459d033abb854a14d7de53f7d2c7fb408%20(1).jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS8zZmU0NjJlNWIyZDM4ODI4MTg4MTA1ZTI1YzY1N2RlYV9LbzRBWHhmOF8wYzY1MTliNDU5ZDAzM2FiYjg1NGExNGQ3ZGU1M2Y3ZDJjN2ZiNDA4ICgxKS5qcGciLCJpYXQiOjE3NjkzMTY3NTcsImV4cCI6MTkyNjk5Njc1N30.JsSt73DfEtNIRqQVQgp2eLohy7tOhIekgyDt3KOXPwA" alt="Clinical Results of resnovae crystal" class="w-full h-auto object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <p class="text-center text-white/30 text-[10px] orbitron mt-4 tracking-[0.2em]">© CLINICAL CASE STUDY / VISUAL IMPROVEMENT AFTER TREATMENT</p>
+                </section>
+
+                <section>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">02</div>
+                        <h2 class="orbitron text-xl font-bold tracking-widest uppercase">KEY BENEFITS</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="text-center p-6 border border-white/5 rounded-2xl bg-white/5">
+                            <i class="fa-solid fa-droplet text-cyan-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold mb-2">Instant Hydration</h4>
+                            <p class="text-xs text-white/50">Resolves internal dryness and creates a powerful moisture glow.</p>
+                        </div>
+                        <div class="text-center p-6 border border-white/5 rounded-2xl bg-white/5">
+                            <i class="fa-solid fa-up-long text-cyan-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold mb-2">Skin Density</h4>
+                            <p class="text-xs text-white/50">Restores elasticity and provides a visible pore-tightening effect.</p>
+                        </div>
+                        <div class="text-center p-6 border border-white/5 rounded-2xl bg-white/5">
+                            <i class="fa-solid fa-shield-halved text-cyan-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold mb-2">Barrier Repair</h4>
+                            <p class="text-xs text-white/50">Soothes sensitive skin and strengthens the natural barrier.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="text-center pt-12 border-t border-white/5">
+                    <p class="text-white/40 text-sm italic mb-8 italic">"Bio-Material Architecture for the Future of Aesthetic Medicine."</p>
+                    <a href="mailto:contact@imedifab.com" class="btn-common glow-btn orbitron">INQUIRE NOW</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail View Content (Resnovae Crystal Plus) -->
+    <div id="product-plus-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- HEADER SECTION -->
+            <div class="mb-16 flex flex-col items-center">
+                <button onclick="navigateToPortfolio('skinbooster')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
+                </button>
+                <h1 id="product-plus-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">resnovae <br> <span class="whitespace-nowrap text-lg sm:text-2xl md:text-5xl">crystal plus®</span></h1>
+                <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Stem-Cell Activation & Boosting Formula</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 items-center mb-24">
+                <div class="w-full md:w-1/2 rounded-3xl overflow-hidden border border-white/5 bg-white/5 p-8 flex justify-center items-center shadow-2xl shadow-cyan-500/10">
+                    <div class="relative w-full aspect-square flex items-center justify-center">
+                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/f8ead94e5360b.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9mOGVhZDk0ZTUzNjBiLnBuZyIsImlhdCI6MTc2OTMxOTIyMiwiZXhwIjoxOTI2OTk5MjIyfQ.oHhH2kK_UUgbuKUufp9igjYZS6XdGd5DMJQXB9gSsdw" alt="resnovae crystal plus product" class="max-w-full h-auto drop-shadow-[0_20px_60px_rgba(0,242,255,0.4)] relative z-10 brightness-110">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
+                    <h2 class="orbitron text-2xl font-bold tracking-widest border-l-4 border-cyan-400 pl-4 uppercase leading-tight">PREMIUM <br> CHITOSAN CONCENTRATE</h2>
+                    <p class="text-white/60 leading-relaxed">A high-potency formula engineered for rapid tissue regeneration and multi-layer repair. Crystal Plus leverages premium concentration Chitosan to activate dormant stem cells and restore structural integrity to aging or damaged skin.</p>
+                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                        <span class="text-[10px] orbitron font-bold bg-cyan-400/10 border border-cyan-400/30 px-4 py-2 rounded-full uppercase tracking-widest">Stem-Cell Activator</span>
+                        <span class="text-[10px] orbitron font-bold bg-white/5 border border-white/10 px-4 py-2 rounded-full uppercase tracking-widest">LTG High-Fixation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-20">
+                <section>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">01</div>
+                        <h2 class="orbitron text-xl font-bold tracking-widest uppercase">THE ADVANCED FORMULA</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="feature-box">
+                            <h3 class="text-cyan-400 text-sm font-bold mb-4 orbitron uppercase">Barrier Detoxification</h3>
+                            <p class="text-white/70 text-sm leading-relaxed">Chitosan facilitates a healthier skin barrier by detoxing negative ions and providing powerful anti-inflammatory action through ROS scavenging.</p>
+                        </div>
+                        <div class="feature-box">
+                            <h3 class="text-cyan-400 text-sm font-bold mb-4 orbitron uppercase">21-Day Continuous Build</h3>
+                            <p class="text-white/70 text-sm leading-relaxed">Powered by LTG (Liquid-to-Gel) technology, the formula continues to build structural volume for up to 21 days post-session, ensuring a long-lasting plumping effect.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="insight-section">
+                    <h2 class="orbitron text-cyan-400 text-xl font-bold mb-10 flex items-center gap-3 uppercase">
+                        <i class="fa-solid fa-microscope"></i> ACTIVE INGREDIENT SYNERGY
+                    </h2>
+                    <div class="space-y-8">
+                        <div class="insight-point">
+                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">Tranexamic Acid (The Glow)</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">Regulates melanocytes to reduce excessive melanin production and minimize inflammation, resulting in a luminous "glow effect."</p>
+                        </div>
+                        <div class="insight-point">
+                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">High Molecular HA & Niacinamide</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">Hyaluronic Acid provides intense hydration and rejuvenation, while Niacinamide regulates sebum, reduces redness, and acts as a potent antioxidant for skin aging.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">02</div>
+                        <h2 class="orbitron text-xl font-bold tracking-widest uppercase">CLINICAL APPLICATIONS</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+                        <div class="text-center p-6 border border-white/5 rounded-2xl bg-white/5">
+                            <i class="fa-solid fa-virus-slash text-cyan-400 text-2xl mb-4"></i>
+                            <h4 class="text-xs font-bold uppercase mb-1">Rosacea</h4>
+                        </div>
+                        <div class="text-center p-6 border border-white/5 rounded-2xl bg-white/5">
+                            <i class="fa-solid fa-face-angry text-cyan-400 text-2xl mb-4"></i>
+                            <h4 class="text-xs font-bold uppercase mb-1">Acne Redness</h4>
+                        </div>
+                        <div class="text-center p-6 border border-white/5 rounded-2xl bg-white/5">
+                            <i class="fa-solid fa-wave-square text-cyan-400 text-2xl mb-4"></i>
+                            <h4 class="text-xs font-bold uppercase mb-1">Scars</h4>
+                        </div>
+                        <div class="text-center p-6 border border-white/5 rounded-2xl bg-white/5">
+                            <i class="fa-solid fa-cloud-sun text-cyan-400 text-2xl mb-4"></i>
+                            <h4 class="text-xs font-bold uppercase mb-1">Skin Damage</h4>
+                        </div>
+                    </div>
+                    <p class="text-center text-white/30 text-[10px] orbitron mt-8 tracking-[0.2em]">Validated through 30g/4mm needle injection studies showing increased dermal thickness vs standard HA.</p>
+                </section>
+
+                <div class="text-center pt-12 border-t border-white/5">
+                    <p class="text-white/40 text-sm italic mb-8 italic">"The Ultimate Catalyst for Cellular Skin Regeneration."</p>
+                    <a href="mailto:contact@imedifab.com" class="btn-common glow-btn orbitron">REQUEST CLINICAL DATA</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail View Content (Resnovae Scalp MD) -->
+    <div id="product-scalp-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- HEADER SECTION -->
+            <div class="mb-16 flex flex-col items-center">
+                <button onclick="navigateToPortfolio('skinbooster')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
+                </button>
+                <h1 id="product-scalp-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">resnovae <br> <span class="whitespace-nowrap text-lg sm:text-2xl md:text-5xl">scalpMD®</span></h1>
+                <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Anti-Inflammatory Scalp Regeneration Medical Device</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-12 items-center mb-24">
+                <div class="w-full md:w-1/2 rounded-[3rem] overflow-hidden border border-white/5 bg-gradient-to-b from-white/5 to-transparent p-12 flex justify-center items-center relative group min-h-[400px]">
+                    <div class="absolute w-48 h-48 bg-cyan-400/10 blur-[80px] rounded-full group-hover:bg-cyan-400/20 transition-all duration-700"></div>
+                    
+                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/restmb_allidxmake-removebg-preview.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9yZXN0bWJfYWxsaWR4bWFrZS1yZW1vdmViZy1wcmV2aWV3LnBuZyIsImlhdCI6MTc2OTMyNDU1OSwiZXhwIjoxOTI3MDA0NTU5fQ.FSk2pxYr43ZSYdomrfNc9EtsVVvw7LIS9H3K3BQsI04" 
+                         alt="resnovae scalpMD product" 
+                         class="max-w-[85%] h-auto relative z-10 drop-shadow-[0_25px_50px_rgba(0,242,255,0.2)] transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-2">
+                </div>
+                <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
+                    <div class="flex gap-2 justify-center md:justify-start">
+                        <span class="text-[9px] bg-cyan-400 text-black font-bold px-2 py-1 orbitron uppercase">KFDA Class II</span>
+                        <span class="text-[9px] border border-cyan-400 text-cyan-400 font-bold px-2 py-1 orbitron uppercase">CE Certified</span>
+                    </div>
+                    <h2 class="orbitron text-2xl font-bold tracking-widest border-l-4 border-cyan-400 pl-4 uppercase leading-tight">ROOT CAUSE <br> MICROENVIRONMENT</h2>
+                    <p class="text-white/60 leading-relaxed">Resnovae ScalpMD® shifts the paradigm of hair loss treatment from the follicle itself to the surrounding microenvironment. By addressing chronic inflammation, oxidative stress, and ECM collapse, it restores the biological soil necessary for healthy hair growth.</p>
+                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                        <span class="text-[10px] orbitron font-bold bg-cyan-400/10 border border-cyan-400/30 px-4 py-2 rounded-full uppercase tracking-widest">Anti-Inflammatory</span>
+                        <span class="text-[10px] orbitron font-bold bg-white/5 border border-white/10 px-4 py-2 rounded-full uppercase tracking-widest">Post-Transplant Recovery</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-20">
+                <!-- CORE TECHNOLOGY -->
+                <section class="insight-section">
+                    <h2 class="orbitron text-cyan-400 text-xl font-bold mb-10 flex items-center gap-3 uppercase">
+                        <i class="fa-solid fa-dna"></i> CORE TECHNOLOGY: CHITOGENIX™
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="insight-point">
+                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">LTG (Liquid-to-Gel) Chitosan</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">A patented water-soluble chitosan that remains liquid for easy application but transforms into a stable gel upon contact with the scalp. This ensures high fixation and continuous suppression of TNF-α.</p>
+                        </div>
+                        <div class="insight-point">
+                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">Purified Sc-sECM</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">Incorporates purified decellularized extracellular matrix (Sc-sECM) to provide the essential structural scaffold and signaling molecules needed to rebuild the collapsed dermal matrix around hair follicles.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- MECHANISM OF ACTION -->
+                <section>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">01</div>
+                        <h2 class="orbitron text-xl font-bold tracking-widest uppercase">MECHANISM OF ACTION</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="feature-box text-center">
+                            <i class="fa-solid fa-shield-virus text-cyan-400 text-3xl mb-4"></i>
+                            <h3 class="text-white text-sm font-bold mb-2 orbitron uppercase">TNF-α Suppression</h3>
+                            <p class="text-white/50 text-xs leading-relaxed">Directly inhibits inflammatory cytokines to prevent follicular degradation and chronic scalp irritation.</p>
+                        </div>
+                        <div class="feature-box text-center">
+                            <i class="fa-solid fa-fire-burner text-cyan-400 text-3xl mb-4"></i>
+                            <h3 class="text-white text-sm font-bold mb-2 orbitron uppercase">ROS Management</h3>
+                            <p class="text-white/50 text-xs leading-relaxed">Powerful antioxidant action neutralizes Reactive Oxygen Species (ROS) that trigger premature hair thinning.</p>
+                        </div>
+                        <div class="feature-box text-center">
+                            <i class="fa-solid fa-microchip text-cyan-400 text-3xl mb-4"></i>
+                            <h3 class="text-white text-sm font-bold mb-2 orbitron uppercase">ECM Reconstruction</h3>
+                            <p class="text-white/50 text-xs leading-relaxed">Rebuilds the extracellular matrix, providing physical support and a fertile environment for graft survival.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CLINICAL INDICATIONS -->
+                <section>
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 font-bold orbitron">02</div>
+                        <h2 class="orbitron text-xl font-bold tracking-widest uppercase">CLINICAL INDICATIONS</h2>
+                    </div>
+                    <div class="leadership-card bg-white/5 border-white/10 p-8">
+                        <ul class="space-y-6 text-sm text-white/70">
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-cyan-400/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white block mb-1 uppercase tracking-wider text-xs">Post-Hair Transplant Recovery</strong>
+                                    Significant reduction in inflammation and oxidative stress during the critical first phase of follicle engraftment.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-cyan-400/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white block mb-1 uppercase tracking-wider text-xs">Chronic Scalp Regeneration</strong>
+                                    Ideal for thinning hair and sensitive scalps where traditional chemical treatments may cause irritation.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-full bg-cyan-400/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white block mb-1 uppercase tracking-wider text-xs">Scientific Validation</strong>
+                                    Mechanism of action and clinical efficacy data are currently pending publication in peer-reviewed medical journals.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <div class="text-center pt-12 border-t border-white/5">
+                    <p class="text-white/40 text-sm italic mb-8 italic">"Bio-Regenerative Solution for Advanced Scalp Medicine."</p>
+                    <a href="mailto:contact@imedifab.com" class="btn-common glow-btn orbitron">INQUIRE MEDICAL DATA</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // (Functionality same as previous versions to ensure full navigation)
         const notionLink = "https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=74";
+
         const resourceData = {
-            chitogen: { title: "CHITOGEN™", insights: [], patents: [], papers: [], projects: [], brochures: [] },
-            regenmatrix: { title: "REGENMATRIX™", insights: [], patents: [], papers: [], projects: [], brochures: [] },
-            chitogenix: { title: "CHITOGENIX™", insights: [], patents: [], papers: [], projects: [], brochures: [] }
+            chitogen: {
+                title: "CHITOGEN™",
+                insights: [
+                    { title: "Limitations of Existing Fillers & Objectives", desc: "Existing Hyaluronic acid (HA) fillers require high injection pressure and risk granuloma formation. Our objective was to develop a next-generation temperature-sensitive chitosan filler." },
+                    { title: "Core Manufacturing Technology", desc: "Temperature-responsive phase transition (Liquid-to-Gel) is achieved by precise mixing of phosphate ions and glycerol." },
+                    { title: "Key Performance: 4.7x Lower Injection Force", desc: "Chitosan filler demonstrates an injection force approximately 4.7 times lower than HA fillers using 30G needles." },
+                    { title: "Superior Volume & Safety", desc: "CHITOGEN™ maintains initial volume consistently (44.2% retention after 24 weeks). Safety verified with >90% cell survival rate." }
+                ],
+                patents: [
+                    { year: "2020.04.07", title: "Thermosensitive chitosan hydrogel composition and bioink composition comprising the same (KR Registered)", link: notionLink },
+                    { year: "2022.04.29", title: "Composition for Preparation of Thermosensitive Biomaterials for Tissue Repair and Its Use (KR Registered)", link: notionLink },
+                    { year: "2022.06.27", title: "Composition for preparation of multibridged thermosensitive hydrogel and use thereof (KR Registered)", link: notionLink },
+                    { year: "2023.11.01", title: "Composition for decomposing or providing biomaterial graft and prosthesis (KR Published)", link: notionLink },
+                    { year: "2024.06.03", title: "Composition for preparation of in vivo ion-sensitive biomaterial graft and prosthesis and use thereof (KR Registered)", link: notionLink }
+                ],
+                papers: [
+                    { year: "2025", title: "Chitosan-based Biomaterials in Regenerative Medicine: Optimizing Mesenchymal Stem Cell Viability and Function. Stem Cell Reviews and Reports, 21.", link: notionLink },
+                    { year: "2024", title: "Medical Applications and Cellular Mechanisms of Action of Carboxymethyl Chitosan Hydrogels, Molecules, 29, 4360", link: notionLink },
+                    { year: "2023", title: "Recent advances in carboxymethyl chitosan-based materials for biomedical applications, Carbohydr Polym. 1:305", link: notionLink },
+                    { year: "2022.08", title: "Novel Chitosan Dermal Filler with Enhanced Moldability and Elasticity (Wiley Online Library)", link: "https://onlinelibrary.wiley.com/doi/10.1002/mabi.202200081" }
+                ],
+                projects: [
+                    { year: "2020.04.01-2021.03.31", title: "Fourth-generation filler technology based on temperature-sensitive hydrogel (Ministry of Science and ICT)", link: notionLink },
+                    { year: "2020.04.01-2021.12.31", title: "Commercialization of fillers using temperature-responsive hydrogel manufacturing technology (KHIDI)", link: notionLink },
+                    { year: "2020.07.15-2022.07.14", title: "SME Technology Development Support Project, Injectable Fluid Implants for Facial Reconstruction (TIPA)", link: notionLink }
+                ],
+                brochures: []
+            },
+            regenmatrix: {
+                title: "REGENMATRIX™",
+                insights: [
+                    { title: "Next-Gen Decellularized Matrix", desc: "REGENMATRIX™ utilizes tissue-derived extracellular matrix (dECM) to provide an optimal microenvironment for tissue regeneration, surpassing the limitations of synthetic scaffolds." },
+                    { title: "Supercritical CO2 Process", desc: "Developed a proprietary method for preparing biocompatible decellularized matrices using supercritical carbon dioxide, ensuring high safety and preservation of structural proteins." },
+                    { title: "Water-Soluble dECM Innovation", desc: "Breakthrough in creating water-soluble decellularized matrices, enabling flexible application in 3D bioprinting and injectable regenerative therapies." },
+                    { title: "Vascularized Adipose Tissue Regeneration", desc: "Demonstrated successful regeneration of large-sized and vascularized tissues using tailored elastic scaffolds and dECM hydrogels." }
+                ],
+                patents: [
+                    { year: "2023.04.06", title: "Water-soluble decellularized matrix based on supercritical carbon dioxide process (Filed)", link: notionLink },
+                    { year: "2025.04.08", title: "Method for Preparing Biocompatible Decellularized Matrix Based on Supercritical Carbon Dioxide Process (Registered)", link: notionLink }
+                ],
+                papers: [
+                    { year: "2021", title: "The Regeneration of Large-Sized and Vascularized Adipose Tissue Using a Tailored Elastic Scaffold and dECM Hydrogels, Int. J. Mol. Scie., 22(22)", link: notionLink },
+                    { year: "2024", title: "Decellularized extracellular matrix biomaterials for regenerative therapies: Advances, challenges and clinical prospects, Bioactive Materials, 32, 98-123", link: notionLink },
+                    { year: "2024", title: "Decellularized extracellular matrix-based composite scaffolds for tissue engineering and regenerative medicine, Regenerative Biomaterials, 22", link: notionLink },
+                    { year: "2023", title: "Decellularized extracellular matrix: A promising strategy for skin repair and regeneration, Engineered Regeneration, 4, 4", link: notionLink }
+                ],
+                projects: [
+                    { year: "2020.04.01-2024.12.31", title: "Bio-Industry Technology Development Project: Bio-Ink Development Based on Tissue-Derived Extracellular Matrix (Medifab / KIST / KEIT)", link: notionLink }
+                ],
+                brochures: []
+            },
+            chitogenix: {
+                title: "CHITOGENIX™",
+                insights: [
+                    { title: "Multifunctional Hybrid Innovation", desc: "Development of a hybrid filler simultaneously possessing volume retention (CMC) and tissue regeneration induction capability (dECM) to fundamentally improve the photoaged dermis." },
+                    { title: "Supercritical scCO2 & Hydrolysis", desc: "Ethanol-based supercritical process removes immune substances while preserving 1.5~5x more cytokines. Hydrolysis reduces molecular weight to 3kDa, enabling deep skin penetration." },
+                    { title: "74-84% Reduced Injection Force", desc: "Dual cross-linked hybrid composition reacts to body temperature in situ, providing ultra-low injection force while maintaining stable volume (105-107%) without swelling." },
+                    { title: "Wnt/β-catenin & ROS Management", desc: "Activates hair follicle regeneration pathways and scavenges ROS (24% reduction). Demonstrates 3.2~4.3x higher collagen deposition compared to minoxidil." }
+                ],
+                patents: [
+                    { year: "2025.05.19", title: "Composition comprising chitosan derivatives and decellularized extracellular matrix hydrolyzates and use thereof (Published)", link: notionLink }
+                ],
+                papers: [
+                    { year: "2025.04.25", title: "Supercritical Fluid-Processed Multifunctional Hybrid dECM with Chitosan Hydrogel for Improving Photoaged Dermis Microenvironment, Adv. Healthcare Mater.", link: "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adhm.202403213" },
+                    { year: "2025.12.03", title: "Amine-Functionalized Chitosan/dECM Composite Promotes Cutaneous Regeneration and Hair Follicle Activation by Regulating Oxidative stress and Inflammation, Adv. Healthcare Mater.", link: "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adhm.202403213" }
+                ],
+                projects: [
+                    { year: "2022.05.01-2024.04.30", title: "SME Tech Development: Body-Responsive Injectable with dECM for High-Efficiency Vascularization (Medifab / SNU Boramae / TIPA)", link: notionLink },
+                    { year: "2025.07.01-2027.12.31", title: "Materials & Components Program: Hybrid Osteoarthritis Treatment with Steroid-Alternative Anti-Inflammatory Properties (Medifab / SNU / KEIT)", link: notionLink }
+                ],
+                brochures: []
+            }
         };
+
         let lastSectionId = 'hero';
-        function hideAllViews() {
-            const views = ['main-view', 'detail-view', 'portfolio-view', 'product-detail-view', 'product-plus-detail-view', 'product-scalp-detail-view', 'company-profile-view'];
-            views.forEach(v => { const el = document.getElementById(v); if(el) { el.classList.add('view-hidden'); el.classList.remove('view-visible'); } });
+
+        function safePushState(state) {
+            try {
+                window.history.pushState(state, "");
+            } catch (e) {}
         }
+
+        function navigateToPortfolio(category, sourceSectionId = null) {
+            if (sourceSectionId) lastSectionId = sourceSectionId;
+            hideAllViews();
+            document.getElementById('portfolio-view').classList.add('view-visible');
+            document.getElementById('portfolio-view').classList.remove('view-hidden');
+            safePushState({ type: 'portfolio', sourceSectionId: lastSectionId });
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToProduct(productKey) {
+            hideAllViews();
+            if(productKey === 'crystal') {
+                document.getElementById('product-detail-view').classList.add('view-visible');
+                document.getElementById('product-detail-view').classList.remove('view-hidden');
+                safePushState({ type: 'product', key: 'crystal' });
+            } else if(productKey === 'plus') {
+                document.getElementById('product-plus-detail-view').classList.add('view-visible');
+                document.getElementById('product-plus-detail-view').classList.remove('view-hidden');
+                safePushState({ type: 'product', key: 'plus' });
+            } else if(productKey === 'scalp') {
+                document.getElementById('product-scalp-detail-view').classList.add('view-visible');
+                document.getElementById('product-scalp-detail-view').classList.remove('view-hidden');
+                safePushState({ type: 'product', key: 'scalp' });
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToCompanyProfile() {
+            lastSectionId = 'hero';
+            hideAllViews();
+            document.getElementById('company-profile-view').classList.add('view-visible');
+            document.getElementById('company-profile-view').classList.remove('view-hidden');
+            safePushState({ type: 'profile' });
+            window.scrollTo(0, 0);
+        }
+
+        function navigateToDetails(category, fromCoreTech = false, sourceSectionId = null) {
+            const data = resourceData[category];
+            if (!data) return;
+
+            if (sourceSectionId) lastSectionId = sourceSectionId;
+            document.getElementById('detail-title').innerText = data.title;
+            const insightWrapper = document.getElementById('research-insights');
+            const insightContent = document.getElementById('insight-content');
+            const archiveGrid = document.getElementById('archive-grid');
+            const detailSubtitle = document.getElementById('detail-subtitle');
+
+            if (fromCoreTech) {
+                detailSubtitle.innerText = "CORE TECHNOLOGY OVERVIEW";
+                insightWrapper.classList.remove('view-hidden');
+                archiveGrid.classList.add('view-hidden');
+                insightContent.innerHTML = data.insights.map(i => `
+                    <div class="insight-point">
+                        <h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">${i.title}</h4>
+                        <p class="text-white/70">${i.desc}</p>
+                    </div>
+                `).join('');
+            } else {
+                detailSubtitle.innerText = "R&D ARCHIVE";
+                insightWrapper.classList.add('view-hidden');
+                archiveGrid.classList.remove('view-hidden');
+            }
+
+            renderColumn('detail-patents', data.patents, 'fa-certificate');
+            renderColumn('detail-papers', data.papers, 'fa-file-lines');
+            renderColumn('detail-projects', data.projects, 'fa-handshake');
+            renderColumn('detail-brochures', data.brochures, 'fa-book-open');
+
+            hideAllViews();
+            document.getElementById('detail-view').classList.add('view-visible');
+            document.getElementById('detail-view').classList.remove('view-hidden');
+            safePushState({ type: 'detail', category, fromCoreTech, sourceSectionId: lastSectionId });
+            window.scrollTo(0, 0);
+        }
+
+        function renderColumn(containerId, list, icon) {
+            const container = document.getElementById(containerId);
+            if (list && list.length > 0) {
+                container.innerHTML = list.map(item => `
+                    <div class="resource-item-card group">
+                        <div class="flex-1 pr-4">
+                            <div class="text-[10px] text-cyan-400 font-bold orbitron mb-1">${item.year}</div>
+                            <div class="text-xs md:text-sm font-semibold text-white/90 group-hover:text-cyan-400 transition whitespace-normal break-words leading-snug">${item.title}</div>
+                        </div>
+                        <a href="${item.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0">
+                            <i class="fa-solid ${icon} text-xs"></i>
+                        </a>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p class="text-white/20 text-xs italic px-2">To be updated...</p>';
+            }
+        }
+
+        function hideAllViews() {
+            const views = [
+                'main-view', 'detail-view', 'portfolio-view', 
+                'product-detail-view', 'product-plus-detail-view', 
+                'product-scalp-detail-view', 'company-profile-view'
+            ];
+            views.forEach(v => {
+                const el = document.getElementById(v);
+                if(el) {
+                    el.classList.add('view-hidden');
+                    el.classList.remove('view-visible');
+                }
+            });
+        }
+
         function navigateToMain() {
             hideAllViews();
             document.getElementById('main-view').classList.add('view-visible');
             document.getElementById('main-view').classList.remove('view-hidden');
+            
             const sourceId = lastSectionId || 'hero';
             const section = document.getElementById(sourceId);
-            if (section) setTimeout(() => { section.scrollIntoView({ behavior: 'smooth' }); }, 100);
-            else window.scrollTo(0, 0);
+            
+            if (section) {
+                setTimeout(() => {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            } else {
+                window.scrollTo(0, 0);
+            }
+            
+            try {
+                window.history.pushState(null, "");
+            } catch (e) {}
         }
-        function navigateToPortfolio(category, sourceSectionId = null) {
-            if (sourceSectionId) lastSectionId = sourceSectionId;
-            hideAllViews();
-            const el = document.getElementById('portfolio-view');
-            if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
-            window.scrollTo(0, 0);
-        }
-        function navigateToDetails(category, fromCoreTech = false, sourceSectionId = null) {
-            const data = resourceData[category];
-            if (!data) return;
-            if (sourceSectionId) lastSectionId = sourceSectionId;
-            document.getElementById('detail-title').innerText = data.title;
-            hideAllViews();
-            document.getElementById('detail-view').classList.add('view-visible');
-            window.scrollTo(0, 0);
-        }
-        function navigateToCompanyProfile() {
-            lastSectionId = 'hero';
-            hideAllViews();
-            const el = document.getElementById('company-profile-view');
-            if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
-            window.scrollTo(0, 0);
-        }
+
+        window.addEventListener('popstate', function(event) {
+            if (event.state) {
+                if (event.state.type === 'detail') {
+                    navigateToDetails(event.state.category, event.state.fromCoreTech, event.state.sourceSectionId);
+                } else if (event.state.type === 'portfolio') {
+                    navigateToPortfolio('skinbooster', event.state.sourceSectionId);
+                } else if (event.state.type === 'product') {
+                    navigateToProduct(event.state.key);
+                } else if (event.state.type === 'profile') {
+                    navigateToCompanyProfile();
+                } else {
+                    navigateToMain();
+                }
+            } else {
+                navigateToMain();
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if(targetId.startsWith("#detail") || targetId.startsWith("#portfolio") || targetId.startsWith("#product")) return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
