@@ -157,6 +157,13 @@
             background: var(--cyan-accent); box-shadow: 0 0 10px var(--cyan-accent);
         }
 
+        /* Responsive adjustments for Stage Titles */
+        .stage-title {
+            font-size: clamp(1.25rem, 5vw, 1.875rem);
+            word-break: keep-all;
+            line-height: 1.2;
+        }
+
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
@@ -315,7 +322,7 @@
                     <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
                 </button>
                 <h1 id="profile-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">Company Profile</h1>
-                <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Growth Journey & Milestones</p>
+                <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Growth Journey</p>
             </div>
 
             <!-- General Information Section -->
@@ -352,9 +359,9 @@
             <div class="space-y-24">
                 <!-- Stage 3: Scale-Up -->
                 <section>
-                    <div class="flex items-center gap-4 mb-12">
-                        <span class="orbitron text-cyan-400 font-bold border-b-2 border-cyan-400 pb-2 tracking-widest">2024 ~ Present</span>
-                        <h2 class="orbitron text-2xl font-black uppercase">Scale-Up Stage</h2>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+                        <span class="orbitron text-cyan-400 font-bold border-b-2 border-cyan-400 pb-2 tracking-widest text-sm sm:text-base w-fit">2024 ~ Present</span>
+                        <h2 class="orbitron stage-title font-black uppercase text-white">Scale-Up Stage</h2>
                     </div>
                     <div class="space-y-12">
                         <div class="timeline-container">
@@ -379,9 +386,9 @@
 
                 <!-- Stage 2: Preparation -->
                 <section>
-                    <div class="flex items-center gap-4 mb-12">
-                        <span class="orbitron text-white/40 font-bold border-b-2 border-white/10 pb-2 tracking-widest">2020 ~ 2023</span>
-                        <h2 class="orbitron text-2xl font-black uppercase text-white/80">Preparation Stage</h2>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+                        <span class="orbitron text-white/40 font-bold border-b-2 border-white/10 pb-2 tracking-widest text-sm sm:text-base w-fit">2020 ~ 2023</span>
+                        <h2 class="orbitron stage-title font-black uppercase text-white/80">Preparation Stage</h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div class="timeline-container">
@@ -428,9 +435,9 @@
 
                 <!-- Stage 1: Early Stage -->
                 <section class="opacity-60">
-                    <div class="flex items-center gap-4 mb-12">
-                        <span class="orbitron text-white/20 font-bold border-b-2 border-white/5 pb-2 tracking-widest">~ 2019</span>
-                        <h2 class="orbitron text-2xl font-black uppercase text-white/40">Early Stage</h2>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+                        <span class="orbitron text-white/20 font-bold border-b-2 border-white/5 pb-2 tracking-widest text-sm sm:text-base w-fit">~ 2019</span>
+                        <h2 class="orbitron stage-title font-black uppercase text-white/40">Early Stage</h2>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
                         <div class="p-6 border border-white/5 rounded-2xl">
@@ -845,10 +852,8 @@
             }
         };
 
-        // Initialize with 'hero' to ensure first navigation defaults to top
         let lastSectionId = 'hero';
 
-        // Safe History Push to prevent SecurityError in sandboxed environments
         function safePushState(state) {
             try {
                 window.history.pushState(state, "");
@@ -879,7 +884,6 @@
         }
 
         function navigateToCompanyProfile() {
-            // When going to profile, set return point to top (hero)
             lastSectionId = 'hero';
             hideAllViews();
             document.getElementById('company-profile-view').classList.add('view-visible');
@@ -962,7 +966,6 @@
             document.getElementById('main-view').classList.add('view-visible');
             document.getElementById('main-view').classList.remove('view-hidden');
             
-            // sourceId will be 'hero' if coming from Company Profile
             const sourceId = lastSectionId || 'hero';
             const section = document.getElementById(sourceId);
             
