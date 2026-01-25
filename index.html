@@ -133,11 +133,19 @@
         .view-hidden { display: none !important; }
         .view-visible { display: block !important; }
 
+        /* Mobile specific adjustments (including Fold) */
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            /* Mobile adjustment for long titles like REGENMATRIX */
-            #detail-title { font-size: clamp(1.4rem, 7.5vw, 3rem); }
+            
+            /* 갤럭시 폴드 전면 화면 대응 (매우 좁은 너비) */
+            #detail-title { 
+                font-size: clamp(1.1rem, 7.5vw, 3rem) !important; /* 최소 폰트 사이즈 하향 */
+                letter-spacing: 0.05em !important; /* 글자 간격 축소하여 가로 공간 확보 */
+                white-space: nowrap; /* 줄바꿈 절대 방지 */
+                word-break: keep-all;
+                padding: 0 5px;
+            }
         }
     </style>
 </head>
@@ -258,9 +266,9 @@
                 &copy;2026. MEDIFAB. <br> All Rights Reserved.
             </div>
             <div class="flex gap-10 text-white/20">
-                 <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+                 <a href="https://www.linkedin.com/company/imedifab/about/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
                  <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
-                 <a href="#" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
+                 <a href="https://www.youtube.com/@MEDIFAB-vk6cb" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </footer>
     </div>
@@ -272,8 +280,10 @@
                 <button onclick="handleManualBack()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
                     <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
                 </button>
-                <!-- Detail Title with Responsive Font Sizing -->
-                <h1 id="detail-title" class="orbitron fluid-header font-black tracking-widest text-center">SOLUTION™</h1>
+                <!-- Detail Title with Responsive Font Sizing & No-Wrap Logic -->
+                <div class="w-full overflow-hidden flex justify-center">
+                    <h1 id="detail-title" class="orbitron fluid-header font-black tracking-widest text-center">SOLUTION™</h1>
+                </div>
                 <p id="detail-subtitle" class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">R&D ARCHIVE</p>
             </div>
 
@@ -402,20 +412,13 @@
             }
         };
 
-        // State to track navigation for back button logic
         let lastSectionId = null;
 
-        /**
-         * Navigates to the Detail View
-         * @param {string} category - Solution key
-         * @param {boolean} fromCoreTech - Path identifier
-         * @param {string} sourceSectionId - The ID of the section where the click originated
-         */
         function navigateToDetails(category, fromCoreTech = false, sourceSectionId = null) {
             const data = resourceData[category];
             if (!data) return;
 
-            lastSectionId = sourceSectionId; // Remember where we came from
+            lastSectionId = sourceSectionId;
 
             document.getElementById('detail-title').innerText = data.title;
             const insightWrapper = document.getElementById('research-insights');
@@ -470,10 +473,8 @@
             renderColumn('detail-projects', data.projects, 'fa-handshake');
             renderColumn('detail-brochures', data.brochures, 'fa-book-open');
 
-            // Push state to browser history for native back button support
             history.pushState({ type: 'detail', category, fromCoreTech, sourceSectionId }, "", "#detail");
 
-            // Toggle view
             document.getElementById('main-view').classList.add('view-hidden');
             document.getElementById('main-view').classList.remove('view-visible');
             document.getElementById('detail-view').classList.add('view-visible');
@@ -510,7 +511,6 @@
 
         window.addEventListener('popstate', function(event) {
             if (event.state && event.state.type === 'detail') {
-                // Potential logic to re-render if needed on forward navigation
             } else {
                 navigateToMain();
             }
