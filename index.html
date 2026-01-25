@@ -1304,82 +1304,120 @@
 
         let lastSectionId = 'hero';
 
+        // Helper to push SPA state
         function safePushState(state) {
             try { window.history.pushState(state, ""); } catch (e) {}
         }
 
+        // --- Core UI rendering logic ---
+        function renderView(state) {
+            hideAllViews();
+            
+            if (!state || state.type === 'main') {
+                document.getElementById('main-view').classList.add('view-visible');
+                document.getElementById('main-view').classList.remove('view-hidden');
+                const sourceId = (state && state.sourceSectionId) || lastSectionId || 'hero';
+                const section = document.getElementById(sourceId);
+                if (section) { 
+                    setTimeout(() => { section.scrollIntoView({ behavior: 'smooth' }); }, 100); 
+                } else { 
+                    window.scrollTo(0, 0); 
+                }
+                return;
+            }
+
+            if (state.type === 'portfolio') {
+                let viewId = '';
+                const category = state.category;
+                if (category === 'beautydevice') viewId = 'beauty-device-view';
+                else if (category === 'cosmetics') viewId = 'cosmetics-view';
+                else viewId = 'portfolio-view';
+                
+                const el = document.getElementById(viewId);
+                if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
+                window.scrollTo(0, 0);
+            } 
+            else if (state.type === 'product') {
+                let viewId = '';
+                switch(state.key) {
+                    case 'crystal': viewId = 'product-detail-view'; break;
+                    case 'plus': viewId = 'product-plus-detail-view'; break;
+                    case 'scalp': viewId = 'product-scalp-detail-view'; break;
+                    case 'coreimpact': viewId = 'core-impact-detail-view'; break;
+                    case 'hypershot': viewId = 'hyper-shot-detail-view'; break;
+                }
+                const el = document.getElementById(viewId);
+                if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
+                window.scrollTo(0, 0);
+            }
+            else if (state.type === 'profile') {
+                const el = document.getElementById('company-profile-view');
+                if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
+                window.scrollTo(0, 0);
+            }
+            else if (state.type === 'detail') {
+                const data = resourceData[state.category];
+                if (!data) return;
+                
+                document.getElementById('detail-title').innerText = data.title;
+                const insightWrapper = document.getElementById('research-insights');
+                const insightContent = document.getElementById('insight-content');
+                const archiveGrid = document.getElementById('archive-grid');
+                const detailSubtitle = document.getElementById('detail-subtitle');
+
+                if (state.fromCoreTech) {
+                    detailSubtitle.innerText = "CORE TECHNOLOGY OVERVIEW";
+                    insightWrapper.classList.remove('view-hidden');
+                    archiveGrid.classList.add('view-hidden');
+                    insightContent.innerHTML = data.insights.map(i => `<div class="insight-point"><h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">${i.title}</h4><p class="text-white/70">${i.desc}</p></div>`).join('');
+                } else {
+                    detailSubtitle.innerText = "R&D ARCHIVE";
+                    insightWrapper.classList.add('view-hidden');
+                    archiveGrid.classList.remove('view-hidden');
+                }
+
+                renderColumn('detail-patents', data.patents, 'fa-certificate');
+                renderColumn('detail-papers', data.papers, 'fa-file-lines');
+                renderColumn('detail-projects', data.projects, 'fa-handshake');
+                renderColumn('detail-brochures', data.brochures, 'fa-book-open');
+
+                const el = document.getElementById('detail-view');
+                if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // --- Navigation Triggers ---
         function navigateToPortfolio(category, sourceSectionId = null) {
             if (sourceSectionId) lastSectionId = sourceSectionId;
-            hideAllViews();
-            let viewId = '';
-            if (category === 'beautydevice') viewId = 'beauty-device-view';
-            else if (category === 'cosmetics') viewId = 'cosmetics-view';
-            else viewId = 'portfolio-view';
-            
-            const el = document.getElementById(viewId);
-            if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
-            safePushState({ type: 'portfolio', category, sourceSectionId: lastSectionId });
-            window.scrollTo(0, 0);
+            const state = { type: 'portfolio', category, sourceSectionId: lastSectionId };
+            safePushState(state);
+            renderView(state);
         }
 
         function navigateToProduct(productKey) {
-            hideAllViews();
-            let viewId = '';
-            switch(productKey) {
-                case 'crystal': viewId = 'product-detail-view'; break;
-                case 'plus': viewId = 'product-plus-detail-view'; break;
-                case 'scalp': viewId = 'product-scalp-detail-view'; break;
-                case 'coreimpact': viewId = 'core-impact-detail-view'; break;
-                case 'hypershot': viewId = 'hyper-shot-detail-view'; break;
-            }
-            const el = document.getElementById(viewId);
-            if(el) {
-                el.classList.add('view-visible'); el.classList.remove('view-hidden');
-                safePushState({ type: 'product', key: productKey });
-            }
-            window.scrollTo(0, 0);
+            const state = { type: 'product', key: productKey };
+            safePushState(state);
+            renderView(state);
         }
 
         function navigateToCompanyProfile() {
-            lastSectionId = 'hero';
-            hideAllViews();
-            const el = document.getElementById('company-profile-view');
-            if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
-            safePushState({ type: 'profile' });
-            window.scrollTo(0, 0);
+            const state = { type: 'profile' };
+            safePushState(state);
+            renderView(state);
         }
 
         function navigateToDetails(category, fromCoreTech = false, sourceSectionId = null) {
-            const data = resourceData[category];
-            if (!data) return;
             if (sourceSectionId) lastSectionId = sourceSectionId;
-            document.getElementById('detail-title').innerText = data.title;
-            const insightWrapper = document.getElementById('research-insights');
-            const insightContent = document.getElementById('insight-content');
-            const archiveGrid = document.getElementById('archive-grid');
-            const detailSubtitle = document.getElementById('detail-subtitle');
+            const state = { type: 'detail', category, fromCoreTech, sourceSectionId: lastSectionId };
+            safePushState(state);
+            renderView(state);
+        }
 
-            if (fromCoreTech) {
-                detailSubtitle.innerText = "CORE TECHNOLOGY OVERVIEW";
-                insightWrapper.classList.remove('view-hidden');
-                archiveGrid.classList.add('view-hidden');
-                insightContent.innerHTML = data.insights.map(i => `<div class="insight-point"><h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">${i.title}</h4><p class="text-white/70">${i.desc}</p></div>`).join('');
-            } else {
-                detailSubtitle.innerText = "R&D ARCHIVE";
-                insightWrapper.classList.add('view-hidden');
-                archiveGrid.classList.remove('view-hidden');
-            }
-
-            renderColumn('detail-patents', data.patents, 'fa-certificate');
-            renderColumn('detail-papers', data.papers, 'fa-file-lines');
-            renderColumn('detail-projects', data.projects, 'fa-handshake');
-            renderColumn('detail-brochures', data.brochures, 'fa-book-open');
-
-            hideAllViews();
-            const el = document.getElementById('detail-view');
-            if(el) { el.classList.add('view-visible'); el.classList.remove('view-hidden'); }
-            safePushState({ type: 'detail', category, fromCoreTech, sourceSectionId: lastSectionId });
-            window.scrollTo(0, 0);
+        function navigateToMain() {
+            const state = { type: 'main', sourceSectionId: lastSectionId };
+            safePushState(state);
+            renderView(state);
         }
 
         function renderColumn(containerId, list, icon) {
@@ -1404,25 +1442,14 @@
             });
         }
 
-        function navigateToMain() {
-            hideAllViews();
-            document.getElementById('main-view').classList.add('view-visible');
-            document.getElementById('main-view').classList.remove('view-hidden');
-            const sourceId = lastSectionId || 'hero';
-            const section = document.getElementById(sourceId);
-            if (section) { setTimeout(() => { section.scrollIntoView({ behavior: 'smooth' }); }, 100); } 
-            else { window.scrollTo(0, 0); }
-            try { window.history.pushState(null, ""); } catch (e) {}
-        }
+        window.addEventListener('load', () => {
+            if (!window.history.state) {
+                window.history.replaceState({ type: 'main' }, "");
+            }
+        });
 
         window.addEventListener('popstate', function(event) {
-            if (event.state) {
-                if (event.state.type === 'detail') navigateToDetails(event.state.category, event.state.fromCoreTech, event.state.sourceSectionId);
-                else if (event.state.type === 'portfolio') navigateToPortfolio(event.state.category || 'skinbooster', event.state.sourceSectionId);
-                else if (event.state.type === 'product') navigateToProduct(event.state.key);
-                else if (event.state.type === 'profile') navigateToCompanyProfile();
-                else navigateToMain();
-            } else navigateToMain();
+            renderView(event.state);
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
