@@ -83,11 +83,11 @@
         }
 
         .fluid-header {
-            font-size: clamp(1.4rem, 9vw, 5rem);
+            font-size: clamp(1.4rem, 8.5vw, 5rem);
             line-height: 1.1; text-transform: uppercase; letter-spacing: 0.15em; display: inline-block;
+            word-wrap: break-word; overflow-wrap: break-word; max-width: 100%;
         }
 
-        /* Tagline Optimization for Z Fold */
         .hero-tagline {
             font-size: clamp(1rem, 5vw, 1.8rem);
             line-height: 1.2;
@@ -101,7 +101,6 @@
             padding: 2.5rem 1.5rem; border-radius: 2rem; transition: 0.4s; width: 100%;
         }
 
-        /* Resource Card Layout */
         .resource-item-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -118,13 +117,27 @@
         }
         .email-link:hover { text-decoration: underline; opacity: 0.8; }
 
-        /* View State Transition */
+        .insight-section {
+            background: rgba(0, 242, 255, 0.02);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        .insight-point {
+            border-left: 2px solid var(--cyan-accent);
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
         .view-hidden { display: none !important; }
         .view-visible { display: block !important; }
 
         @media (max-width: 480px) {
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .grid-cols-4 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+            /* Mobile adjustment for long titles like REGENMATRIX */
+            #detail-title { font-size: clamp(1.4rem, 7.5vw, 3rem); }
         }
     </style>
 </head>
@@ -149,7 +162,6 @@
                     MEDIFAB <span class="text-[#00f2ff] italic underline decoration-white/10 underline-offset-[8px] md:underline-offset-[16px]">GLOBAL</span>
                 </h1>
                 
-                <!-- Tagline: Updated to Revolutionary Molecular Architecture -->
                 <p class="hero-tagline orbitron text-white max-w-3xl mx-auto font-black mb-12 text-center uppercase">
                     <span class="block">Revolutionary</span>
                     <span class="block mt-1 md:mt-2 text-white/50 text-[0.7em] tracking-[0.3em]">Molecular Architecture</span>
@@ -175,25 +187,24 @@
                 </div>
                 
                 <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6 relative z-30">
-                    <a href="http://www.resnovae.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">CHITOGEN™ <br> Solution</a>
-                    <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">REGENMATRIX™ <br> Solution</a>
-                    <a href="https://resnovae.co.kr/" target="_blank" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™ <br> Solution</a>
+                    <a href="javascript:void(0)" onclick="navigateToDetails('chitogen', true, 'core-techs')" class="btn-common secondary-btn orbitron font-bold">CHITOGEN™ <br> Solution</a>
+                    <a href="javascript:void(0)" onclick="navigateToDetails('regenmatrix', true, 'core-techs')" class="btn-common secondary-btn orbitron font-bold">REGENMATRIX™ <br> Solution</a>
+                    <a href="javascript:void(0)" onclick="navigateToDetails('chitogenix', true, 'core-techs')" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™ <br> Solution</a>
                 </div>
             </div>
         </section>
 
-        <!-- R&D Resource Section -->
-        <section id="rd-resource" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-20">
+        <!-- R&D Archive Section -->
+        <section id="rd-archive" class="py-24 md:py-40 bg-[#020205] border-t border-white/5 relative z-20">
             <div class="max-w-7xl mx-auto px-6 text-center">
-                <h2 class="orbitron fluid-header font-black mb-4 tracking-[0.2em]">R&D <br> RESOURCE</h2>
+                <h2 class="orbitron fluid-header font-black mb-4 tracking-[0.2em]">R&D <br> ARCHIVE</h2>
                 
-                <!-- Subtitle: Positioned under title -->
-                <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-16">Patents & Scientific Publications</p>
+                <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mb-16">Innovation Archive</p>
                 
                 <div class="flex flex-col gap-5 max-w-sm mx-auto relative z-30">
-                    <a href="javascript:void(0)" onclick="navigateToDetails('chitogen')" class="btn-common secondary-btn orbitron font-bold">CHITOGEN™</a>
-                    <a href="javascript:void(0)" onclick="navigateToDetails('regenmatrix')" class="btn-common secondary-btn orbitron font-bold">REGENMATRIX™</a>
-                    <a href="javascript:void(0)" onclick="navigateToDetails('chitogenix')" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™</a>
+                    <a href="javascript:void(0)" onclick="navigateToDetails('chitogen', false, 'rd-archive')" class="btn-common secondary-btn orbitron font-bold">CHITOGEN™</a>
+                    <a href="javascript:void(0)" onclick="navigateToDetails('regenmatrix', false, 'rd-archive')" class="btn-common secondary-btn orbitron font-bold">REGENMATRIX™</a>
+                    <a href="javascript:void(0)" onclick="navigateToDetails('chitogenix', false, 'rd-archive')" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™</a>
                 </div>
             </div>
         </section>
@@ -258,74 +269,180 @@
     <div id="detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                <button onclick="handleManualBack()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
                     <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
                 </button>
+                <!-- Detail Title with Responsive Font Sizing -->
                 <h1 id="detail-title" class="orbitron fluid-header font-black tracking-widest text-center">SOLUTION™</h1>
-                <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Research & Development Archive</p>
+                <p id="detail-subtitle" class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">R&D ARCHIVE</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <!-- Research Insights Section (Shown only from Core Techs) -->
+            <div id="research-insights" class="view-hidden">
+                <div class="insight-section">
+                    <h3 class="orbitron text-cyan-400 text-lg font-bold mb-8 flex items-center gap-3">
+                        <i class="fa-solid fa-microscope"></i> RESEARCH OVERVIEW
+                    </h3>
+                    <div id="insight-content" class="space-y-6 text-sm md:text-base leading-relaxed text-white/80"></div>
+                </div>
+            </div>
+
+            <!-- Archive Grid Section (Shown only from R&D Archive) -->
+            <div id="archive-grid" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                <!-- 1. Patents -->
                 <div class="space-y-8">
                     <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
                         <i class="fa-solid fa-certificate"></i> PATENTS
                     </h3>
                     <div id="detail-patents" class="space-y-4"></div>
                 </div>
+
+                <!-- 2. Publications -->
                 <div class="space-y-8">
                     <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
                         <i class="fa-solid fa-file-lines"></i> PUBLICATIONS
                     </h3>
                     <div id="detail-papers" class="space-y-4"></div>
                 </div>
+
+                <!-- 3. Government Projects -->
+                <div class="space-y-8">
+                    <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-handshake"></i> GOV PROJECTS
+                    </h3>
+                    <div id="detail-projects" class="space-y-4"></div>
+                </div>
+
+                <!-- 4. Brochures -->
+                <div class="space-y-8">
+                    <h3 class="orbitron text-cyan-400 text-lg font-bold border-b border-cyan-400/20 pb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-book-open"></i> BROCHURES
+                    </h3>
+                    <div id="detail-brochures" class="space-y-4"></div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        const notionLink = "https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=74";
+
         const resourceData = {
             chitogen: {
                 title: "CHITOGEN™",
+                insights: [
+                    { title: "Limitations of Existing Fillers & Objectives", desc: "Existing Hyaluronic acid (HA) fillers require high injection pressure and risk granuloma formation. Our objective was to develop a next-generation temperature-sensitive chitosan filler." },
+                    { title: "Core Manufacturing Technology", desc: "Temperature-responsive phase transition (Liquid-to-Gel) is achieved by precise mixing of phosphate ions and glycerol." },
+                    { title: "Key Performance: 4.7x Lower Injection Force", desc: "Chitosan filler demonstrates an injection force approximately 4.7 times lower than HA fillers using 30G needles." },
+                    { title: "Superior Volume & Safety", desc: "CHITOGEN™ maintains initial volume consistently (44.2% retention after 24 weeks). Safety verified with >90% cell survival rate." }
+                ],
                 patents: [
-                    { year: "2023", title: "Method for Synthesizing Ultra-pure Chitosan for Bio-Medical Application", link: "#" },
-                    { year: "2022", title: "Cross-linking optimization for high-density hydrogel architecture", link: "#" }
+                    { year: "2020.04.07", title: "Thermosensitive chitosan hydrogel composition and bioink composition comprising the same (KR Registered)", link: notionLink },
+                    { year: "2022.04.29", title: "Composition for Preparation of Thermosensitive Biomaterials for Tissue Repair and Its Use (KR Registered)", link: notionLink },
+                    { year: "2022.06.27", title: "Composition for preparation of multibridged thermosensitive hydrogel and use thereof (KR Registered)", link: notionLink },
+                    { year: "2023.11.01", title: "Composition for decomposing or correcting biomaterial graft and prosthesis (KR Published)", link: notionLink },
+                    { year: "2024.06.03", title: "Composition for preparation of in vivo ion-sensitive biomaterial graft and prosthesis and use thereof (KR Registered)", link: notionLink }
                 ],
                 papers: [
-                    { year: "2023", title: "Biocompatibility and Degradation Rate Analysis of CHITOGEN™ Matrices", link: "#" },
-                    { year: "2021", title: "Innovative Molecular Engineering in Bio-Synthesized Polymers", link: "#" }
-                ]
+                    { year: "2025", title: "Chitosan-based Biomaterials in Regenerative Medicine: Optimizing Mesenchymal Stem Cell Viability and Function. Stem Cell Reviews and Reports, 21.", link: notionLink },
+                    { year: "2024", title: "Medical Applications and Cellular Mechanisms of Action of Carboxymethyl Chitosan Hydrogels, Molecules, 29, 4360", link: notionLink },
+                    { year: "2023", title: "Recent advances in carboxymethyl chitosan-based materials for biomedical applications, Carbohydr Polym. 1:305", link: notionLink },
+                    { year: "2022.08", title: "Novel Chitosan Dermal Filler with Enhanced Moldability and Elasticity (Wiley Online Library)", link: "https://onlinelibrary.wiley.com/doi/10.1002/mabi.202200081" }
+                ],
+                projects: [
+                    { year: "2000.04.01-2021.03.31", title: "Fourth-generation filler technology based on temperature-sensitive hydrogel (Specialized Institute: Ministry of Science and ICT)", link: notionLink },
+                    { year: "2000.04.01-2021.12.31", title: "Commercialization of fillers using temperature-responsive hydrogel manufacturing technology (Specialized Institute: Korea Health Industry Development Institute)", link: notionLink },
+                    { year: "2000.07.15-2022.07.14", title: "SME Technology Development Support Project, Development of Usage Technology for Injectable Fluid Implants for Facial Reconstruction/Plastic Surgery (Specialized Institute: Small and Medium Business Technology Information Promotion Agency)", link: notionLink }
+                ],
+                brochures: []
             },
             regenmatrix: {
                 title: "REGENMATRIX™",
+                insights: [
+                    { title: "Next-Gen Decellularized Matrix", desc: "REGENMATRIX™ utilizes tissue-derived extracellular matrix (dECM) to provide an optimal microenvironment for tissue regeneration, surpassing the limitations of synthetic scaffolds." },
+                    { title: "Supercritical CO2 Process", desc: "Developed a proprietary method for preparing biocompatible decellularized matrices using supercritical carbon dioxide, ensuring high safety and preservation of structural proteins." },
+                    { title: "Water-Soluble dECM Innovation", desc: "Breakthrough in creating water-soluble decellularized matrices, enabling flexible application in 3D bioprinting and injectable regenerative therapies." },
+                    { title: "Vascularized Adipose Tissue Regeneration", desc: "Demonstrated successful regeneration of large-sized and vascularized tissues using tailored elastic scaffolds and dECM hydrogels." }
+                ],
                 patents: [
-                    { year: "2024", title: "Smart Matrix Technology for Cellular Recruitment in Tissue Engineering", link: "#" },
-                    { year: "2023", title: "Porous Bio-scaffold Structure for Accelerated Wound Healing", link: "#" }
+                    { year: "2023.04.06", title: "Water-soluble decellularized matrix based on supercritical carbon dioxide process (Filed)", link: notionLink },
+                    { year: "2025.04.08", title: "Method for Preparing Biocompatible Decellularized Matrix Based on Supercritical Carbon Dioxide Process (Registered)", link: notionLink }
                 ],
                 papers: [
-                    { year: "2024", title: "Evaluation of REGENMATRIX™ in 3D Cell Spheroid Cultivation", link: "#" },
-                    { year: "2022", title: "Next-Generation Scaffolds: Architecture and Performance", link: "#" }
-                ]
+                    { year: "2021", title: "The Regeneration of Large-Sized and Vascularized Adipose Tissue Using a Tailored Elastic Scaffold and dECM Hydrogels, Int. J. Mol. Scie., 22(22)", link: notionLink },
+                    { year: "2024", title: "Decellularized extracellular matrix biomaterials for regenerative therapies: Advances, challenges and clinical prospects, Bioactive Materials, 32, 98-123", link: notionLink },
+                    { year: "2024", title: "Decellularized extracellular matrix-based composite scaffolds for tissue engineering and regenerative medicine, Regenerative Biomaterials, 22", link: notionLink },
+                    { year: "2023", title: "Decellularized extracellular matrix: A promising strategy for skin repair and regeneration, Engineered Regeneration, 4, 4", link: notionLink }
+                ],
+                projects: [
+                    { year: "2020.04.01-2024.12.31", title: "Bio-Industry Technology Development Project: Development of Commercialization Technology for Regenerative Medicine Products through Bio-Ink Development Based on Tissue-Derived Extracellular Matrix (Lead: Medifab / Co-op: KIST / Specialized: KEIT)", link: notionLink }
+                ],
+                brochures: []
             },
             chitogenix: {
                 title: "CHITOGENIX™",
+                insights: [
+                    { title: "Multifunctional Hybrid Innovation", desc: "Development of a hybrid filler simultaneously possessing volume retention (CMC) and tissue regeneration induction capability (dECM) to fundamentally improve the photoaged dermis." },
+                    { title: "Supercritical scCO2 & Hydrolysis", desc: "Ethanol-based supercritical process removes immune substances while preserving 1.5~5x more cytokines. Hydrolysis reduces molecular weight to 3kDa, enabling deep skin penetration." },
+                    { title: "74-84% Reduced Injection Force", desc: "Dual cross-linked hybrid composition reacts to body temperature in situ, providing ultra-low injection force while maintaining stable volume (105-107%) without swelling." },
+                    { title: "Wnt/β-catenin & ROS Management", desc: "Activates hair follicle regeneration pathways and scavenges ROS (24% reduction). Demonstrates 3.2~4.3x higher collagen deposition compared to minoxidil." }
+                ],
                 patents: [
-                    { year: "2024", title: "Advanced Gelation Control for Injectable Bio-Material Systems", link: "#" },
-                    { year: "2023", title: "Injectable Chitosan-based Delivery Systems with Controlled Release", link: "#" }
+                    { year: "2025.05.19", title: "Composition comprising chitosan derivatives and decellularized extracellular matrix hydrolyzates and use thereof (Published)", link: notionLink }
                 ],
                 papers: [
-                    { year: "2024", title: "CHITOGENIX™: Performance Analysis in Minimal Invasive Surgeries", link: "#" },
-                    { year: "2023", title: "Rheological Properties of Injectable Hydrogels in Bio-Synthesis", link: "#" }
-                ]
+                    { year: "2025.04.25", title: "Supercritical Fluid-Processed Multifunctional Hybrid dECM with Chitosan Hydrogel for Improving Photoaged Dermis Microenvironment, Adv. Healthcare Mater.", link: "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adhm.202403213" },
+                    { year: "2025.12.03", title: "Amine-Functionalized Chitosan/dECM Composite Promotes Cutaneous Regeneration and Hair Follicle Activation by Regulating Oxidative Stress and Inflammation, Adv. Healthcare Mater.", link: "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adhm.202403213" }
+                ],
+                projects: [
+                    { year: "2022.05.01-2024.04.30", title: "SME Tech Development: Commercialization of Body-Responsive Injectable with dECM for High-Efficiency Vascularization (Lead: Medifab / Co-op: SNU Boramae / Specialized: TIPA)", link: notionLink },
+                    { year: "2025.07.01-2027.12.31", title: "Materials & Components Program: Hybrid Osteoarthritis Treatment with Steroid-Alternative Anti-Inflammatory Properties (Lead: Medifab / Co-op: SNU / Specialized: KEIT)", link: notionLink }
+                ],
+                brochures: []
             }
         };
 
-        function navigateToDetails(category) {
+        // State to track navigation for back button logic
+        let lastSectionId = null;
+
+        /**
+         * Navigates to the Detail View
+         * @param {string} category - Solution key
+         * @param {boolean} fromCoreTech - Path identifier
+         * @param {string} sourceSectionId - The ID of the section where the click originated
+         */
+        function navigateToDetails(category, fromCoreTech = false, sourceSectionId = null) {
             const data = resourceData[category];
             if (!data) return;
 
+            lastSectionId = sourceSectionId; // Remember where we came from
+
             document.getElementById('detail-title').innerText = data.title;
-            const patentContainer = document.getElementById('detail-patents');
-            const paperContainer = document.getElementById('detail-papers');
+            const insightWrapper = document.getElementById('research-insights');
+            const insightContent = document.getElementById('insight-content');
+            const archiveGrid = document.getElementById('archive-grid');
+            const detailSubtitle = document.getElementById('detail-subtitle');
+
+            if (fromCoreTech) {
+                detailSubtitle.innerText = "CORE TECHNOLOGY OVERVIEW";
+                insightWrapper.classList.remove('view-hidden');
+                archiveGrid.classList.add('view-hidden');
+                
+                if (data.insights && data.insights.length > 0) {
+                    insightContent.innerHTML = data.insights.map(i => `
+                        <div class="insight-point">
+                            <h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">${i.title}</h4>
+                            <p class="text-white/70">${i.desc}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    insightContent.innerHTML = '<p class="text-white/20 text-xs italic">Research details coming soon...</p>';
+                }
+            } else {
+                detailSubtitle.innerText = "R&D ARCHIVE";
+                insightWrapper.classList.add('view-hidden');
+                archiveGrid.classList.remove('view-hidden');
+            }
 
             const itemMapper = (item, icon) => `
                 <div class="resource-item-card group">
@@ -339,9 +456,24 @@
                 </div>
             `;
 
-            patentContainer.innerHTML = data.patents.map(p => itemMapper(p, 'fa-download')).join('');
-            paperContainer.innerHTML = data.papers.map(p => itemMapper(p, 'fa-arrow-up-right-from-square')).join('');
+            const renderColumn = (containerId, list, icon) => {
+                const container = document.getElementById(containerId);
+                if (list && list.length > 0) {
+                    container.innerHTML = list.map(item => itemMapper(item, icon)).join('');
+                } else {
+                    container.innerHTML = '<p class="text-white/20 text-xs italic px-2">To be updated...</p>';
+                }
+            };
 
+            renderColumn('detail-patents', data.patents, 'fa-certificate');
+            renderColumn('detail-papers', data.papers, 'fa-file-lines');
+            renderColumn('detail-projects', data.projects, 'fa-handshake');
+            renderColumn('detail-brochures', data.brochures, 'fa-book-open');
+
+            // Push state to browser history for native back button support
+            history.pushState({ type: 'detail', category, fromCoreTech, sourceSectionId }, "", "#detail");
+
+            // Toggle view
             document.getElementById('main-view').classList.add('view-hidden');
             document.getElementById('main-view').classList.remove('view-visible');
             document.getElementById('detail-view').classList.add('view-visible');
@@ -350,19 +482,44 @@
             window.scrollTo(0, 0);
         }
 
+        function handleManualBack() {
+            if (window.history.length > 1) {
+                history.back();
+            } else {
+                navigateToMain();
+            }
+        }
+
         function navigateToMain() {
             document.getElementById('detail-view').classList.add('view-hidden');
             document.getElementById('detail-view').classList.remove('view-visible');
             document.getElementById('main-view').classList.add('view-visible');
             document.getElementById('main-view').classList.remove('view-hidden');
             
-            window.scrollTo(0, 0);
+            if (lastSectionId) {
+                const section = document.getElementById(lastSectionId);
+                if (section) {
+                    setTimeout(() => {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                }
+            } else {
+                window.scrollTo(0, 0);
+            }
         }
+
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.type === 'detail') {
+                // Potential logic to re-render if needed on forward navigation
+            } else {
+                navigateToMain();
+            }
+        });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
-                if(targetId === "#") return;
+                if(targetId === "#" || targetId === "#detail") return;
                 const target = document.querySelector(targetId);
                 if (target) {
                     e.preventDefault();
