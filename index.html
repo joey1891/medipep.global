@@ -36,16 +36,24 @@
         .hero-video-container {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
-            z-index: -1; /* Ensure it is behind the content */
+            z-index: -1;
             overflow: hidden;
             pointer-events: none;
-            background-color: #000; /* Fallback color */
+            background-color: #000; /* 비디오 로드 전 완벽한 블랙 유지 */
         }
         .hero-video-container video {
             width: 100%; height: 100%;
             object-fit: cover;
-            filter: brightness(0.6) contrast(1.1); 
+            filter: brightness(0.6) contrast(1.1);
+            opacity: 0; /* 초기 상태 투명 */
+            transition: opacity 1s ease-in-out; /* 부드러운 등장 */
+            background: black;
         }
+        /* 비디오 재생 중일 때 투명도 해제 */
+        .hero-video-container video.is-playing {
+            opacity: 1;
+        }
+
         .hero-overlay {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
@@ -236,12 +244,10 @@
     <div id="main-view" class="view-visible">
         <!-- Hero Section -->
         <main id="hero" class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12 overflow-hidden">
-            <!-- Fixed Video Background: Removed poster image to prevent flash before video starts -->
+            <!-- Fixed Video Background: Removed poster and added JS trigger for smooth fade-in -->
             <div class="hero-video-container">
-                <video autoplay muted loop playsinline>
-                    <!-- Main Video Source updated to user provided link -->
+                <video id="hero-video" autoplay muted loop playsinline onplaying="this.classList.add('is-playing')">
                     <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9ncm9rLXZpZGVvLWE4OTkxYzg1LTg5MDYtNGRlNi05NmVhLWE3MmNmMDY0M2M0ZS5tcDQiLCJpYXQiOjE3Njk4NjQyNTEsImV4cCI6MTkyNzU0NDI1MX0.uInrLmMBITEJzjiHtbZQVnnszzNZJ2vVPXcCZVbo1-s" type="video/mp4">
-                    <!-- Fallback source -->
                     <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/resnovae%20(1).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9yZXNub3ZhZSAoMSkubXA0IiwiaWF0IjoxNzY5MzE0NzEzLCJleHAiOjE4NjM5MjI3MTN9.9NhMoOepna_0HyVHrXUzXqCC9nT7JC1ddONVcNEdz4o" type="video/mp4">
                 </video>
             </div>
@@ -344,7 +350,6 @@
                 </div>
                 
                 <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6 relative z-30">
-                    <!-- Links to R&D PIPELINE.html -->
                     <a href="R&D PIPELINE.html" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™</a>
                 </div>
             </div>
@@ -1354,10 +1359,8 @@
                 document.getElementById('main-view').classList.add('view-visible');
                 document.getElementById('main-view').classList.remove('view-hidden');
                 
-                // Get the target section ID from state or global variable
                 const sourceId = (state && state.sourceSectionId) || lastSectionId || 'hero';
                 
-                // Smooth scroll to the target section after DOM update
                 setTimeout(() => {
                     const section = document.getElementById(sourceId);
                     if (section) { 
@@ -1409,7 +1412,6 @@
                 const detailSubtitle = document.getElementById('detail-subtitle');
 
                 if (state.fromCoreTech) {
-                    // Specific logic for message text based on category
                     if (state.category === 'regentrix') {
                         detailSubtitle.innerHTML = '<span class="text-[#00f2ff] italic lowercase tracking-tight text-lg md:text-3xl font-light">delivers the biological signals.</span>';
                         detailSubtitle.classList.remove('uppercase', 'text-[10px]', 'tracking-[0.4em]');
@@ -1430,7 +1432,6 @@
                     
                     let insightHtml = data.insights.map(i => `<div class="insight-point"><h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">${i.title}</h4><p class="text-white/70">${i.desc}</p></div>`).join('');
                     
-                    // Add comparison tables for platforms
                     if (state.category === 'regentrix') {
                         insightHtml += `
                         <div class="mt-16 pt-8 border-t border-white/10">
