@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dr. Kim | Head of R&D - Medifab</title>
+    <title>Dr. Kim | CTO - Medifab</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -131,9 +131,9 @@
 <body>
 
     <div class="profile-container">
-        <!-- Home 바로가기 버튼 -->
+        <!-- Home 바로가기 버튼: 리더 섹션으로 연결 -->
         <div class="flex justify-center">
-            <a href="index.html" class="back-btn orbitron">
+            <a href="index.html#leaders" class="back-btn orbitron">
                 <i class="fa-solid fa-arrow-left mr-2"></i> Back to Home
             </a>
         </div>
@@ -144,7 +144,7 @@
         </div>
         
         <h1 class="glitch-name orbitron">DR. KIM</h1>
-        <div class="sub-role orbitron">HEAD OF R&D</div>
+        <div class="sub-role orbitron">CTO</div>
 
         <!-- Academic Background 섹션 -->
         <div class="info-section">
@@ -159,7 +159,7 @@
         <!-- Professional Experience 섹션 -->
         <div class="info-section">
             <div class="section-title orbitron">
-                <i class=\"fa-solid fa-briefcase\"></i> Professional Experience
+                <i class="fa-solid fa-briefcase"></i> Professional Experience
             </div>
             <div class="list-item">
                 Korea Institute of Science and Technology (KIST)
@@ -186,5 +186,21 @@
         </div>
     </div>
 
+    <!-- 브라우저 뒤로가기 및 내비게이션 제어 스크립트 -->
+    <script>
+        try {
+            if (window.history && window.history.pushState) {
+                // URL 인자를 null로 설정하여 보안 에러 방지
+                window.history.pushState({ page: 'profile' }, "", null);
+            }
+        } catch (error) {
+            console.warn("History pushState is restricted in this environment:", error);
+        }
+
+        // 뒤로가기 버튼 클릭 시 메인 페이지의 리더 섹션으로 이동
+        window.addEventListener('popstate', function(event) {
+            window.location.href = 'index.html#leaders';
+        });
+    </script>
 </body>
 </html>
