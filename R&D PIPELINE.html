@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        :root { --cyan-accent: #00f2ff; }
+        :root { --cyan-accent: #00f2ff; --dark-bg: #020205; }
         body {
             margin: 0; padding: 0;
-            background-color: #020205;
+            background-color: var(--dark-bg);
             font-family: 'Inter', sans-serif;
             color: white;
             overflow-x: hidden;
@@ -25,7 +25,7 @@
         .orbitron { font-family: 'Orbitron', sans-serif; }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -55,10 +55,10 @@
         /* Header Styles */
         .header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         .pipeline-title {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -75,20 +75,20 @@
 
         /* Category Section */
         .category-section {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         .category-label {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             color: var(--cyan-accent);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            border-left: 4px solid var(--cyan-accent);
-            padding-left: 15px;
+            border-left: 3px solid var(--cyan-accent);
+            padding-left: 12px;
         }
 
         /* Pipeline Card */
@@ -97,29 +97,26 @@
             border: 1px solid rgba(0, 242, 255, 0.1);
             border-radius: 20px;
             padding: 25px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             transition: all 0.3s ease;
-        }
-        .pipeline-card:hover {
-            border-color: rgba(0, 242, 255, 0.4);
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-2px);
         }
 
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
         }
         .item-name {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
             color: white;
             line-height: 1.2;
         }
         .item-subname {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--cyan-accent);
             font-weight: 700;
             margin-top: 4px;
@@ -128,68 +125,110 @@
             display: block;
         }
         .item-indication {
-            font-size: 13px;
+            font-size: 12px;
             color: rgba(255, 255, 255, 0.5);
             margin-top: 6px;
         }
         .target-badge {
-            font-size: 11px;
+            font-size: 9px;
             font-weight: 700;
             color: black;
             background: var(--cyan-accent);
-            padding: 4px 12px;
-            border-radius: 999px;
+            padding: 3px 10px;
+            border-radius: 4px;
             font-family: 'Orbitron', sans-serif;
             flex-shrink: 0;
-            margin-left: 10px;
         }
 
-        /* Progress Track */
-        .progress-track {
+        /* Vertical Timeline Styles */
+        .vertical-timeline {
             position: relative;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            margin: 30px 0 10px;
+            padding-left: 30px;
         }
-        .progress-fill {
+        /* The vertical line */
+        .vertical-timeline::before {
+            content: '';
             position: absolute;
-            height: 100%;
-            background: linear-gradient(90deg, #00f2ff, #0077ff);
-            border-radius: 3px;
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+            left: 7px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.1);
         }
-        .steps {
+
+        .timeline-step {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline-step:last-child {
+            padding-bottom: 0;
+        }
+
+        /* The dot */
+        .step-dot {
+            position: absolute;
+            left: -30px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            z-index: 2;
+        }
+
+        .timeline-step.active .step-dot {
+            background: var(--cyan-accent);
+            border-color: var(--cyan-accent);
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.6);
+        }
+
+        /* Connecting line highlight for active steps */
+        .timeline-step.active + .timeline-step.active::before {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: -20px;
+            height: 25px;
+            width: 2px;
+            background: var(--cyan-accent);
+            z-index: 1;
+        }
+
+        .step-content {
             display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
+            flex-direction: column;
         }
-        .step {
-            font-size: 9px;
+        .step-label {
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: 600;
             letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: 'Orbitron', sans-serif;
         }
-        .step.active {
+        .timeline-step.active .step-label {
             color: var(--cyan-accent);
         }
 
-        /* Special Milestone for Degenerative Arthritis */
-        .milestone-marker {
-            position: absolute;
-            top: -20px;
-            transform: translateX(-50%);
+        /* Specific Milestone styling */
+        .milestone-tag {
             font-size: 10px;
             color: var(--cyan-accent);
-            white-space: nowrap;
+            background: rgba(0, 242, 255, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+            display: inline-block;
+            border: 1px solid rgba(0, 242, 255, 0.2);
         }
 
         @media (max-width: 480px) {
-            .pipeline-title { font-size: 24px; }
-            .item-name { font-size: 16px; }
-            .item-subname { font-size: 12px; }
-            .step { font-size: 8px; }
+            .container { padding: 30px 15px; }
+            .pipeline-title { font-size: 22px; }
+            .item-name { font-size: 15px; }
+            .card-header { flex-direction: column; gap: 10px; }
+            .target-badge { align-self: flex-start; }
         }
     </style>
 </head>
@@ -224,14 +263,32 @@
                     </div>
                     <div class="target-badge">GOAL 2027</div>
                 </div>
-                <div class="progress-track">
-                    <div class="progress-fill" style="width: 75%;"></div>
-                </div>
-                <div class="steps orbitron">
-                    <span class="step active">R&D</span>
-                    <span class="step active">Pre-Clinical</span>
-                    <span class="step active">Clinical</span>
-                    <span class="step">Regulatory Approval</span>
+                
+                <div class="vertical-timeline">
+                    <div class="timeline-step active">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">R&D</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step active">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Pre-Clinical</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step active">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Clinical</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Regulatory Approval</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -245,14 +302,32 @@
                     </div>
                     <div class="target-badge">GOAL 2028</div>
                 </div>
-                <div class="progress-track">
-                    <div class="progress-fill" style="width: 60%;"></div>
-                </div>
-                <div class="steps orbitron">
-                    <span class="step active">R&D</span>
-                    <span class="step active">Pre-Clinical</span>
-                    <span class="step active">Clinical</span>
-                    <span class="step">Regulatory Approval</span>
+
+                <div class="vertical-timeline">
+                    <div class="timeline-step active">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">R&D</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step active">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Pre-Clinical</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step active">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Clinical</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Regulatory Approval</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -266,15 +341,33 @@
                     </div>
                     <div class="target-badge">GOAL 2031</div>
                 </div>
-                <div class="progress-track">
-                    <div class="progress-fill" style="width: 40%;"></div>
-                    <div class="milestone-marker orbitron" style="left: 50%;">2027 Pre-Clinical Completion</div>
-                </div>
-                <div class="steps orbitron">
-                    <span class="step active">R&D</span>
-                    <span class="step active">Pre-Clinical</span>
-                    <span class="step">Clinical</span>
-                    <span class="step">Regulatory Approval</span>
+
+                <div class="vertical-timeline">
+                    <div class="timeline-step active">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">R&D</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step active">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Pre-Clinical</span>
+                            <div class="milestone-tag orbitron">2027 Completion Target</div>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Clinical</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Regulatory Approval</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -295,14 +388,32 @@
                     </div>
                     <div class="target-badge">GOAL 2038</div>
                 </div>
-                <div class="progress-track">
-                    <div class="progress-fill" style="width: 25%;"></div>
-                </div>
-                <div class="steps orbitron">
-                    <span class="step active">R&D</span>
-                    <span class="step">Pre-Clinical</span>
-                    <span class="step">Clinical</span>
-                    <span class="step">Regulatory Approval</span>
+
+                <div class="vertical-timeline">
+                    <div class="timeline-step active">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">R&D</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Pre-Clinical</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Clinical</span>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"></div>
+                        <div class="step-content">
+                            <span class="step-label">Regulatory Approval</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
