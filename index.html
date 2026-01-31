@@ -36,19 +36,21 @@
         .hero-video-container {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
-            z-index: 0; overflow: hidden;
+            z-index: -1; /* Ensure it is behind the content */
+            overflow: hidden;
             pointer-events: none;
+            background-color: #000; /* Fallback color */
         }
         .hero-video-container video {
             width: 100%; height: 100%;
             object-fit: cover;
-            filter: brightness(0.4) contrast(1.1);
+            filter: brightness(0.6) contrast(1.1); 
         }
         .hero-overlay {
             position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(2, 2, 5, 0.1) 0%, rgba(2, 2, 5, 0.9) 100%);
-            z-index: 1;
+            background: radial-gradient(circle at center, rgba(2, 2, 5, 0.2) 0%, rgba(2, 2, 5, 0.8) 100%);
+            z-index: 0;
             pointer-events: none;
         }
 
@@ -233,10 +235,14 @@
     <!-- Main View Content -->
     <div id="main-view" class="view-visible">
         <!-- Hero Section -->
-        <main id="hero" class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12">
+        <main id="hero" class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12 overflow-hidden">
+            <!-- Fixed Video Background with Updated URL -->
             <div class="hero-video-container">
-                <video autoplay muted loop playsinline>
-                    <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9ncm9rLXZpZGVvLWE4OTkxYzg1LTg5MDYtNGRlNi05NmVhLWE3MmNmMDY0M2M0ZS5tcDQiLCJpYXQiOjE3NjkzMTQ4NzgsImV4cCI6MTg2MzkyMjg3OH0.2fV2yNvY9p1W9JoGVCXatFvKY2wXyIaOx6mZEyb9AhU" type="video/mp4">
+                <video autoplay muted loop playsinline poster="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/23814081458a59fbc688e56bb4ef6808%20(1).jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS8yMzgxNDA4MTQ1OGE1OWZiYzY4OGU1NmJiNGVmNjgwOCAoMSkuanBnIiwiaWF0IjoxNzY5MzU5NDQwLCJleHAiOjE5MjcwMzk0NDB9.gP-6W6hpH9zGr_PSYz-ShJQRzXaJWX2FO1SoUUwWsmo">
+                    <!-- Main Video Source updated to user provided link -->
+                    <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9ncm9rLXZpZGVvLWE4OTkxYzg1LTg5MDYtNGRlNi05NmVhLWE3MmNmMDY0M2M0ZS5tcDQiLCJpYXQiOjE3Njk4NjQyNTEsImV4cCI6MTkyNzU0NDI1MX0.uInrLmMBITEJzjiHtbZQVnnszzNZJ2vVPXcCZVbo1-s" type="video/mp4">
+                    <!-- Fallback source -->
+                    <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/resnovae%20(1).mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9yZXNub3ZhZSAoMSkubXA0IiwiaWF0IjoxNzY5MzE0NzEzLCJleHAiOjE4NjM5MjI3MTN9.9NhMoOepna_0HyVHrXUzXqCC9nT7JC1ddONVcNEdz4o" type="video/mp4">
                 </video>
             </div>
             <div class="hero-overlay"></div>
@@ -329,47 +335,62 @@
             </div>
         </section>
 
+        <!-- Value-Driven Pipeline Section -->
+        <section id="value-pipeline" class="py-24 md:py-40 bg-black border-t border-white/5 relative z-20">
+            <div class="w-full text-center">
+                <div class="max-w-7xl mx-auto px-6 mb-12">
+                    <h2 class="orbitron fluid-header font-black tracking-[0.2em]">VALUE-DRIVEN <br> PIPELINE</h2>
+                    <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4 font-bold">Strategic Assets & Future Roadmap</p>
+                </div>
+                
+                <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6 relative z-30">
+                    <!-- Links to R&D PIPELINE.html -->
+                    <a href="R&D PIPELINE.html" class="btn-common secondary-btn orbitron font-bold">CHITOGENIX™</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Corporate Leaders Section -->
-      <section id="leaders" class="py-24 md:py-40 bg-black relative z-10">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <h2 class="orbitron fluid-header font-black mb-16 tracking-tight sm:tracking-[0.2em] uppercase">
-            CORPORATE <br> LEADERS
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="Porfile_CEO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
-                <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
-                    <img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" class="w-full h-full object-cover">
-                </div>
-                <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CEO</div>
-                <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Dr. Cha</div>
-            </a>
+        <section id="leaders" class="py-24 md:py-40 bg-[#050508] relative z-10 border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="orbitron fluid-header font-black mb-16 tracking-tight sm:tracking-[0.2em] uppercase">
+                    CORPORATE <br> LEADERS
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="Porfile_CEO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
+                        <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
+                            <img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CEO</div>
+                        <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Dr. Cha</div>
+                    </a>
 
-            <a href="Profile_COO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
-                <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
-                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/shin.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zaGluLmpwZyIsImlhdCI6MTc2OTg0NzI5MywiZXhwIjoxOTI3NTI3MjkzfQ.Gw-7fW1g2Mi3dmeZIyIZnoP6cawAeajMcaPUl8AQJrc" class="w-full h-full object-cover">
-                </div>
-                <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">COO</div>
-                <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Mr. Shin</div>
-            </a>
+                    <a href="Profile_COO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
+                        <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
+                            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/shin.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zaGluLmpwZyIsImlhdCI6MTc2OTg0NzI5MywiZXhwIjoxOTI3NTI3MjkzfQ.Gw-7fW1g2Mi3dmeZIyIZnoP6cawAeajMcaPUl8AQJrc" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">COO</div>
+                        <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Mr. Shin</div>
+                    </a>
 
-            <a href="Profile_CFO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
-                <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
-                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/SEO.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9TRU8uanBnIiwiaWF0IjoxNzY5ODUwMjY4LCJleHAiOjE5Mjc1MzAyNjh9.i44dW7X6BnGfGiA156xyYkZWveRXAYpS9IbmlRIuCOQ" class="w-full h-full object-cover">
-                </div>
-                <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CFO</div>
-                <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Mr. Seo</div>
-            </a>
+                    <a href="Profile_CFO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
+                        <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
+                            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/SEO.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9TRU8uanBnIiwiaWF0IjoxNzY5ODUwMjY4LCJleHAiOjE5Mjc1MzAyNjh9.i44dW7X6BnGfGiA156xyYkZWveRXAYpS9IbmlRIuCOQ" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CFO</div>
+                        <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Mr. Seo</div>
+                    </a>
 
-            <a href="profile_CTO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
-                <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
-                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/0048222_1_ham0s6.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS8wMDQ4MjIyXzFfaGFtMHM2LnBuZyIsImlhdCI6MTc2OTg1MDQzOCwiZXhwIjoxOTI3NTMwNDM4fQ.9vKVcX1r9xWxOUoLmPThEMVkTFJkKkzJOa7aZJ32rgo" class="w-full h-full object-cover">
+                    <a href="profile_CTO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
+                        <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
+                            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/0048222_1_ham0s6.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS8wMDQ4MjIyXzFfaGFtMHM2LnBuZyIsImlhdCI6MTc2OTg1MDQzOCwiZXhwIjoxOTI3NTMwNDM4fQ.9vKVcX1r9xWxOUoLmPThEMVkTFJkKkzJOa7aZJ32rgo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CTO</div>
+                        <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Dr. Kim</div>
+                    </a>
                 </div>
-                <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CTO</div>
-                <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Dr. Kim</div>
-            </a>
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
 
         <!-- Contact Section -->
         <section id="contact" class="py-24 px-6 md:py-40 bg-black relative z-10 border-t border-white/5 text-center">
@@ -607,7 +628,7 @@
                     <div class="leadership-card p-6 flex flex-col items-center text-center">
                         <i class="fa-solid fa-user-tie text-cyan-400 text-xl mb-4"></i>
                         <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">CEO</h4>
-                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">Cha Mi-seon</p>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">Cha Mi-Sun</p>
                     </div>
                     <div class="leadership-card p-6 flex flex-col items-center text-center">
                         <i class="fa-solid fa-users-gear text-cyan-400 text-xl mb-4"></i>
@@ -825,7 +846,6 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div onclick="navigateToProduct('scalp')" class="leadership-card group border-white/10 hover:border-cyan-400/50 transition-all cursor-pointer">
                         <div class="aspect-square mb-6 rounded-2xl overflow-hidden bg-white/5 border border-white/5 group-hover:border-cyan-400/30 transition-all p-4 flex items-center justify-center">
-                            <!-- Scalp MD 이미지 복구 -->
                             <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/scalpMD.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zY2FscE1ELnBuZyIsImlhdCI6MTc2OTY4NjYzMywiZXhwIjoxOTI3MzY2NjMzfQ.bEzj1ErkNj3zZ0lo_r3ryYbkZEFn6eq1UMzMbRlv0dU" alt="resnovae scalpMD" class="max-w-full max-h-full object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="text-[10px] text-cyan-400 orbitron font-bold mb-2 tracking-widest">SCALP CARE</div>
@@ -1410,7 +1430,7 @@
                     
                     let insightHtml = data.insights.map(i => `<div class="insight-point"><h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">${i.title}</h4><p class="text-white/70">${i.desc}</p></div>`).join('');
                     
-                    // Add comparison table for Regentrix at the bottom of the overview
+                    // Add comparison tables for platforms
                     if (state.category === 'regentrix') {
                         insightHtml += `
                         <div class="mt-16 pt-8 border-t border-white/10">
@@ -1458,7 +1478,6 @@
                         </div>`;
                     }
                     
-                    // Add comparison table for Chitogenix at the bottom of the overview
                     if (state.category === 'chitogenix') {
                         insightHtml += `
                         <div class="mt-16 pt-8 border-t border-white/10">
