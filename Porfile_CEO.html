@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dr. Cha | CEO - Medifab</title>
+    <title>Dr. Cha | CEO & Founder - Medifab</title>
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -125,12 +128,14 @@
 <body>
 
     <div class="profile-container">
+        <!-- 상단 네비게이션: 중앙 정렬 -->
         <div class="flex justify-center items-center mb-12">
             <a href="index.html#leaders" class="back-btn orbitron text-[10px]">
                 <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
             </a>
         </div>
 
+        <!-- 프로필 이미지 -->
         <div class="profile-img-wrapper">
             <img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" alt="Dr. Cha">
         </div>
@@ -138,42 +143,69 @@
         <h1 class="glitch-name orbitron">DR. CHA</h1>
         <div class="sub-role orbitron">CEO / FOUNDER</div>
 
+        <!-- 학력 사항 -->
         <div class="info-section">
             <div class="section-title orbitron">
                 <i class="fa-solid fa-graduation-cap"></i> Academic Background
             </div>
-            <div class="list-item">Ph.D. in Engineering, Korea University</div>
+            <div class="list-item">
+                Ph.D. in Engineering, Korea University
+            </div>
         </div>
 
+        <!-- 경력 사항 -->
         <div class="info-section">
             <div class="section-title orbitron">
                 <i class="fa-solid fa-briefcase"></i> Professional Experience
             </div>
-            <div class="list-item">2015~Present: Medifab CEO</div>
-            <div class="list-item">Research professor, Seoul National University Boramae Medical Center</div>
-            <div class="list-item">Associate professor with full-time equivalent status, Seoul National University</div>
+            <div class="list-item">
+                2015~Present: Medifab CEO
+            </div>
+            <div class="list-item">
+                Research professor, Seoul National University Boramae Medical Center
+            </div>
+            <div class="list-item">
+                Associate professor with full-time equivalent status, Seoul National University
+            </div>
         </div>
 
+        <!-- 주요 성과 -->
         <div class="info-section">
             <div class="section-title orbitron">
                 <i class="fa-solid fa-star"></i> Major Achievements
             </div>
-            <div class="list-item">25 yrs of R&D experience in biomaterials and nanobiotechnology</div>
-            <div class="list-item">55 SCI(Science Citation Index) papers, approximately 40 patents</div>
-            <div class="list-item">Member, MFDS Medical Device Evaluation Committee</div>
+            <div class="list-item">
+                25 yrs of R&D experience in biomaterials and nanobiotechnology
+            </div>
+            <div class="list-item">
+                55 SCI(Science Citation Index) papers, approximately 40 patents
+            </div>
+            <div class="list-item">
+                Member, MFDS Medical Device Evaluation Committee
+            </div>
         </div>
     </div>
 
+    <!-- 브라우저 뒤로가기 및 내비게이션 제어 스크립트 -->
     <script>
-        // 사용자가 브라우저 뒤로가기를 누를 때 메인 페이지의 리더 섹션으로 이동하도록 제어합니다.
+        /**
+         * History API 보안 에러 수정:
+         * 샌드박스/iframe 환경에서는 pushState의 세 번째 인자인 URL 변경이 제한될 수 있습니다.
+         * URL 인자를 null로 설정하여 현재 출처 내에서 상태만 푸시하도록 변경합니다.
+         */
+        try {
+            if (window.history && window.history.pushState) {
+                // 세 번째 인자(URL)를 전달하지 않거나 null을 사용하여 보안 에러를 방지합니다.
+                window.history.pushState({ page: 'profile' }, "", null);
+            }
+        } catch (error) {
+            console.warn("History pushState is restricted in this environment:", error);
+        }
+
+        // 브라우저 뒤로가기 버튼 클릭 시 메인 페이지의 리더 섹션으로 이동
         window.addEventListener('popstate', function(event) {
             window.location.href = 'index.html#leaders';
         });
-
-        // 뒤로가기 버튼을 활성화하기 위해 히스토리 상태를 강제로 추가합니다.
-        if (window.history && window.history.pushState) {
-            window.history.pushState('forward', null, './' + window.location.search);
-        }
     </script>
 </body>
 </html>
