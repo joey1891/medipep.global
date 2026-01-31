@@ -244,7 +244,7 @@
     <div id="main-view" class="view-visible">
         <!-- Hero Section -->
         <main id="hero" class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12 overflow-hidden">
-            <!-- Fixed Video Background: Removed poster and added JS trigger for smooth fade-in -->
+            <!-- Fixed Video Background -->
             <div class="hero-video-container">
                 <video id="hero-video" autoplay muted loop playsinline onplaying="this.classList.add('is-playing')">
                     <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9ncm9rLXZpZGVvLWE4OTkxYzg1LTg5MDYtNGRlNi05NmVhLWE3MmNmMDY0M2M0ZS5tcDQiLCJpYXQiOjE3Njk4NjQyNTEsImV4cCI6MTkyNzU0NDI1MX0.uInrLmMBITEJzjiHtbZQVnnszzNZJ2vVPXcCZVbo1-s" type="video/mp4">
@@ -322,7 +322,7 @@
                     <h2 class="orbitron fluid-header font-black tracking-[0.2em]">BUSINESS <br> PORTFOLIO</h2>
                 </div>
                 
-                <!-- Full Width Video - Updated Source URL to User Provided Signed Link -->
+                <!-- Full Width Video -->
                 <div class="w-full mb-16 bg-black relative">
                     <div class="w-full h-0 pb-[56.25%] relative">
                         <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover">
@@ -354,7 +354,6 @@
 
             <div class="relative z-10 w-full text-center">
                 <div class="max-w-7xl mx-auto px-6 mb-12">
-                    <!-- Title updated to 3 lines on mobile and no hyphen -->
                     <h2 class="orbitron fluid-header font-black tracking-[0.2em] drop-shadow-2xl">
                         VALUE <br class="sm:hidden"> DRIVEN <br> PIPELINE
                     </h2>
@@ -417,15 +416,35 @@
         </section>
 
         <!-- Footer -->
-        <footer class="py-12 px-6 bg-black border-t border-white/5 text-center flex flex-col items-center gap-8 relative z-10">
+        <footer class="py-16 px-6 bg-black border-t border-white/5 text-center flex flex-col items-center gap-12 relative z-10">
             <div class="orbitron text-2xl font-black text-white/40 tracking-tighter uppercase">MEDIFAB</div>
-            <div class="text-[9px] md:text-[11px] orbitron font-bold tracking-[0.4em] text-white/20 text-center uppercase leading-loose">
-                &copy;2026. MEDIFAB. <br> All Rights Reserved.
+            
+            <div class="flex flex-col md:flex-row gap-12 md:gap-24 w-full max-w-4xl justify-center">
+                <!-- Medical SNS -->
+                <div class="flex flex-col items-center gap-5">
+                    <span class="orbitron text-[10px] text-white/30 tracking-[0.4em] font-bold uppercase border-b border-white/10 pb-2">Medical</span>
+                    <div class="flex gap-10 text-white/20">
+                        <a href="https://www.linkedin.com/company/imedifab/about/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/resnovae_aesthetics/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@MEDIFAB-vk6cb" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Beauty SNS -->
+                <div class="flex flex-col items-center gap-5">
+                    <span class="orbitron text-[10px] text-white/30 tracking-[0.4em] font-bold uppercase border-b border-white/10 pb-2">Beauty</span>
+                    <div class="flex gap-10 text-white/20">
+                        <a href="https://www.instagram.com/resnovae_official/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61555419175954" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@resnovae_official" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://pf.kakao.com/_xbxoxowG" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-solid fa-comment"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="flex gap-10 text-white/20">
-                 <a href="https://www.linkedin.com/company/imedifab/about/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
-                 <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
-                 <a href="https://www.youtube.com/@MEDIFAB-vk6cb" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-youtube"></i></a>
+
+            <div class="text-[9px] md:text-[11px] orbitron font-bold tracking-[0.4em] text-white/20 text-center uppercase leading-loose pt-4">
+                &copy;2026. MEDIFAB. <br> All Rights Reserved.
             </div>
         </footer>
     </div>
@@ -953,7 +972,7 @@
                 <div class="w-full md:w-1/2 space-y-6 text-center md:text-left">
                     <h2 class="orbitron text-2xl font-bold tracking-widest border-l-4 border-cyan-400 pl-4 uppercase leading-tight">REDEFINING <br> SKIN REGENERATION</h2>
                     <p class="text-white/60 leading-relaxed">Experience the ultimate molecular architecture for skin vitality. Resnovae Crystal uses temperature-responsive technology to ensure that the most potent ingredients stay exactly where your skin needs them most.</p>
-                    <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                    <div class="flex wrap gap-3 justify-center md:justify-start">
                         <span class="text-[10px] orbitron font-bold bg-cyan-400/10 border border-cyan-400/30 px-4 py-2 rounded-full uppercase tracking-widest">Medical Grade</span>
                         <span class="text-[10px] orbitron font-bold bg-white/5 border border-white/10 px-4 py-2 rounded-full uppercase tracking-widest">CHITOGEN™ Base</span>
                     </div>
@@ -1102,7 +1121,6 @@
 
             <div class="flex flex-col md:flex-row gap-12 items-center mb-24">
                 <div class="w-full md:w-1/2 rounded-[3rem] overflow-hidden border border-white/5 bg-gradient-to-b from-white/5 to-transparent p-12 flex justify-center items-center relative group min-h-[400px]">
-                    <!-- Scalp MD 상세페이지 이미지 복구 -->
                     <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/scalpMD.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zY2FscE1ELnBuZyIsImlhdCI6MTc2OTY4NjYzMywiZXhwIjoxOTI3MzY2NjMzfQ.bEzj1ErkNj3zZ0lo_r3ryYbkZEFn6eq1UMzMbRlv0dU" 
                          alt="resnovae scalpMD product" 
                          class="max-w-[85%] h-auto relative z-10 drop-shadow-[0_25px_50px_rgba(0,242,255,0.2)] transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-2">
@@ -1358,12 +1376,10 @@
 
         let lastSectionId = 'hero';
 
-        // Helper to push SPA state
         function safePushState(state) {
             try { window.history.pushState(state, ""); } catch (e) {}
         }
 
-        // --- Core UI rendering logic ---
         function renderView(state) {
             hideAllViews();
             
@@ -1371,10 +1387,8 @@
                 document.getElementById('main-view').classList.add('view-visible');
                 document.getElementById('main-view').classList.remove('view-hidden');
                 
-                // Get the target section ID from state or global variable
                 const sourceId = (state && state.sourceSectionId) || lastSectionId || 'hero';
                 
-                // Smooth scroll to the target section after DOM update
                 setTimeout(() => {
                     const section = document.getElementById(sourceId);
                     if (section) { 
@@ -1426,7 +1440,6 @@
                 const detailSubtitle = document.getElementById('detail-subtitle');
 
                 if (state.fromCoreTech) {
-                    // Specific logic for message text based on category
                     if (state.category === 'regentrix') {
                         detailSubtitle.innerHTML = '<span class="text-[#00f2ff] italic lowercase tracking-tight text-lg md:text-3xl font-light">delivers the biological signals.</span>';
                         detailSubtitle.classList.remove('uppercase', 'text-[10px]', 'tracking-[0.4em]');
@@ -1436,10 +1449,6 @@
                     } else if (state.category === 'chitogenix') {
                         detailSubtitle.innerHTML = '<span class="text-[#00f2ff] italic lowercase tracking-tight text-lg md:text-3xl font-light">hybrid regenerative platform.</span>';
                         detailSubtitle.classList.remove('uppercase', 'text-[10px]', 'tracking-[0.4em]');
-                    } else {
-                        detailSubtitle.innerText = "CORE TECHNOLOGY OVERVIEW";
-                        detailSubtitle.classList.add('uppercase', 'text-[10px]', 'tracking-[0.4em]');
-                        detailSubtitle.classList.remove('text-[#00f2ff]', 'italic', 'text-lg', 'text-3xl', 'tracking-tight');
                     }
                     
                     insightWrapper.classList.remove('view-hidden');
@@ -1447,7 +1456,6 @@
                     
                     let insightHtml = data.insights.map(i => `<div class="insight-point"><h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">${i.title}</h4><p class="text-white/70">${i.desc}</p></div>`).join('');
                     
-                    // Add comparison table for Regentrix at the bottom of the overview
                     if (state.category === 'regentrix') {
                         insightHtml += `
                         <div class="mt-16 pt-8 border-t border-white/10">
@@ -1495,7 +1503,6 @@
                         </div>`;
                     }
                     
-                    // Add comparison table for Chitogenix at the bottom of the overview
                     if (state.category === 'chitogenix') {
                         insightHtml += `
                         <div class="mt-16 pt-8 border-t border-white/10">
@@ -1532,11 +1539,11 @@
                             </div>
                         </div>`;
                     }
+
                     insightContent.innerHTML = insightHtml;
                 } else {
                     detailSubtitle.innerText = "R&D ARCHIVE";
                     detailSubtitle.classList.add('uppercase', 'text-[10px]', 'tracking-[0.4em]');
-                    detailSubtitle.classList.remove('text-[#00f2ff]', 'italic', 'text-lg', 'text-3xl', 'tracking-tight');
                     insightWrapper.classList.add('view-hidden');
                     archiveGrid.classList.remove('view-hidden');
                 }
@@ -1552,7 +1559,6 @@
             }
         }
 
-        // --- Navigation Triggers ---
         function navigateToPortfolio(category, sourceSectionId = null) {
             if (sourceSectionId) lastSectionId = sourceSectionId;
             const state = { type: 'portfolio', category, sourceSectionId: lastSectionId };
