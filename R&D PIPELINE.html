@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>R&D Pipeline | Future Roadmap</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root { --cyan-accent: #00f2ff; }
+        body {
+            margin: 0; padding: 0;
+            background-color: #020205;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Back Button Style */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 24px;
+            border: 1px solid var(--cyan-accent);
+            border-radius: 9999px;
+            color: var(--cyan-accent);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
+        .back-btn:hover {
+            background: var(--cyan-accent);
+            color: black;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .pipeline-title {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .pipeline-sub {
+            color: var(--cyan-accent);
+            font-size: 10px;
+            letter-spacing: 0.4em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 50px;
+        }
+        .category-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--cyan-accent);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-left: 4px solid var(--cyan-accent);
+            padding-left: 15px;
+        }
+
+        /* Pipeline Card */
+        .pipeline-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .pipeline-card:hover {
+            border-color: rgba(0, 242, 255, 0.4);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .item-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            line-height: 1.2;
+        }
+        .item-subname {
+            font-size: 14px;
+            color: var(--cyan-accent);
+            font-weight: 700;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+        }
+        .item-indication {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 6px;
+        }
+        .target-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: black;
+            background: var(--cyan-accent);
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-family: 'Orbitron', sans-serif;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        /* Progress Track */
+        .progress-track {
+            position: relative;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin: 30px 0 10px;
+        }
+        .progress-fill {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(90deg, #00f2ff, #0077ff);
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+        }
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .step {
+            font-size: 9px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .step.active {
+            color: var(--cyan-accent);
+        }
+
+        /* Special Milestone for Degenerative Arthritis */
+        .milestone-marker {
+            position: absolute;
+            top: -20px;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: var(--cyan-accent);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .pipeline-title { font-size: 24px; }
+            .item-name { font-size: 16px; }
+            .item-subname { font-size: 12px; }
+            .step { font-size: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Back to Home Button -->
+        <div class="flex justify-center">
+            <a href="index.html" class="back-btn orbitron">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Back to Home
+            </a>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <h1 class="pipeline-title orbitron">R&D PIPELINE</h1>
+            <p class="pipeline-sub orbitron">Future Vision & Roadmap</p>
+        </header>
+
+        <!-- Medical Devices Section -->
+        <section class="category-section">
+            <h2 class="category-label orbitron">
+                <i class="fa-solid fa-microchip"></i> Medical Devices
+            </h2>
+
+            <!-- Wound Dressing -->
+            <div class="pipeline-card">
+                <div class="card-header">
+                    <div>
+                        <div class="item-name">Wound Dressing</div>
+                        <div class="item-indication">Atopic Skin Disease</div>
+                    </div>
+                    <div class="target-badge">GOAL 2027</div>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+                <div class="steps orbitron">
+                    <span class="step active">R&D</span>
+                    <span class="step active">Pre-Clinical</span>
+                    <span class="step active">Clinical</span>
+                    <span class="step">Regulatory Approval</span>
+                </div>
+            </div>
+
+            <!-- Facial Filler -->
+            <div class="pipeline-card">
+                <div class="card-header">
+                    <div>
+                        <div class="item-name">Tissue Reconstruction Biomaterial</div>
+                        <span class="item-subname">Facial Filler</span>
+                        <div class="item-indication">Facial Wrinkle Improvement & Volumization</div>
+                    </div>
+                    <div class="target-badge">GOAL 2028</div>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+                <div class="steps orbitron">
+                    <span class="step active">R&D</span>
+                    <span class="step active">Pre-Clinical</span>
+                    <span class="step active">Clinical</span>
+                    <span class="step">Regulatory Approval</span>
+                </div>
+            </div>
+
+            <!-- Degenerative Arthritis -->
+            <div class="pipeline-card">
+                <div class="card-header">
+                    <div>
+                        <div class="item-name">Tissue Reconstruction Biomaterial</div>
+                        <span class="item-subname">Degenerative Arthritis</span>
+                        <div class="item-indication">Knee Cartilage & Joint Treatment</div>
+                    </div>
+                    <div class="target-badge">GOAL 2031</div>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 40%;"></div>
+                    <div class="milestone-marker orbitron" style="left: 50%;">2027 Pre-Clinical Completion</div>
+                </div>
+                <div class="steps orbitron">
+                    <span class="step active">R&D</span>
+                    <span class="step active">Pre-Clinical</span>
+                    <span class="step">Clinical</span>
+                    <span class="step">Regulatory Approval</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pharmaceuticals Section -->
+        <section class="category-section">
+            <h2 class="category-label orbitron">
+                <i class="fa-solid fa-pills"></i> Pharmaceuticals
+            </h2>
+
+            <!-- Hair Loss Treatment -->
+            <div class="pipeline-card">
+                <div class="card-header">
+                    <div>
+                        <div class="item-name">Prescription Drug</div>
+                        <span class="item-subname">Hair Loss Treatment</span>
+                        <div class="item-indication">Androgenetic Alopecia & Scalp Care</div>
+                    </div>
+                    <div class="target-badge">GOAL 2038</div>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 25%;"></div>
+                </div>
+                <div class="steps orbitron">
+                    <span class="step active">R&D</span>
+                    <span class="step">Pre-Clinical</span>
+                    <span class="step">Clinical</span>
+                    <span class="step">Regulatory Approval</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

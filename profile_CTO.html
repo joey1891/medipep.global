@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dr. Kim | Head of R&D - Medifab</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root { --cyan-accent: #00f2ff; }
+        body {
+            margin: 0; padding: 0;
+            background-color: #020205;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+
+        .profile-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 24px;
+            border: 1px solid var(--cyan-accent);
+            border-radius: 9999px;
+            color: var(--cyan-accent);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-bottom: 60px;
+        }
+        .back-btn:hover {
+            background: var(--cyan-accent);
+            color: black;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        }
+
+        .profile-img-wrapper {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+            background: linear-gradient(135deg, #111 0%, #222 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .glitch-name {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-align: center;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .sub-role {
+            text-align: center;
+            color: var(--cyan-accent);
+            font-size: 10px;
+            letter-spacing: 0.4em;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+
+        .info-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        .info-section:hover {
+            border-color: rgba(0, 242, 255, 0.3);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--cyan-accent);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .list-item {
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 480px) {
+            .glitch-name { font-size: 36px; }
+            .info-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <!-- Home 바로가기 버튼 -->
+        <div class="flex justify-center">
+            <a href="index.html" class="back-btn orbitron">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Back to Home
+            </a>
+        </div>
+
+        <!-- 상단 프로필 정보 -->
+        <div class="profile-img-wrapper">
+            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/0048222_1_ham0s6.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS8wMDQ4MjIyXzFfaGFtMHM2LnBuZyIsImlhdCI6MTc2OTg1MDQzOCwiZXhwIjoxOTI3NTMwNDM4fQ.9vKVcX1r9xWxOUoLmPThEMVkTFJkKkzJOa7aZJ32rgo" alt="Dr. Kim">
+        </div>
+        
+        <h1 class="glitch-name orbitron">DR. KIM</h1>
+        <div class="sub-role orbitron">HEAD OF R&D</div>
+
+        <!-- Academic Background 섹션 -->
+        <div class="info-section">
+            <div class="section-title orbitron">
+                <i class="fa-solid fa-graduation-cap"></i> Academic Background
+            </div>
+            <div class="list-item">
+                Ph.D. in Engineering, Korea University
+            </div>
+        </div>
+
+        <!-- Professional Experience 섹션 -->
+        <div class="info-section">
+            <div class="section-title orbitron">
+                <i class=\"fa-solid fa-briefcase\"></i> Professional Experience
+            </div>
+            <div class="list-item">
+                Korea Institute of Science and Technology (KIST)
+            </div>
+            <div class="list-item">
+                AMRC Korea, University of Sheffield (UK)
+            </div>
+        </div>
+
+        <!-- Major Achievements 섹션 -->
+        <div class="info-section">
+            <div class="section-title orbitron">
+                <i class="fa-solid fa-star"></i> Major Achievements
+            </div>
+            <div class="list-item">
+                Expert in biomaterials & formulation technology
+            </div>
+            <div class="list-item">
+                Published 20 SCI papers in leading scientific journals
+            </div>
+            <div class="list-item">
+                Holder of 7 registered patents in bio-engineering
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
