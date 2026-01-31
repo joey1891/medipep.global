@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dr. Cha | CEO & Founder - Medifab</title>
+    <title>Dr. Cha | CEO - Medifab</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -37,13 +34,11 @@
             border: 1px solid var(--cyan-accent);
             border-radius: 9999px;
             color: var(--cyan-accent);
-            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
             text-decoration: none;
-            margin-bottom: 60px;
         }
         .back-btn:hover {
             background: var(--cyan-accent);
@@ -59,6 +54,10 @@
             overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+            background: linear-gradient(135deg, #111 0%, #222 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .profile-img-wrapper img {
             width: 100%;
@@ -67,7 +66,7 @@
         }
 
         .glitch-name {
-            font-size: 48px;
+            font-size: clamp(2rem, 10vw, 3rem);
             font-weight: 900;
             letter-spacing: 0.1em;
             text-align: center;
@@ -119,7 +118,6 @@
         }
 
         @media (max-width: 480px) {
-            .glitch-name { font-size: 36px; }
             .info-section { padding: 20px; }
         }
     </style>
@@ -127,63 +125,54 @@
 <body>
 
     <div class="profile-container">
-        <!-- Home 바로가기 버튼 -->
-        <div class="flex justify-center">
-            <a href="index.html" class="back-btn orbitron">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Back to Home
+        <div class="flex justify-between items-center mb-12">
+            <a href="index.html#leaders" class="back-btn orbitron text-[10px]">
+                <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
             </a>
+            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/public/Medifab%20Global%20Image/Medifab_Logo_White.png" alt="Medifab Logo" class="h-6">
         </div>
 
-        <!-- 상단 프로필 정보 -->
         <div class="profile-img-wrapper">
             <img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" alt="Dr. Cha">
         </div>
         
         <h1 class="glitch-name orbitron">DR. CHA</h1>
-        <div class="sub-role orbitron">CEO & FOUNDER</div>
+        <div class="sub-role orbitron">CEO / FOUNDER</div>
 
-        <!-- Academic Background 섹션 -->
         <div class="info-section">
             <div class="section-title orbitron">
                 <i class="fa-solid fa-graduation-cap"></i> Academic Background
             </div>
-            <div class="list-item">
-                PhD in Microbiology, Pusan National University
-            </div>
+            <div class="list-item">Ph.D. in Engineering, Korea University</div>
         </div>
 
-        <!-- Professional Experience 섹션 -->
         <div class="info-section">
             <div class="section-title orbitron">
                 <i class="fa-solid fa-briefcase"></i> Professional Experience
             </div>
-            <div class="list-item">
-                2015~Present: Medifab CEO
-            </div>
-            <div class="list-item">
-                Research professor, Seoul National University Boramae Medical Center
-            </div>
-            <div class="list-item">
-                Associate professor with full-time equivalent status, Seoul National University
-            </div>
+            <div class="list-item">Korea Institute of Science and Technology (KIST)</div>
         </div>
 
-        <!-- Major Achievements 섹션 -->
         <div class="info-section">
             <div class="section-title orbitron">
                 <i class="fa-solid fa-star"></i> Major Achievements
             </div>
-            <div class="list-item">
-                25 yrs of R&D experience in biomaterials and nanobiotechnology
-            </div>
-            <div class="list-item">
-                55 SCI(Science Citation Index) papers, approximately 40 patents
-            </div>
-            <div class="list-item">
-                Member, MFDS Medical Device Evaluation Committee
-            </div>
+            <div class="list-item">Expert in tissue engineering and biomaterials</div>
+            <div class="list-item">Author of 30+ SCI publications</div>
+            <div class="list-item">Inventor of 15+ international patents</div>
         </div>
     </div>
 
+    <script>
+        // 사용자가 브라우저 뒤로가기를 누를 때 메인 페이지의 리더 섹션으로 이동하도록 제어합니다.
+        window.addEventListener('popstate', function(event) {
+            window.location.href = 'index.html#leaders';
+        });
+
+        // 뒤로가기 버튼을 활성화하기 위해 히스토리 상태를 강제로 추가합니다.
+        if (window.history && window.history.pushState) {
+            window.history.pushState('forward', null, './' + window.location.search);
+        }
+    </script>
 </body>
 </html>
