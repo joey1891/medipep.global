@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CHITOGEN™ Solution | Medifab Core Tech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --cyan-accent: #00f2ff;
+        }
+
+        body {
+            background-color: #020205;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .fluid-header {
+            font-size: clamp(2rem, 8vw, 5rem);
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .insight-section {
+            background: rgba(0, 242, 255, 0.02);
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .insight-point {
+            border-left: 2px solid var(--cyan-accent);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="min-h-screen pt-32 pb-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <!-- Header -->
+            <div class="mb-20 text-center">
+                <h1 class="orbitron fluid-header font-black tracking-widest uppercase">CHITOGEN™</h1>
+                <div class="mt-6">
+                    <span class="text-[#00f2ff] italic lowercase tracking-tight text-xl md:text-3xl font-light">
+                        provide the bio-responsive structural matrix.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="insight-section">
+                <h3 class="orbitron text-cyan-400 text-lg font-bold mb-10 flex items-center gap-3">
+                    <i class="fa-solid fa-microscope"></i> RESEARCH OVERVIEW
+                </h3>
+
+                <div class="space-y-10">
+                    <div class="insight-point">
+                        <h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">Limitations
+                            of Existing Fillers & Objectives</h4>
+                        <p class="text-white/70 text-sm md:text-base leading-relaxed">Existing Hyaluronic acid (HA)
+                            fillers require high injection pressure and risk granuloma formation. Our objective was to
+                            develop a next-generation physiological ion-responsive carboxymethylchitosan filler
+                            platform.</p>
+                    </div>
+
+                    <div class="insight-point">
+                        <h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">Core
+                            Manufacturing Technology</h4>
+                        <p class="text-white/70 text-sm md:text-base leading-relaxed">Neutral water solubility and
+                            physiological ion-responsive phase transition (Liquid-to-Gel) is achieved by the integration
+                            of specific chemical structures in carboxymethylchitosan with phosphate ions.</p>
+                    </div>
+
+                    <div class="insight-point">
+                        <h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">Key
+                            Performance: 4.7x Lower Injection Force</h4>
+                        <p class="text-white/70 text-sm md:text-base leading-relaxed">Carboxymethylchitosan filler
+                            demonstrates an injection force approximately 4.7 times lower than HA fillers using 30G
+                            needles, ensuring precise and easy application.</p>
+                    </div>
+
+                    <div class="insight-point">
+                        <h4 class="orbitron text-xs font-bold text-cyan-400 mb-2 uppercase tracking-widest">Longevity &
+                            Safety</h4>
+                        <p class="text-white/70 text-sm md:text-base leading-relaxed">Chitogen spreads quickly
+                            throughout skin tissues after injection and provides a longer-lasting effect compared to
+                            conventional Polynucleotide (PN) fillers, ensuring superior clinical durability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Technical Data -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="p-8 border border-white/5 bg-white/5 rounded-3xl">
+                    <h5 class="orbitron text-cyan-400 text-xs font-bold mb-4 uppercase tracking-widest">Key Feature</h5>
+                    <p class="text-sm text-white/50 leading-relaxed">CHITOGEN™ acts as a smart scaffold that responds to
+                        body temperature and ions, transforming from a liquid to a firm gel once injected, providing
+                        immediate structural support.</p>
+                </div>
+                <div class="p-8 border border-white/5 bg-white/5 rounded-3xl">
+                    <h5 class="orbitron text-cyan-400 text-xs font-bold mb-4 uppercase tracking-widest">Application</h5>
+                    <p class="text-sm text-white/50 leading-relaxed">Primarily used in medical aesthetics as a dermal
+                        filler base and in tissue engineering applications where a bio-responsive matrix is required.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 브라우저 뒤로 가기 시 인덱스 페이지의 특정 섹션으로 이동하도록 보장하는 스크립트 (선택 사항) -->
+    <script>
+        // 사용자가 직접 URL을 입력해서 들어온 경우에도 뒤로 가기 시 메인 섹션으로 유도
+        window.addEventListener('load', function () {
+            if (window.history.length <= 1) {
+                window.history.pushState(null, "", window.location.href);
+                window.onpopstate = function () {
+                    window.location.href = "index.html#core-techs";
+                };
+            }
+        });
+    </script>
+
+</body>
+
+</html>
