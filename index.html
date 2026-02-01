@@ -1293,7 +1293,7 @@
     <div id="core-impact-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-5xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToPortfolio('beautydevice')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
                     <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
                 </button>
                 <h1 id="beauty-detail-title-1" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">CORE IMPACT</h1>
@@ -1543,7 +1543,15 @@
         function renderView(state) {
             hideAllViews();
             
+            // --- Music Control logic updated here ---
+            const mBtn = document.getElementById('music-btn');
+            const mAudio = document.getElementById('bg-music');
+            const mIcon = document.getElementById('music-icon');
+
             if (!state || state.type === 'main') {
+                // Show music button on Main view
+                if(mBtn) mBtn.style.display = 'flex';
+
                 document.getElementById('main-view').classList.add('view-visible');
                 document.getElementById('main-view').classList.remove('view-hidden');
                 
@@ -1558,6 +1566,14 @@
                     }
                 }, 100);
                 return;
+            }
+
+            // Hide music button and stop music on non-main views (Detailed pages)
+            if(mBtn) mBtn.style.display = 'none';
+            if(mAudio && !mAudio.paused) {
+                mAudio.pause();
+                if(mIcon) mIcon.classList.replace('fa-volume-high', 'fa-volume-xmark');
+                if(mBtn) mBtn.classList.remove('active');
             }
 
             if (state.type === 'portfolio') {
@@ -1755,7 +1771,7 @@
         function renderColumn(containerId, list, icon) {
             const container = document.getElementById(containerId);
             if (list && list.length > 0) {
-                container.innerHTML = list.map(item => `<div class="resource-item-card group"><div class="flex-1 pr-4"><div class="text-[10px] text-cyan-400 font-bold orbitron mb-1">${item.year}</div><div class="text-xs md:text-sm font-semibold text-white/90 group-hover:text-cyan-400 transition whitespace-normal break-words leading-snug">${item.title}</div></div><a href="${item.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0"><i class="fa-solid ${icon} text-xs"></i></a></div>`).join('');
+                container.innerHTML = list.map(item => `<div class="resource-item-card group"><div class="flex-1 pr-4"><div class="text-[10px] text-cyan-400 font-bold orbitron mb-1">${item.year}</div><div class="text-xs md:text-sm font-semibold text-white/90 group-hover:text-cyan-400 transition whitespace-normal break-words Translation leading-snug">${item.title}</div></div><a href="${item.link}" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-cyan-400 hover:text-black transition flex-shrink-0"><i class="fa-solid ${icon} text-xs"></i></a></div>`).join('');
             } else {
                 container.innerHTML = '<p class="text-white/20 text-xs italic px-2">To be updated...</p>';
             }
