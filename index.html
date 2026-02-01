@@ -1711,6 +1711,11 @@
 
         function navigateToPortfolio(category, sourceSectionId = null) {
             if (sourceSectionId) lastSectionId = sourceSectionId;
+            
+            if (category === 'cosmetics') {
+        window.location.href = 'cosmetics_detail.html';
+        return;
+    }
             const state = { type: 'portfolio', category, sourceSectionId: lastSectionId };
             safePushState(state);
             renderView(state);
