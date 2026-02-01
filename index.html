@@ -42,7 +42,7 @@
         /* --- New Navigation Styles --- */
         header#top-nav {
             position: fixed; top: 0; left: 0; width: 100%; height: 80px;
-            display: flex; align-items: center; justify-content: flex-end; /* 로고 삭제 후 버튼을 우측 정렬 */
+            display: flex; align-items: center; justify-content: flex-end;
             padding: 0 2rem; z-index: 2000;
             background: transparent;
         }
@@ -304,7 +304,6 @@
 
     <!-- Header & Navigation Overlay -->
     <header id="top-nav">
-        <!-- Logo Removed as requested -->
         <button id="hamburger-toggle" onclick="toggleHamburgerMenu()">
             <span></span>
             <span></span>
@@ -328,7 +327,6 @@
     <div id="main-view" class="view-visible">
         <!-- Hero Section -->
         <main id="hero" class="relative min-h-screen w-full flex items-center justify-center pt-12 pb-12 overflow-hidden">
-            <!-- Fixed Video Background -->
             <div class="hero-video-container">
                 <video id="hero-video" autoplay muted loop playsinline onplaying="this.classList.add('is-playing')">
                     <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/grok-video-a8991c85-8906-4de6-96ea-a72cf0643c4e.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9ncm9rLXZpZGVvLWE4OTkxYzg1LTg5MDYtNGRlNi05NmVhLWE3MmNmMDY0M2M0ZS5tcDQiLCJpYXQiOjE3Njk4NjQyNTEsImV4cCI6MTkyNzU0NDI1MX0.uInrLmMBITEJzjiHtbZQVnnszzNZJ2vVPXcCZVbo1-s" type="video/mp4">
@@ -432,7 +430,6 @@
                 <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-60">
                     <source src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/ECM2.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9FQ00yLm1wNCIsImlhdCI6MTc2OTg2ODAyOSwiZXhwIjoxOTI3NTQ4MDI5fQ.rytCRbiyhTK2VHzlUMfS8G4DQRJHdGX2X5in6xP19Cc" type="video/mp4">
                 </video>
-                <!-- Radial overlay for depth and focus -->
                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/80 via-black/20 to-black/80"></div>
             </div>
 
@@ -445,7 +442,6 @@
                 </div>
                 
                 <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-6">
-                    <!-- Updated: Transparent button without blur effect -->
                     <a href="R&D PIPELINE.html" class="btn-common secondary-btn orbitron font-bold !bg-transparent !backdrop-blur-none border-white/20">CHITOGENIX™</a>
                 </div>
             </div>
@@ -571,9 +567,7 @@
     <div id="cosmetics-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <h1 id="cosmetics-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">COSMETICS</h1>
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Business Portfolio</p>
             </div>
@@ -628,25 +622,6 @@
                                 </div>
                                 <p class="text-sm font-semibold text-white/80 leading-tight">Phyto Protein Volumizing Ampoule 15/30ml</p>
                             </div>
-                            <!-- Melano Cut -->
-                            <div>
-                                <div class="flex flex-col gap-3 mb-3">
-                                    <div class="aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5">
-                                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/br15br15.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9icjE1YnIxNS5wbmciLCJpYXQiOjE3Njk4NzM2OTIsImV4cCI6MTkyNzU1MzY5Mn0.mw1wkbB4zBqIrmPWGi7Z0A5mbQvaaHfCr8sy1J5yBF0" alt="Melano Cut Brightening Ampoule 15ml" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5">
-                                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/br30.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9icjMwLmpwZyIsImlhdCI6MTc2OTg3MzIyMCwiZXhwIjoxOTI3NTUzMjIwfQ.UC_A8WQAOwvKBL3pKQx-1sv1w0xHr6FiK4c6S10eRso" alt="Melano Cut Brightening Ampoule 30ml" class="w-full h-full object-cover">
-                                    </div>
-                                </div>
-                                <p class="text-sm font-semibold text-white/80 leading-tight">Melano Cut Brightening Ampoule 15/30ml</p>
-                            </div>
-                            <!-- Blue Crystal -->
-                            <div>
-                                <div class="aspect-square mb-3 rounded-xl overflow-hidden border border-white/5 bg-white/5">
-                                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/ddd36457e574846055bb9f6e6b7c638c.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9kZGQzNjQ1N2U1NzQ4NDYwNTViYjlmNmU2YjdjNjM4Yy5qcGciLCJpYXQiOjE3NjkzNTIwMDYsImV4cCI6MTkyNzAzMjAwNn0.98gz83Ry26Ivnhq_YMt5FR7OtfrRnSMCEmqA5Aj18QQ" alt="Blue Crystal Hydrating Ampoule 15/30ml" class="w-full h-full object-cover">
-                                </div>
-                                <p class="text-sm font-semibold text-white/80 leading-tight">Blue Crystal Hydrating Ampoule 15/30ml</p>
-                            </div>
                         </div>
                     </div>
                     
@@ -665,16 +640,14 @@
                     
                     <!-- Mask Pack -->
                     <div class="leadership-card p-6">
-    <span class="cosmetic-category-label">Mask Pack</span>
-    <div class="aspect-square mb-4 rounded-xl overflow-hidden border border-white/5 bg-white/5 mt-4">
-        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/mask.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9tYXNrLnBuZyIsImlhdCI6MTc2OTk0MjcwMiwiZXhwIjoxOTI3NjIyNzAyfQ.YdfuzylFO-lrh8x6j2vjolAQRR2CIxrWTWttNQX2zDA" 
-             alt="EV Shot Skin Boosting Mask 5ea" 
-             class="w-full h-full object-cover">
-    </div>
-    <ul class="space-y-4">
-        <li class="text-sm font-semibold text-white/80 leading-tight">EV Shot Skin Boosting Mask 5ea</li>
-    </ul>
-</div>
+                        <span class="cosmetic-category-label">Mask Pack</span>
+                        <div class="aspect-square mb-4 rounded-xl overflow-hidden border border-white/5 bg-white/5 mt-4">
+                            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/mask.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9tYXNrLnBuZyIsImlhdCI6MTc2OTk0MjcwMiwiZXhwIjoxOTI3NjIyNzAyfQ.YdfuzylFO-lrh8x6j2vjolAQRR2CIxrWTWttNQX2zDA" alt="EV Shot Skin Boosting Mask 5ea" class="w-full h-full object-cover">
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="text-sm font-semibold text-white/80 leading-tight">EV Shot Skin Boosting Mask 5ea</li>
+                        </ul>
+                    </div>
                     <!-- Cream -->
                     <div class="leadership-card p-6">
                         <span class="cosmetic-category-label">Cream</span>
@@ -756,9 +729,7 @@
     <div id="company-profile-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <h1 id="profile-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">Company Profile</h1>
                 <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Growth Journey</p>
             </div>
@@ -861,7 +832,7 @@
                         </div>
                         <div class="timeline-container">
                             <div class="timeline-year-dot bg-white/40 shadow-none"></div>
-                            <h3 class="orbitron text-white text-lg font-bold mb-4">2022</h3>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2020</h3>
                             <ul class="space-y-3 text-xs text-white/50">
                                 <li>Obtained medical device manufacturing license</li>
                                 <li>Acquired export approval for Husteon</li>
@@ -901,9 +872,7 @@
     <div id="detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <div class="w-full overflow-hidden flex justify-center">
                     <h1 id="detail-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">SOLUTION™</h1>
                 </div>
@@ -954,9 +923,7 @@
     <div id="portfolio-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <h1 class="orbitron fluid-header font-black tracking-widest text-center">SKIN BOOSTER</h1>
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Business Portfolio</p>
             </div>
@@ -1021,9 +988,7 @@
     <div id="beauty-device-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <h1 class="orbitron fluid-header font-black tracking-widest text-center">BEAUTY DEVICE</h1>
                 <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Business Portfolio</p>
             </div>
@@ -1075,9 +1040,7 @@
     <div id="product-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-5xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToPortfolio('skinbooster')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <h1 id="product-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">resnovae <br> <span class="whitespace-nowrap">crystal®</span></h1>
                 <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">The 5th Generation Skin Booster</p>
             </div>
@@ -1174,9 +1137,7 @@
     <div id="product-plus-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-5xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToPortfolio('skinbooster')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <h1 id="product-plus-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">resnovae <br> <span class="whitespace-nowrap text-lg sm:text-2xl md:text-5xl">crystal plus®</span></h1>
                 <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Stem-Cell Activation & Boosting Formula</p>
             </div>
@@ -1219,7 +1180,7 @@
                             <p class="text-white/60 text-sm leading-relaxed">Regulates melanocytes to reduce excessive melanin production, resulting in a luminous "glow effect."</p>
                         </div>
                         <div class="insight-point">
-                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">High Molecular HA & Niac인amide</h4>
+                            <h4 class="orbitron text-xs font-bold text-white mb-2 uppercase tracking-widest">High Molecular HA & Niacinamide</h4>
                             <p class="text-white/60 text-sm leading-relaxed">Hyaluronic Acid provides intense hydration, while Niacinamide acts as a potent antioxidant for skin aging.</p>
                         </div>
                     </div>
@@ -1232,9 +1193,7 @@
     <div id="product-scalp-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-5xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToPortfolio('skinbooster')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <h1 id="product-scalp-title" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">resnovae <br> <span class="whitespace-nowrap text-lg sm:text-2xl md:text-5xl">scalpMD®</span></h1>
                 <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Anti-Inflammatory Scalp Regeneration Medical Device</p>
             </div>
@@ -1258,7 +1217,7 @@
             <div class="space-y-20">
                 <section class="insight-section">
                     <h2 class="orbitron text-cyan-400 text-xl font-bold mb-10 flex items-center gap-3 uppercase">
-                        <i class="fa-solid fa-dna"></i> CORE TECHNOLOGY: CHITOGENIX™
+                        <i class="fa-solid fa-atom"></i> CORE TECHNOLOGY: CHITOGENIX™
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="insight-point">
@@ -1302,9 +1261,7 @@
     <div id="core-impact-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-5xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <h1 id="beauty-detail-title-1" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">CORE IMPACT</h1>
                 <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Simultaneous Application Device</p>
             </div>
@@ -1359,9 +1316,7 @@
     <div id="hyper-shot-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
-                </button>
+                <!-- BACK BUTTON REMOVED -->
                 <h1 id="beauty-detail-title-2" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">HYPER SHOT</h1>
                 <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Multi-Functional Scalp Care Device</p>
             </div>
@@ -1417,42 +1372,36 @@
     </div>
 
     <script>
-        /* --- New Navigation Scripts --- */
-     function toggleHamburgerMenu() {
-    const btn = document.getElementById('hamburger-toggle');
-    const overlay = document.getElementById('full-menu-overlay');
-    const isOpen = overlay.classList.contains('open');
+        /* --- Navigation Scripts --- */
+        function toggleHamburgerMenu() {
+            const btn = document.getElementById('hamburger-toggle');
+            const overlay = document.getElementById('full-menu-overlay');
+            const isOpen = overlay.classList.contains('open');
 
-    if (!isOpen) {
-        // 메뉴 열 때 히스토리 상태 추가 (뒤로가기 대응)
-        btn.classList.add('active');
-        overlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        history.pushState({ type: 'menu_open' }, ""); 
-    } else {
-        // 메뉴 수동 닫기
-        btn.classList.remove('active');
-        overlay.classList.remove('open');
-        document.body.style.overflow = 'auto';
-        // 메뉴 열림 상태에서 추가된 history가 있다면 뒤로가기 실행하여 상태 제거
-        if(history.state && history.state.type === 'menu_open') {
-            history.back();
+            if (!isOpen) {
+                btn.classList.add('active');
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                history.pushState({ type: 'menu_open' }, ""); 
+            } else {
+                btn.classList.remove('active');
+                overlay.classList.remove('open');
+                document.body.style.overflow = 'auto';
+                if(history.state && history.state.type === 'menu_open') {
+                    history.back();
+                }
+            }
         }
-    }
-}
 
         function menuNavigate(id) {
-            // Close menu overlay first
             const btn = document.getElementById('hamburger-toggle');
             const overlay = document.getElementById('full-menu-overlay');
             btn.classList.remove('active');
             overlay.classList.remove('open');
             document.body.style.overflow = 'auto';
 
-            // Always navigate to main view
             navigateToMain();
 
-            // Delay for view transition then scroll
             setTimeout(() => {
                 const target = document.getElementById(id);
                 if (target) {
@@ -1466,7 +1415,6 @@
         const musicBtn = document.getElementById('music-btn');
         const musicIcon = document.getElementById('music-icon');
         
-        // 볼륨 15% 설정
         bgMusic.volume = 0.15;
 
         function toggleMusic() {
@@ -1567,13 +1515,11 @@
         function renderView(state) {
             hideAllViews();
             
-            // --- Music Control logic updated here ---
             const mBtn = document.getElementById('music-btn');
             const mAudio = document.getElementById('bg-music');
             const mIcon = document.getElementById('music-icon');
 
             if (!state || state.type === 'main') {
-                // Show music button on Main view
                 if(mBtn) mBtn.style.display = 'flex';
 
                 document.getElementById('main-view').classList.add('view-visible');
@@ -1592,7 +1538,6 @@
                 return;
             }
 
-            // Hide music button and stop music on non-main views (Detailed pages)
             if(mBtn) mBtn.style.display = 'none';
             if(mAudio && !mAudio.paused) {
                 mAudio.pause();
@@ -1821,19 +1766,17 @@
         });
 
        window.addEventListener('popstate', function(event) {
-    const btn = document.getElementById('hamburger-toggle');
-    const overlay = document.getElementById('full-menu-overlay');
+            const btn = document.getElementById('hamburger-toggle');
+            const overlay = document.getElementById('full-menu-overlay');
 
-    // 뒤로가기 눌렀을 때 메뉴가 열려있다면, 페이지 이동 대신 메뉴만 닫음
-    if (overlay && overlay.classList.contains('open')) {
-        btn.classList.remove('active');
-        overlay.classList.remove('open');
-        document.body.style.overflow = 'auto';
-    }
+            if (overlay && overlay.classList.contains('open')) {
+                btn.classList.remove('active');
+                overlay.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            }
 
-    // 기존의 뷰(페이지) 전환 로직 실행
-    renderView(event.state);
-});
+            renderView(event.state);
+        });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
