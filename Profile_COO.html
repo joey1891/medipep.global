@@ -27,30 +27,10 @@
         .profile-container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px; /* 버튼 삭제 후 상단 여백 조정 */
         }
 
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 24px;
-            border: 1px solid var(--cyan-accent);
-            border-radius: 9999px;
-            color: var(--cyan-accent);
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            margin-bottom: 60px;
-        }
-        .back-btn:hover {
-            background: var(--cyan-accent);
-            color: black;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
-        }
-
+        /* 프로필 이미지 스타일 */
         .profile-img-wrapper {
             width: 180px;
             height: 180px;
@@ -70,6 +50,7 @@
             object-fit: cover;
         }
 
+        /* 이름 타이틀 스타일 */
         .glitch-name {
             font-size: 42px;
             font-weight: 900;
@@ -80,6 +61,7 @@
             color: white;
         }
 
+        /* 직함 스타일 */
         .sub-role {
             text-align: center;
             color: var(--cyan-accent);
@@ -90,6 +72,7 @@
             text-transform: uppercase;
         }
 
+        /* 정보 섹션 박스 스타일 */
         .info-section {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(0, 242, 255, 0.1);
@@ -103,6 +86,7 @@
             background: rgba(255, 255, 255, 0.03);
         }
 
+        /* 섹션 제목 스타일 */
         .section-title {
             display: flex;
             align-items: center;
@@ -115,6 +99,7 @@
             letter-spacing: 0.1em;
         }
 
+        /* 리스트 항목 스타일 */
         .list-item {
             margin-bottom: 12px;
             font-size: 14px;
@@ -132,13 +117,6 @@
 <body>
 
     <div class="profile-container">
-        <!-- Home 바로가기 버튼: 리더 섹션으로 연결 -->
-        <div class="flex justify-center">
-            <a href="index.html#leaders" class="back-btn orbitron">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Back to Home
-            </a>
-        </div>
-
         <!-- 상단 프로필 정보 -->
         <div class="profile-img-wrapper">
             <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/shin.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zaGluLmpwZyIsImlhdCI6MTc2OTg0NzI5MywiZXhwIjoxOTI3NTI3MjkzfQ.Gw-7fW1g2Mi3dmeZIyIZnoP6cawAeajMcaPUl8AQJrc" alt="Wonjong Shin">
@@ -147,7 +125,7 @@
         <h1 class="glitch-name orbitron">WONJONG SHIN</h1>
         <div class="sub-role orbitron">COO</div>
 
-        <!-- Academic Background 섹션 -->
+        <!-- 학력 사항 섹션 -->
         <div class="info-section">
             <div class="section-title orbitron">
                 <i class="fa-solid fa-graduation-cap"></i> Academic Background
@@ -163,7 +141,7 @@
             </div>
         </div>
 
-        <!-- Professional Experience 섹션 -->
+        <!-- 경력 사항 섹션 -->
         <div class="info-section">
             <div class="section-title orbitron">
                 <i class="fa-solid fa-briefcase"></i> Professional Experience
@@ -185,7 +163,7 @@
             </div>
         </div>
 
-        <!-- Major Achievements 섹션 -->
+        <!-- 주요 성과 섹션 -->
         <div class="info-section">
             <div class="section-title orbitron">
                 <i class="fa-solid fa-star"></i> Major Achievements
@@ -205,18 +183,16 @@
         </div>
     </div>
 
-    <!-- 브라우저 뒤로가기 및 내비게이션 제어 스크립트 -->
+    <!-- 뒤로가기 제어 스크립트 -->
     <script>
         try {
             if (window.history && window.history.pushState) {
-                // URL 인자를 null로 설정하여 보안 에러 방지
                 window.history.pushState({ page: 'profile' }, "", null);
             }
         } catch (error) {
             console.warn("History pushState is restricted in this environment:", error);
         }
 
-        // 뒤로가기 버튼 클릭 시 메인 페이지의 리더 섹션으로 이동
         window.addEventListener('popstate', function(event) {
             window.location.href = 'index.html#leaders';
         });
