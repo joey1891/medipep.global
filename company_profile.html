@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Company Profile | Medifab Global</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --cyan-accent: #00f2ff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #020205;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .fluid-header {
+            font-size: clamp(1.1rem, 8vw, 5rem);
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: inline-block;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+
+        .leadership-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 1.5rem;
+            border-radius: 2rem;
+            transition: 0.4s;
+            width: 100%;
+        }
+
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--cyan-accent), transparent);
+        }
+
+        .timeline-year-dot {
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--cyan-accent);
+            box-shadow: 0 0 10px var(--cyan-accent);
+        }
+
+        .stage-title {
+            font-size: clamp(1.25rem, 5vw, 1.875rem);
+            word-break: keep-all;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 480px) {
+            #profile-title {
+                font-size: clamp(0.8rem, 7vw, 3rem) !important;
+                letter-spacing: -0.01em !important;
+                line-height: 1.2 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 시각적 뒤로 가기 버튼 제거됨 -->
+
+    <div id="company-profile-view" class="min-h-screen bg-[#020205] pt-24 pb-24 relative overflow-x-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-16 flex flex-col items-center">
+                <h1 id="profile-title"
+                    class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">Company
+                    Profile</h1>
+                <p class="text-cyan-400 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Growth Journey</p>
+            </div>
+
+            <!-- General Information Section -->
+            <section class="mb-24">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-bullseye text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Mission</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">Providing anti-aging
+                            solutions based on innovative materials</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-calendar-check text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Founded</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">January 12, 2016</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-vault text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Capital</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">USD 0.1 M</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-user-tie text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">CEO</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">Cha Mi-Sun</p>
+                    </div>
+                    <div class="leadership-card p-6 flex flex-col items-center text-center">
+                        <i class="fa-solid fa-users-gear text-cyan-400 text-xl mb-4"></i>
+                        <h4 class="orbitron text-[9px] text-white/30 uppercase tracking-widest mb-3">Employees</h4>
+                        <p class="text-[11px] text-white/70 leading-relaxed font-semibold">50 Persons</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="space-y-24">
+                <!-- Stage 3: Scale-Up -->
+                <section>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+                        <span
+                            class="orbitron text-cyan-400 font-bold border-b-2 border-cyan-400 pb-2 tracking-widest text-sm sm:text-base w-fit">2024
+                            ~ Present</span>
+                        <h2 class="orbitron stage-title font-black uppercase text-white">Scale-Up Stage</h2>
+                    </div>
+                    <div class="space-y-12">
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot"></div>
+                            <h3 class="orbitron text-cyan-400 text-lg font-bold mb-4">2025</h3>
+                            <ul class="space-y-3 text-sm text-white/70">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                                    Res Novae Scalp MD: kFDA approval & FDA/CE Listing</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                                    Applied for clinical trial IND for chitosan LTG-Syno</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                                    Selected for govt-funded R&D project (USD 1.73M)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot"></div>
+                            <h3 class="orbitron text-cyan-400 text-lg font-bold mb-4">2024</h3>
+                            <ul class="space-y-3 text-sm text-white/70">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                                    Launched Res Novae beauty business division</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                                    Applied for clinical trial IND for chitosan LTG-S</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-check text-cyan-400 mt-1"></i>
+                                    Selected for govt-funded R&D project (USD 1.55M)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stage 2: Preparation -->
+                <section>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+                        <span
+                            class="orbitron text-white/40 font-bold border-b-2 border-white/10 pb-2 tracking-widest text-sm sm:text-base w-fit">2020
+                            ~ 2023</span>
+                        <h2 class="orbitron stage-title font-black uppercase text-white/80">Preparation Stage</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2023</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Launched Res Novae product brand</li>
+                                <li>Entered into export agreement (USD 5M)</li>
+                                <li>Obtained regulatory approval from Thailand (Husteon)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2022</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Selected for govt-funded R&D project (USD 0.44M)</li>
+                                <li>Relocation & expansion, factory registration</li>
+                                <li>Entered into export agreement (USD 2M)</li>
+                                <li>Obtained kFDA approval for Husteon Mesh/Nasal</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2021</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Selected as "Innovation Enterprise National Representative 1000"</li>
+                                <li>Obtained kFDA approval for Husteon Mesh</li>
+                                <li>Completed FDA listing for Husteon Nasal</li>
+                                <li>Launched Echrever (for export)</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-container">
+                            <div class="timeline-year-dot bg-white/40 shadow-none"></div>
+                            <h3 class="orbitron text-white text-lg font-bold mb-4">2020</h3>
+                            <ul class="space-y-3 text-xs text-white/50">
+                                <li>Obtained medical device manufacturing license</li>
+                                <li>Acquired export approval for Husteon</li>
+                                <li>Obtained ISO13485 certification</li>
+                                <li>Selected for govt-funded R&D project (USD 1.7M)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Stage 1: Early Stage -->
+                <section class="opacity-60">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-12">
+                        <span
+                            class="orbitron text-white/20 font-bold border-b-2 border-white/5 pb-2 tracking-widest text-sm sm:text-base w-fit">~
+                            2019</span>
+                        <h2 class="orbitron stage-title font-black uppercase text-white/40">Early Stage</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                        <div class="p-6 border border-white/5 rounded-2xl">
+                            <div class="orbitron text-white/40 font-bold mb-2">2019</div>
+                            <p class="text-[10px] text-white/30 leading-relaxed">Govt-funded R&D project (USD
+                                0.5M)<br>ISO9001, ISO14001 Certification</p>
+                        </div>
+                        <div class="p-6 border border-white/5 rounded-2xl">
+                            <div class="orbitron text-white/40 font-bold mb-2">2018</div>
+                            <p class="text-[10px] text-white/30 leading-relaxed">Govt-funded R&D project (USD
+                                0.6M)<br>Certified as venture enterprise</p>
+                        </div>
+                        <div class="p-6 border border-white/5 rounded-2xl">
+                            <div class="orbitron text-white/40 font-bold mb-2">2016</div>
+                            <p class="text-[10px] text-white/30 leading-relaxed">Medifab incorporated</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * 뒤로 가기 액션 핸들링 (브라우저, 키보드, 마우스, 모바일 등)
+         * 현재 페이지의 히스토리에 가짜 상태를 추가하여, 사용자가 뒤로 가기를 누를 때
+         * 이벤트를 가로채 메인 페이지의 특정 섹션으로 이동시킵니다.
+         */
+        window.addEventListener('load', function () {
+            // 히스토리에 현재 상태 추가
+            if (window.history && window.history.pushState) {
+                window.history.pushState('forward', null, window.location.href);
+
+                window.onpopstate = function (event) {
+                    // 뒤로 가기가 감지되면 index.html의 최상단 섹션(#hero)으로 리다이렉트
+                    window.location.href = 'index.html#hero';
+                };
+            }
+        });
+    </script>
+</body>
+
+</html>
