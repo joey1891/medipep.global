@@ -1728,10 +1728,7 @@
         }
 
         function navigateToCompanyProfile() {
-            lastSectionId = 'hero';
-            const state = { type: 'profile' };
-            safePushState(state);
-            renderView(state);
+           window.location.href = 'company_profile.html';
         }
 
         function navigateToDetails(category, fromCoreTech = false, sourceSectionId = null) {
