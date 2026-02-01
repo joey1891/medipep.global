@@ -32,6 +32,43 @@
         }
         .orbitron { font-family: 'Orbitron', sans-serif; }
 
+        /* --- New Navigation Styles --- */
+        header#top-nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: 80px;
+            display: flex; align-items: center; justify-content: flex-end; /* 로고 삭제 후 버튼을 우측 정렬 */
+            padding: 0 2rem; z-index: 2000;
+            background: transparent;
+        }
+
+        #hamburger-toggle {
+            background: none; border: none; cursor: pointer; padding: 10px; z-index: 2100;
+            display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+        }
+        #hamburger-toggle span {
+            display: block; width: 28px; height: 2px; background: white;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #hamburger-toggle span:nth-child(2) { width: 18px; }
+        #hamburger-toggle span:nth-child(3) { width: 24px; }
+        
+        #hamburger-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); width: 28px; }
+        #hamburger-toggle.active span:nth-child(2) { opacity: 0; }
+        #hamburger-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); width: 28px; }
+
+        #full-menu-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 2, 5, 0.98); z-index: 2050;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: 0.4s ease;
+        }
+        #full-menu-overlay.open { opacity: 1; pointer-events: auto; }
+        .menu-item {
+            font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 900; color: white; text-decoration: none;
+            margin: 1rem 0; transition: 0.3s; letter-spacing: 0.15em; text-transform: uppercase;
+        }
+        .menu-item:hover { color: var(--cyan-accent); transform: scale(1.05); }
+        /* --- End Navigation Styles --- */
+
         /* Video Background */
         .hero-video-container {
             position: absolute; top: 0; left: 0;
@@ -39,20 +76,17 @@
             z-index: -1;
             overflow: hidden;
             pointer-events: none;
-            background-color: #000; /* 비디오 로드 전 완벽한 블랙 유지 */
+            background-color: #000;
         }
         .hero-video-container video {
             width: 100%; height: 100%;
             object-fit: cover;
             filter: brightness(0.6) contrast(1.1);
-            opacity: 0; /* 초기 상태 투명 */
-            transition: opacity 1s ease-in-out; /* 부드러운 등장 */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             background: black;
         }
-        /* 비디오 재생 중일 때 투명도 해제 */
-        .hero-video-container video.is-playing {
-            opacity: 1;
-        }
+        .hero-video-container video.is-playing { opacity: 1; }
 
         .hero-overlay {
             position: absolute; top: 0; left: 0;
@@ -239,6 +273,27 @@
     </style>
 </head>
 <body>
+
+    <!-- Header & Navigation Overlay -->
+    <header id="top-nav">
+        <!-- Logo Removed as requested -->
+        <button id="hamburger-toggle" onclick="toggleHamburgerMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <div id="full-menu-overlay">
+        <nav class="flex flex-col items-center">
+            <a href="javascript:void(0)" onclick="menuNavigate('hero')" class="menu-item">HOME</a>
+            <a href="javascript:void(0)" onclick="menuNavigate('core-techs')" class="menu-item">CORE TECHS</a>
+            <a href="javascript:void(0)" onclick="menuNavigate('rd-archive')" class="menu-item">R&D ARCHIVE</a>
+            <a href="javascript:void(0)" onclick="menuNavigate('business-portfolio')" class="menu-item">PORTFOLIO</a>
+            <a href="javascript:void(0)" onclick="menuNavigate('leaders')" class="menu-item">LEADERS</a>
+            <a href="javascript:void(0)" onclick="menuNavigate('contact')" class="menu-item">CONTACT</a>
+        </nav>
+    </div>
 
     <!-- Main View Content -->
     <div id="main-view" class="view-visible">
@@ -464,15 +519,11 @@
                         <div class="flex flex-col items-center gap-5">
                             <span class="orbitron text-[10px] text-cyan-400 tracking-[0.4em] font-bold uppercase border-b border-white/10 pb-2">Beauty</span>
                             <div class="flex gap-8 text-white/20 items-center">
-                                <!-- Official Mall -->
                                 <a href="https://resnovae.co.kr/?srsltid=AfmBOorHKw4eho3qP8c6bxlFYhohFXmAoiiq9RD8NBerZB9HOSzll0Ys" target="_blank" class="hover:text-cyan-400 transition text-2xl" title="Official Mall"><i class="fa-solid fa-shop"></i></a>
-                                <!-- Naver Store (Custom SVG for better fidelity) -->
                                 <a href="https://brand.naver.com/resnovae?NaPm=ct%3Dml2i0bzf%7Cci%3Dshopn%7Ctr%3Dnslbrd%7Chk%3D5ce055feadc72f7092a2fcce2e1f387c09d3da6a%7Ctrx%3Dundefined" target="_blank" class="hover:text-cyan-400 transition" title="Naver Store">
                                     <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"/></svg>
                                 </a>
-                                <!-- Kakao Store -->
                                 <a href="https://gift.kakao.com/brand/17552" target="_blank" class="hover:text-cyan-400 transition text-2xl" title="Kakao Store"><i class="fa-solid fa-gift"></i></a>
-                                <!-- Olive Young -->
                                 <a href="https://www.oliveyoung.co.kr/store/display/getBrandShopDetail.do?onlBrndCd=A020314&t_page=%ED%86%B5%ED%95%A9%EA%B2%80%EC%83%89%EA%B2%B0%EA%B3%BC%ED%8E%98%EC%9D%B4%EC%A7%80&t_click=%EB%B8%8C%EB%9E%9C%EB%93%9C%EA%B4%80%EB%B0%94%EB%A1%9C%EA%B0%80%EA%B8%B0&t_brand_name=%EB%A0%88%EC%8A%A4%EB%85%B8%EB%B2%A0" target="_blank" class="hover:text-cyan-400 transition text-2xl" title="Olive Young"><i class="fa-solid fa-bag-shopping"></i></a>
                             </div>
                         </div>
@@ -586,7 +637,7 @@
                     <div class="leadership-card p-6">
                         <span class="cosmetic-category-label">Mask Pack</span>
                         <div class="aspect-square mb-4 rounded-xl overflow-hidden border border-white/5 bg-white/5 mt-4">
-                            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/mask.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9tYXNrLnBuZyIsImlhdCI6MTc2OTg3NDE2NywiZXhwIjoxOTI3NTU0MTY3fQ.reISMyTMPi7EykF5nBAN604A7wFmLu00a3iwaB_E8_M" alt="EV Shot Skin Boosting Mask 5ea" class="w-full h-full object-cover">
+                            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/tS_Ko4AXxf8_0c6519b459d033abb854a14d7de53f7d2c7fb408%20(1).jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS90U19LbzRBWHhmOF8wYzY1MTliNDU5ZDAzM2FiYjg1NGExNGQ3ZGU1M2Y3ZDJjN2ZiNDA4ICgxKS5qcGciLCJpYXQiOjE3Njk4NzQxNjcsImV4cCI6MTkyNzU1NDE2N30.reISMyTMPi7EykF5nBAN604A7wFmLu00a3iwaB_E8_M" alt="EV Shot Skin Boosting Mask 5ea" class="w-full h-full object-cover">
                         </div>
                         <ul class="space-y-4">
                             <li class="text-sm font-semibold text-white/80 leading-tight">EV Shot Skin Boosting Mask 5ea</li>
@@ -1276,7 +1327,7 @@
     <div id="hyper-shot-detail-view" class="view-hidden min-h-screen bg-[#020205] pt-12 pb-24 relative overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16 flex flex-col items-center">
-                <button onclick="navigateToMain()" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
+                <button onclick="navigateToPortfolio('beautydevice')" class="orbitron text-[10px] text-cyan-400 border border-cyan-400/30 px-6 py-2 rounded-full mb-12 hover:bg-cyan-400 hover:text-black transition">
                     <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO PORTFOLIO
                 </button>
                 <h1 id="beauty-detail-title-2" class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">HYPER SHOT</h1>
@@ -1334,6 +1385,36 @@
     </div>
 
     <script>
+        /* --- New Navigation Scripts --- */
+        function toggleHamburgerMenu() {
+            const btn = document.getElementById('hamburger-toggle');
+            const overlay = document.getElementById('full-menu-overlay');
+            btn.classList.toggle('active');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : 'auto';
+        }
+
+        function menuNavigate(id) {
+            // Close menu overlay first
+            const btn = document.getElementById('hamburger-toggle');
+            const overlay = document.getElementById('full-menu-overlay');
+            btn.classList.remove('active');
+            overlay.classList.remove('open');
+            document.body.style.overflow = 'auto';
+
+            // Always navigate to main view
+            navigateToMain();
+
+            // Delay for view transition then scroll
+            setTimeout(() => {
+                const target = document.getElementById(id);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 200);
+        }
+        /* --- End Navigation Scripts --- */
+
         const notionLink = "https://economic-cent-2b8.notion.site/MediFab-Co-Ltd-Company-Introduction-2ef465327095809e8223d649f43a1489?pvs=74";
 
         const resourceData = {
