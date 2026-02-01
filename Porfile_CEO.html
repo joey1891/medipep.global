@@ -27,26 +27,7 @@
         .profile-container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 24px;
-            border: 1px solid var(--cyan-accent);
-            border-radius: 9999px;
-            color: var(--cyan-accent);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        .back-btn:hover {
-            background: var(--cyan-accent);
-            color: black;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            padding: 60px 20px;
         }
 
         .profile-img-wrapper {
@@ -74,7 +55,7 @@
             letter-spacing: 0.1em;
             text-align: center;
             margin-bottom: 10px;
-            text-transform: uppercase;
+            /* text-transform: uppercase; <- 이 부분을 제거하여 소문자가 표시되게 함 */
             color: white;
         }
 
@@ -128,19 +109,12 @@
 <body>
 
     <div class="profile-container">
-        <!-- 상단 네비게이션: 중앙 정렬 -->
-        <div class="flex justify-center items-center mb-12">
-            <a href="index.html#leaders" class="back-btn orbitron text-[10px]">
-                <i class="fa-solid fa-arrow-left mr-2"></i> BACK TO HOME
-            </a>
-        </div>
-
         <!-- 프로필 이미지 -->
         <div class="profile-img-wrapper">
             <img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" alt="Dr. Cha">
         </div>
         
-        <h1 class="glitch-name orbitron">DR. CHA</h1>
+        <h1 class="glitch-name orbitron">Dr. Cha</h1>
         <div class="sub-role orbitron">CEO / FOUNDER</div>
 
         <!-- 학력 사항 -->
@@ -188,21 +162,14 @@
 
     <!-- 브라우저 뒤로가기 및 내비게이션 제어 스크립트 -->
     <script>
-        /**
-         * History API 보안 에러 수정:
-         * 샌드박스/iframe 환경에서는 pushState의 세 번째 인자인 URL 변경이 제한될 수 있습니다.
-         * URL 인자를 null로 설정하여 현재 출처 내에서 상태만 푸시하도록 변경합니다.
-         */
         try {
             if (window.history && window.history.pushState) {
-                // 세 번째 인자(URL)를 전달하지 않거나 null을 사용하여 보안 에러를 방지합니다.
                 window.history.pushState({ page: 'profile' }, "", null);
             }
         } catch (error) {
             console.warn("History pushState is restricted in this environment:", error);
         }
 
-        // 브라우저 뒤로가기 버튼 클릭 시 메인 페이지의 리더 섹션으로 이동
         window.addEventListener('popstate', function(event) {
             window.location.href = 'index.html#leaders';
         });
