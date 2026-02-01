@@ -1418,13 +1418,28 @@
 
     <script>
         /* --- New Navigation Scripts --- */
-        function toggleHamburgerMenu() {
-            const btn = document.getElementById('hamburger-toggle');
-            const overlay = document.getElementById('full-menu-overlay');
-            btn.classList.toggle('active');
-            overlay.classList.toggle('open');
-            document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : 'auto';
+     function toggleHamburgerMenu() {
+    const btn = document.getElementById('hamburger-toggle');
+    const overlay = document.getElementById('full-menu-overlay');
+    const isOpen = overlay.classList.contains('open');
+
+    if (!isOpen) {
+        // 메뉴 열 때 히스토리 상태 추가 (뒤로가기 대응)
+        btn.classList.add('active');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        history.pushState({ type: 'menu_open' }, ""); 
+    } else {
+        // 메뉴 수동 닫기
+        btn.classList.remove('active');
+        overlay.classList.remove('open');
+        document.body.style.overflow = 'auto';
+        // 메뉴 열림 상태에서 추가된 history가 있다면 뒤로가기 실행하여 상태 제거
+        if(history.state && history.state.type === 'menu_open') {
+            history.back();
         }
+    }
+}
 
         function menuNavigate(id) {
             // Close menu overlay first
@@ -1805,9 +1820,20 @@
             }
         });
 
-        window.addEventListener('popstate', function(event) {
-            renderView(event.state);
-        });
+       window.addEventListener('popstate', function(event) {
+    const btn = document.getElementById('hamburger-toggle');
+    const overlay = document.getElementById('full-menu-overlay');
+
+    // 뒤로가기 눌렀을 때 메뉴가 열려있다면, 페이지 이동 대신 메뉴만 닫음
+    if (overlay && overlay.classList.contains('open')) {
+        btn.classList.remove('active');
+        overlay.classList.remove('open');
+        document.body.style.overflow = 'auto';
+    }
+
+    // 기존의 뷰(페이지) 전환 로직 실행
+    renderView(event.state);
+});
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
