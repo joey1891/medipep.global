@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cosmetics | Medifab Global Business Portfolio</title>
+
+    <meta name="description"
+        content="Medifab Global Cosmetics Portfolio: Discover our premium K-beauty solutions including Face and Scalp care products.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --cyan-accent: #00f2ff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #020205;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .fluid-header {
+            font-size: clamp(1.1rem, 8vw, 5rem);
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: inline-block;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+
+        .leadership-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 1.5rem;
+            border-radius: 2rem;
+            transition: 0.4s;
+            width: 100%;
+        }
+
+        .cosmetic-category-label {
+            display: inline-block;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--cyan-accent);
+            color: var(--cyan-accent);
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 480px) {
+            #cosmetics-title {
+                font-size: clamp(0.8rem, 7vw, 3rem) !important;
+                letter-spacing: -0.01em !important;
+                line-height: 1.2 !important;
+                display: block;
+                width: auto;
+                max-width: 100vw;
+                padding: 0 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Cosmetics Content -->
+    <!-- 헤더가 삭제되었으므로 pt-32를 pt-20으로 조정하여 상단 여백을 최적화함 -->
+    <div id="cosmetics-view" class="min-h-screen bg-[#020205] pt-20 pb-24 relative overflow-x-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 flex flex-col items-center">
+                <h1 id="cosmetics-title"
+                    class="orbitron fluid-header font-black tracking-widest text-center uppercase leading-tight">
+                    COSMETICS</h1>
+                <p class="text-white/40 orbitron text-[10px] tracking-[0.4em] uppercase mt-4">Business Portfolio</p>
+            </div>
+
+            <!-- Face Solution Section -->
+            <div class="mb-24">
+                <div
+                    class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 border-b border-white/10 pb-4">
+                    <h2 class="orbitron text-cyan-400 text-2xl font-black flex items-center gap-3 uppercase">
+                        <i class="fa-solid fa-face-smile"></i> FACE SOLUTION
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cleanser -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Cleanser</span>
+                        <div class="space-y-12 mt-6">
+                            <div>
+                                <div
+                                    class="aspect-square mb-3 rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/clean.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9jbGVhbi5qcGciLCJpYXQiOjE3NjkzNjAwMjksImV4cCI6MTkyNzA0MDAyOX0.gx68SR9DVqxsMb3o10F5YW98M6XvX8RczQMm4jRZuZ8"
+                                        alt="Micro Enzyme Deep Cleansing Powder" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Micro Enzyme Deep Cleansing
+                                    Powder 15/40g</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ampoule -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Ampoule</span>
+                        <div class="space-y-12 mt-6">
+                            <!-- Plan Tox -->
+                            <div>
+                                <div class="flex flex-col gap-3 mb-3">
+                                    <div
+                                        class="aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/plan15.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9wbGFuMTUuanBnIiwiaWF0IjoxNzY5ODcyODQ4LCJleHAiOjE5Mjc1NTI4NDh9.4WRM7aznFi_eCGI97Dm5np3fnjdXXsV0FgcITk70qvg"
+                                            alt="Plan Tox Lifting Ampoule 15ml" class="w-full h-full object-cover">
+                                    </div>
+                                    <div
+                                        class="aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/plan30.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9wbGFuMzAuanBnIiwiaWF0IjoxNzY5MzU0OTY5LCJleHAiOjE5MjcwMzQ5Njl9.oRmRXZlQJbfQFbpAfX7oWyBYtXTZmVey4zexy4qVQhk"
+                                            alt="Plan Tox Lifting Ampoule 30ml" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Plan Tox Lifting Ampoule
+                                    15/30ml</p>
+                            </div>
+                            <!-- Phyto Protein -->
+                            <div>
+                                <div class="flex flex-col gap-3 mb-3">
+                                    <div
+                                        class="aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/vol15.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS92b2wxNS5qcGciLCJpYXQiOjE3Njk5NTMyMzcsImV4cCI6MTkyNzYzMzIzN30.6rDAgIAmq8A3n5C3RDrkc2zWygBMRVGT-ErQ3PKlhDA"
+                                            alt="Phyto Protein Volumizing Ampoule 15ml"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <div
+                                        class="aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/Vol30.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9Wb2wzMC53ZWJwIiwiaWF0IjoxNzY5MzU0NzMzLCJleHAiOjE5MjcwMzQ3MzN9.hTuqZjGSJhn5mmX3yEo3abfi3HxwOmUusuV8rLlJVVM"
+                                            alt="Phyto Protein Volumizing Ampoule 30ml"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Phyto Protein Volumizing
+                                    Ampoule 15/30ml</p>
+                            </div>
+                            <!-- Melano Cut Brightening -->
+                            <div>
+                                <div class="flex flex-col gap-3 mb-3">
+                                    <div
+                                        class="aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/br15br15.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9icjE1YnIxNS5wbmciLCJpYXQiOjE3Njk5NTgwOTUsImV4cCI6MTkyNzYzODA5NX0.P7XVp5fE0F4uVQ138N134BS3qYCBu8zMZDmpZAXsdzk"
+                                            alt="Melano Cut Brightening Ampoule 15ml"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                    <div
+                                        class="aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/br30.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9icjMwLmpwZyIsImlhdCI6MTc2OTk1ODExMywiZXhwIjoxOTI3NjM4MTEzfQ.NUmP-rd8lVUMEobfYGkFGk83Cr12RISejvuIAzFnBvA"
+                                            alt="Melano Cut Brightening Ampoule 30ml"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Melano Cut Brightening
+                                    Ampoule 15/30ml</p>
+                            </div>
+                            <!-- Blue Crystal Hydrating -->
+                            <div>
+                                <div class="flex flex-col gap-3 mb-3">
+                                    <div
+                                        class="aspect-square rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                        <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/ddd36457e574846055bb9f6e6b7c638c.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9kZGQzNjQ1N2U1NzQ4NDYwNTViYjlmNmU2YjdjNjM4Yy5qcGciLCJpYXQiOjE3Njk5NTgzMDksImV4cCI6MTkyNzYzODMwOX0.2gc--avFZon8EChYAVfsh_fmBumVc_d4BU6wJNl_r8w"
+                                            alt="Blue Crystal Hydrating Ampoule 15/30ml"
+                                            class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Blue Crystal Hydrating
+                                    Ampoule 15/30ml</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ampoule Booster -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Ampoule Booster</span>
+                        <div class="space-y-8 mt-4">
+                            <div>
+                                <div
+                                    class="aspect-square mb-3 rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/ampoulbooster120.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9hbXBvdWxib29zdGVyMTIwLmpwZyIsImlhdCI6MTc2OTM1MjIxNSwiZXhwIjoxOTI3MDMyMjE1fQ.tp5ESuQR_JrdlskNbpb8XtwQdmSD4LSgosrC1oLOHrM"
+                                        alt="Cellular Water Ampoule Booster" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Cellular Water Ampoule
+                                    Booster 60/120ml</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mask Pack -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Mask Pack</span>
+                        <div
+                            class="aspect-square mb-4 rounded-xl overflow-hidden border border-white/5 bg-white/5 mt-4">
+                            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/mask.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9tYXNrLnBuZyIsImlhdCI6MTc2OTk0MjcwMiwiZXhwIjoxOTI3NjIyNzAyfQ.YdfuzylFO-lrh8x6j2vjolAQRR2CIxrWTWttNQX2zDA"
+                                alt="EV Shot Mask" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sm font-semibold text-white/80 leading-tight">EV Shot Skin Boosting Mask 5ea</p>
+                    </div>
+
+                    <!-- Cream -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Cream</span>
+                        <div
+                            class="aspect-square mb-4 rounded-xl overflow-hidden border border-white/5 bg-white/5 mt-4">
+                            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/250707000867784.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS8yNTA3MDcwMDA4Njc3ODQuanBnIiwiaWF0IjoxNzY5MzUxNjY4LCJleHAiOjE5MjcwMzE2Njh9.5scqWSehvPB0CM27ARsTIXsb96uIH6A_Cq7ic4PZv8E"
+                                alt="Active Barrier Cream" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sm font-semibold text-white/80 leading-tight">Active Barrier Hydrating Cream 50ml
+                        </p>
+                    </div>
+
+                    <!-- Sunscreen -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Sunscreen</span>
+                        <div
+                            class="aspect-square mb-4 rounded-xl overflow-hidden border border-white/5 bg-white/5 mt-4">
+                            <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/sun.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zdW4uanBnIiwiaWF0IjoxNzY5MzUxNTA3LCJleHAiOjE5MjcwMzE1MDd9._uof1BR2WmWfHmLyOok3qKYXh2aVftMk_RpCgugXWzU"
+                                alt="Toning Sun Protector" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sm font-semibold text-white/80 leading-tight">Refreshing Toning Sun Protector
+                            Cream 40ml</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scalp Solution Section -->
+            <div>
+                <div
+                    class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 border-b border-white/10 pb-4">
+                    <h2 class="orbitron text-cyan-400 text-2xl font-black flex items-center gap-3 uppercase">
+                        <i class="fa-solid fa-wind"></i> SCALP CARE
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Ampoule -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Ampoule</span>
+                        <div class="space-y-8 mt-4">
+                            <div>
+                                <div
+                                    class="aspect-square mb-3 rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/fe99474f1d21bb4e898bb349b2e5c76a.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9mZTk5NDc0ZjFkMjFiYjRlODk4YmIzNDliMmU1Yzc2YS5qcGciLCJpYXQiOjE3NjkzNDk4MDUsImV4cCI6MTkyNzAyOTgwNX0.XUaHM29eBlSzZe1HvBsDXv5e1nhuUg7fKyAHlbVsOjk"
+                                        alt="Expert Shot Scalp Ampoule" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Expert Shot Scalp Ampoule
+                                    15ml</p>
+                            </div>
+                            <div>
+                                <div
+                                    class="aspect-square mb-3 rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/scalp3ea.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zY2FscDNlYS5qcGciLCJpYXQiOjE3Njk4NzY3ODUsImV4cCI6MTkyNzU1Njc4NX0.0TH3Qhjgx3wmBAhJ7SUoNwwuDXnvNDMTWDC0SmEto5Y"
+                                        alt="Expert Shot Scalp Ampoule Set" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Expert Shot Scalp Ampoule
+                                    15ml * 3ea</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Shampoo -->
+                    <div class="leadership-card p-6">
+                        <span class="cosmetic-category-label">Shampoo</span>
+                        <div class="space-y-8 mt-4">
+                            <div>
+                                <div
+                                    class="aspect-square mb-3 rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/shampu.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zaGFtcHUuanBnIiwiaWF0IjoxNzY5ODczMTU2LCJleHAiOjE5Mjc1NTMxNTZ9.rpyILNhH4uQFS67Q9sKgiUDzhX7a_sWLknZvDHbzMog"
+                                        alt="Root Vitality Shampoo 100ml" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Root Vitality Volume
+                                    Shampoo 100ml</p>
+                            </div>
+                            <div>
+                                <div
+                                    class="aspect-square mb-3 rounded-xl overflow-hidden border border-white/5 bg-white/5">
+                                    <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/shampoo300ml.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zaGFtcG9vMzAwbWwuanBnIiwiaWF0IjoxNzY5ODc0MDY0LCJleHAiOjE5Mjc1NTQwNjR9.Q_kA-8HIr6_asLAxPIMVs_i_06Aix0ItovUPyJDZzHM"
+                                        alt="Root Vitality Shampoo 300ml" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-sm font-semibold text-white/80 leading-tight">Root Vitality Volume
+                                    Shampoo 300ml</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-black border-t border-white/5 text-center relative z-10">
+        <div
+            class="text-[9px] md:text-[11px] orbitron font-bold tracking-[0.4em] text-white/20 text-center uppercase leading-loose">
+            &copy;2026. MEDIFAB. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * 뒤로 가기 제어 스크립트
+         * 사용자가 브라우저 뒤로 가기, 마우스 뒤로 가기, 핸드폰 뒤로 가기 버튼 등을 눌렀을 때
+         * index.html의 비즈니스 포트폴리오 섹션으로 이동하도록 설정합니다.
+         */
+        (function () {
+            // 현재 상태를 히스토리에 추가하여 뒤로 가기 이벤트가 발생할 수 있는 여지를 만듭니다.
+            history.pushState(null, null, location.href);
+
+            window.onpopstate = function () {
+                // 뒤로 가기가 실행되면 메인 페이지의 특정 섹션으로 이동합니다.
+                window.location.replace("index.html#business-portfolio");
+            };
+        })();
+    </script>
+</body>
+
+</html>
