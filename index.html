@@ -68,11 +68,24 @@
             background: rgba(2, 2, 5, 0.98); z-index: 2050;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             opacity: 0; pointer-events: none; transition: 0.4s ease;
+            padding: 0 10%;
         }
         #full-menu-overlay.open { opacity: 1; pointer-events: auto; }
+        
+        /* 좁은 화면 최적화 메뉴 스타일 */
         .menu-item {
-            font-family: 'Orbitron', sans-serif; font-size: 2rem; font-weight: 900; color: white; text-decoration: none;
-            margin: 0.8rem 0; transition: 0.3s; letter-spacing: 0.15em; text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif; 
+            font-size: clamp(1rem, 6.5vw, 2.2rem); /* 화면 폭에 맞춰 폰트 축소 */
+            font-weight: 900; 
+            color: white; 
+            text-decoration: none;
+            margin: clamp(0.4rem, 2vh, 0.8rem) 0; 
+            transition: 0.3s; 
+            letter-spacing: 0.1em; 
+            text-transform: uppercase;
+            white-space: nowrap; /* 절대 줄바꿈 되지 않도록 설정 */
+            display: block;
+            text-align: center;
         }
         .menu-item:hover { color: var(--cyan-accent); transform: scale(1.05); }
 
@@ -240,7 +253,7 @@
             <i class="fa-solid fa-xmark text-4xl"></i>
         </button>
 
-        <nav class="flex flex-col items-center">
+        <nav class="flex flex-col items-center w-full">
             <a href="#" onclick="safeMenuNavigate('hero', event)" class="menu-item">HOME</a>
             <a href="company_profile.html" class="menu-item">PROFILE</a>
             <a href="#" onclick="safeMenuNavigate('core-techs', event)" class="menu-item">CORE TECHS</a>
