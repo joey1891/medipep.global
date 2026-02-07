@@ -66,16 +66,16 @@
         #full-menu-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(2, 2, 5, 0.98); z-index: 2050;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            display: flex; flex-direction: column; align-items: flex-start; /* 왼쪽 정렬로 변경 */
+            justify-content: center;
             opacity: 0; pointer-events: none; transition: 0.4s ease;
-            padding: 0 10%;
+            padding: 0 15%; /* 왼쪽 정렬 시 여백 조정 */
         }
         #full-menu-overlay.open { opacity: 1; pointer-events: auto; }
         
-        /* 좁은 화면 최적화 메뉴 스타일 */
         .menu-item {
             font-family: 'Orbitron', sans-serif; 
-            font-size: clamp(1rem, 6.5vw, 2.2rem); /* 화면 폭에 맞춰 폰트 축소 */
+            font-size: clamp(1rem, 6.5vw, 2.2rem); 
             font-weight: 900; 
             color: white; 
             text-decoration: none;
@@ -83,11 +83,11 @@
             transition: 0.3s; 
             letter-spacing: 0.1em; 
             text-transform: uppercase;
-            white-space: nowrap; /* 절대 줄바꿈 되지 않도록 설정 */
+            white-space: nowrap; 
             display: block;
-            text-align: center;
+            text-align: left; /* 왼쪽 정렬로 변경 */
         }
-        .menu-item:hover { color: var(--cyan-accent); transform: scale(1.05); }
+        .menu-item:hover { color: var(--cyan-accent); transform: translateX(10px); } /* 호스트 시 오른쪽으로 살짝 이동 효과 */
 
         #music-btn {
             position: fixed; bottom: 30px; right: 30px; z-index: 5000;
@@ -222,6 +222,7 @@
             .hero-title { font-size: clamp(1.8rem, 11vw, 4.5rem) !important; }
             .rd-bg-image { background-position: center; opacity: 0.4; }
             .rd-overlay { background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%); }
+            #full-menu-overlay { padding: 0 10%; }
         }
     </style>
 </head>
@@ -253,7 +254,7 @@
             <i class="fa-solid fa-xmark text-4xl"></i>
         </button>
 
-        <nav class="flex flex-col items-center w-full">
+        <nav class="flex flex-col items-start w-full"> <!-- items-start로 변경 -->
             <a href="#" onclick="safeMenuNavigate('hero', event)" class="menu-item">HOME</a>
             <a href="company_profile.html" class="menu-item">PROFILE</a>
             <a href="#" onclick="safeMenuNavigate('core-techs', event)" class="menu-item">CORE TECHS</a>
@@ -387,14 +388,13 @@
             </div>
         </section>
 
-        <!-- 06. 리더 섹션 (리더 프로필 연결 완료) -->
+        <!-- 06. 리더 섹션 -->
         <section id="leaders" class="py-24 md:py-40 bg-[#050508] relative z-10 border-t border-white/5">
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <h2 class="orbitron fluid-header font-black mb-16 tracking-tight sm:tracking-[0.2em] uppercase">
                     CORPORATE <br> LEADERS
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Dr. Cha 클릭 시 Profile_CEO.html 이동 -->
                     <a href="Profile_CEO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
                         <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
                             <img src="https://res.cloudinary.com/dnzaz71su/image/upload/v1769256442/1669346928640_urwf59.jpg" class="w-full h-full object-cover">
@@ -402,7 +402,6 @@
                         <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CEO</div>
                         <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Dr. Cha</div>
                     </a>
-                    <!-- Mr. Shin 클릭 시 Profile_COO.html 이동 -->
                     <a href="Profile_COO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
                         <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
                             <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/shin.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9zaGluLmpwZyIsImlhdCI6MTc2OTg0NzI5MywiZXhwIjoxOTI3NTI3MjkzfQ.Gw-7fW1g2Mi3dmeZIyIZnoP6cawAeajMcaPUl8AQJrc" class="w-full h-full object-cover">
@@ -410,7 +409,6 @@
                         <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">COO</div>
                         <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Mr. Shin</div>
                     </a>
-                    <!-- Mr. Seo 클릭 시 Profile_CFO.html 이동 -->
                     <a href="Profile_CFO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
                         <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
                             <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/SEO.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS9TRU8uanBnIiwiaWF0IjoxNzY5ODUwMjY4LCJleHAiOjE5Mjc1MzAyNjh9.i44dW7X6BnGfGiA156xyYkZWveRXAYpS9IbmlRIuCOQ" class="w-full h-full object-cover">
@@ -418,7 +416,6 @@
                         <div class="text-[9px] font-bold text-cyan-400 orbitron tracking-widest mb-1 uppercase">CFO</div>
                         <div class="text-xl font-bold group-hover:text-cyan-400 transition-colors">Mr. Seo</div>
                     </a>
-                    <!-- Dr. Kim 클릭 시 profile_CTO.html 이동 -->
                     <a href="profile_CTO.html" class="leadership-card flex flex-col items-center hover:border-cyan-400/50 transition-all cursor-pointer group">
                         <div class="w-20 h-20 rounded-full overflow-hidden border border-white/10 mb-6 shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all">
                             <img src="https://rayhgqcpupwmwpymtkwg.supabase.co/storage/v1/object/sign/Medifab%20Global%20Image/0048222_1_ham0s6.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jNzc5OGQ0YS02MzU1LTRlNmUtYTBjMC1mYjYwMGZlMWIxYzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNZWRpZmFiIEdsb2JhbCBJbWFnZS8wMDQ4MjIyXzFfaGFtMHM2LnBuZyIsImlhdCI6MTc2OTg1MDQzOCwiZXhwIjoxOTI3NTMwNDM4fQ.9vKVcX1r9xWxOUoLmPThEMVkTFJkKkzJOa7aZJ32rgo" class="w-full h-full object-cover">
@@ -448,7 +445,6 @@
                         <div class="flex flex-col items-center gap-5">
                             <span class="orbitron text-[10px] text-white/40 tracking-[0.4em] font-bold uppercase border-b border-white/10 pb-2">Medical</span>
                             <div class="flex gap-8 text-white/20">
-                                <!-- Updated LinkedIn URL -->
                                 <a href="https://www.linkedin.com/company/medifab-global/?viewAsMember=true" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
                                 <a href="https://www.instagram.com/medifab_global/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
                                 <a href="https://www.instagram.com/resnovae_aesthetics/" target="_blank" class="hover:text-cyan-400 transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
@@ -491,7 +487,6 @@
                 </div>
             </div>
 
-            <!-- [Added] Company Info -->
             <div class="flex flex-col items-center gap-3 text-[10px] md:text-xs text-white/30 font-medium leading-relaxed max-w-2xl mx-auto pt-8 border-t border-white/5 w-full">
                 <div class="orbitron text-cyan-400/50 text-[9px] tracking-[0.4em] uppercase mb-1">Company Info</div>
                 <div class="flex flex-wrap justify-center gap-x-4 gap-y-1">
@@ -514,9 +509,6 @@
     <!-- MAIN VIEW END -->
 
     <script>
-        /**
-         * 안전한 내부 섹션 이동 함수
-         */
         function safeMenuNavigate(id, event) {
             if (event && event.preventDefault) event.preventDefault();
             
@@ -535,9 +527,6 @@
             }, 150);
         }
 
-        /**
-         * 메뉴 닫기 공통 로직
-         */
         function closeHamburgerMenu() {
             const btn = document.getElementById('hamburger-toggle');
             const overlay = document.getElementById('full-menu-overlay');
@@ -548,9 +537,6 @@
             }
         }
 
-        /**
-         * 햄버거 메뉴 토글 (History API 연동)
-         */
         function toggleHamburgerMenu() {
             const btn = document.getElementById('hamburger-toggle');
             const overlay = document.getElementById('full-menu-overlay');
@@ -571,9 +557,6 @@
             }
         }
 
-        /**
-         * 브라우저 뒤로가기 감지 로직
-         */
         window.addEventListener('popstate', function(event) {
             const overlay = document.getElementById('full-menu-overlay');
             if (overlay && overlay.classList.contains('open')) {
@@ -581,9 +564,6 @@
             }
         });
 
-        /**
-         * 배경 음악 제어
-         */
         const bgMusic = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-btn');
         const musicIcon = document.getElementById('music-icon');
@@ -602,9 +582,6 @@
             }
         }
 
-        /**
-         * 메인 뷰 상태 보장
-         */
         function navigateToMain() {
             const mainView = document.getElementById('main-view');
             if (mainView) {
@@ -613,16 +590,10 @@
             }
         }
 
-        /**
-         * Company Profile 페이지로 이동
-         */
         function navigateToCompanyProfile(event) {
             window.location.href = 'company_profile.html';
         }
 
-        /**
-         * 비즈니스 포트폴리오 이동 로직
-         */
         function navigateToPortfolio(category, sourceId, event) {
             if (event && event.preventDefault) event.preventDefault();
             
@@ -635,9 +606,6 @@
             }
         }
 
-        /**
-         * 코어테크 및 R&D 아카이브 상세 페이지 이동 로직
-         */
         function navigateToDetails(category, fromCoreTech, sourceId, event) {
             if (event && event.preventDefault) event.preventDefault();
             
