@@ -67,14 +67,23 @@
             margin-bottom: 2rem;
         }
 
-        .tech-table {
+        /* Responsive Table Styles */
+        .tech-table-wrapper {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 1.5rem 0;
-            font-size: 0.85rem;
+            overflow-x: auto;
             border: 1px solid rgba(0, 242, 255, 0.1);
             border-radius: 1rem;
+            margin: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tech-table {
+            width: 100%;
+            min-width: 500px; /* Ensures horizontal scroll on mobile */
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.85rem;
             overflow: hidden;
         }
 
@@ -87,6 +96,7 @@
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .tech-table td {
@@ -109,6 +119,18 @@
             font-size: 0.65rem;
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 1rem;
+        }
+
+        /* Scrollbar styling for better visibility on dark backgrounds */
+        .tech-table-wrapper::-webkit-scrollbar {
+            height: 4px;
+        }
+        .tech-table-wrapper::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .tech-table-wrapper::-webkit-scrollbar-thumb {
+            background: rgba(0, 242, 255, 0.3);
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -167,7 +189,7 @@
                     </div>
                 </div>
 
-                <!-- Comparison Table -->
+                <!-- Platform Comparison Table -->
                 <div class="mt-16 pt-8 border-t border-white/10">
                     <h4
                         class="orbitron text-xs font-bold text-cyan-400 mb-6 uppercase tracking-widest flex items-center gap-2">
@@ -222,7 +244,7 @@
                 </div>
             </div>
 
-            <!-- Additional Technical Data -->
+            <!-- Brief Feature Highlights -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 mb-32">
                 <div class="p-8 border border-white/5 bg-white/5 rounded-3xl">
                     <h5 class="orbitron text-cyan-400 text-xs font-bold mb-4 uppercase tracking-widest">Core Concept
@@ -263,37 +285,40 @@
                         </div>
 
                         <p class="font-bold text-white mb-2">Comparative Physical Properties:</p>
-                        <table class="tech-table">
-                            <thead>
-                                <tr>
-                                    <th>Feature</th>
-                                    <th>Human Dermis (HADM)</th>
-                                    <th>Porcine Dermis (PADM)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Epidermal Thickness</td>
-                                    <td>$50\text{--}120\,\mu m$</td>
-                                    <td>$30\text{--}140\,\mu m$ (Highly Similar)</td>
-                                </tr>
-                                <tr>
-                                    <td>Collagen Alignment</td>
-                                    <td>Isotropic ($OI$ 0.08)</td>
-                                    <td>Anisotropic ($OI$ 0.61)</td>
-                                </tr>
-                                <tr>
-                                    <td>Tensile Strength</td>
-                                    <td>$\approx 15.7\,MPa$</td>
-                                    <td>$\approx 7.7\text{--}10.2\,MPa$ (Predictable)</td>
-                                </tr>
-                                <tr>
-                                    <td>Supply Stability</td>
-                                    <td>Limited (Donation-based)</td>
-                                    <td>Standardized (Industrial scale)</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <!-- Updated table wrapper for horizontal scroll -->
+                        <div class="tech-table-wrapper">
+                            <table class="tech-table">
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>Human Dermis (HADM)</th>
+                                        <th>Porcine Dermis (PADM)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Epidermal Thickness</td>
+                                        <td>$50\text{--}120\,\mu m$</td>
+                                        <td>$30\text{--}140\,\mu m$ (Highly Similar)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Collagen Alignment</td>
+                                        <td>Isotropic ($OI$ 0.08)</td>
+                                        <td>Anisotropic ($OI$ 0.61)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tensile Strength</td>
+                                        <td>$\approx 15.7\,MPa$</td>
+                                        <td>$\approx 7.7\text{--}10.2\,MPa$ (Predictable)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Supply Stability</td>
+                                        <td>Limited (Donation-based)</td>
+                                        <td>Standardized (Industrial scale)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
