@@ -10,6 +10,17 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- MathJax for High-Quality Molecular Notation Rendering -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
             --cyan-accent: #00f2ff;
@@ -46,6 +57,81 @@
             border-left: 2px solid var(--cyan-accent);
             padding-left: 1.5rem;
             margin-bottom: 2rem;
+        }
+
+        .deep-dive-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 242, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Responsive Table Styles */
+        .tech-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tech-table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.85rem;
+            overflow: hidden;
+        }
+
+        .tech-table th {
+            background: rgba(0, 242, 255, 0.05);
+            color: var(--cyan-accent);
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .tech-table td {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+            vertical-align: top;
+        }
+
+        .highlight-text {
+            color: var(--cyan-accent);
+            font-weight: 600;
+        }
+
+        .faq-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--cyan-accent);
+            border-radius: 2rem;
+            font-size: 0.65rem;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        /* Custom Scrollbar */
+        .tech-table-wrapper::-webkit-scrollbar {
+            height: 4px;
+        }
+        .tech-table-wrapper::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .tech-table-wrapper::-webkit-scrollbar-thumb {
+            background: rgba(0, 242, 255, 0.3);
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -107,7 +193,7 @@
             </div>
 
             <!-- Additional Technical Data -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 mb-32">
                 <div class="p-8 border border-white/5 bg-white/5 rounded-3xl">
                     <h5 class="orbitron text-cyan-400 text-xs font-bold mb-4 uppercase tracking-widest">Key Feature</h5>
                     <p class="text-sm text-white/50 leading-relaxed">CHITOGEN™ acts as a smart scaffold that responds to
@@ -121,12 +207,115 @@
                     </p>
                 </div>
             </div>
+
+            <!-- Technical FAQ Section -->
+            <div id="faq" class="border-t border-white/10 pt-24">
+                <div class="mb-16">
+                    <h2 class="orbitron text-3xl md:text-5xl font-bold tracking-tighter uppercase mb-4">Technical <span class="text-cyan-400">FAQs</span></h2>
+                    <p class="text-white/40 text-sm uppercase tracking-[0.3em]">Comparative Analysis of Regenerative Biomaterials</p>
+                </div>
+
+                <!-- FAQ 1: Comparison with PDRN, Exosomes, PLLA, and PDLLA -->
+                <div class="deep-dive-card">
+                    <span class="faq-badge">Question 01</span>
+                    <h3 class="orbitron text-xl text-white mb-6">How does CHITOGEN™ differ from PDRN, Exosomes, PLLA, and PDLLA in terms of regenerative efficacy?</h3>
+                    <div class="space-y-6 text-white/70 text-sm md:text-base leading-relaxed">
+                        <p>
+                            CHITOGEN™ stands out by providing a <span class="highlight-text">biocompatible, pH-balanced microenvironment</span>. While other materials rely on irritation or fragile signals, Chitosan uses direct molecular interaction to lead tissue recovery.
+                        </p>
+                        <div class="tech-table-wrapper">
+                            <table class="tech-table">
+                                <thead>
+                                    <tr>
+                                        <th>Biomaterial</th>
+                                        <th>Molecular Structure</th>
+                                        <th>Regenerative Mechanism</th>
+                                        <th>Primary Limitation</th>
+                                        <th>CHITOGEN™ Superiority</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="text-white font-bold">PDRN</span></td>
+                                        <td>DNA Fragments</td>
+                                        <td>Adenosine $A_{2A}$ Receptor signaling</td>
+                                        <td>Short half-life; lacks structural persistence</td>
+                                        <td><span class="highlight-text">Scaffold-driven stability</span> for sustained signaling.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-white font-bold">Exosomes</span></td>
+                                        <td>Nano Vesicles</td>
+                                        <td>Intercellular cargo delivery</td>
+                                        <td>Fragility; rapid systemic clearance</td>
+                                        <td><span class="highlight-text">Protective nano-reservoir</span> preventing early degradation.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-white font-bold">PLLA</span></td>
+                                        <td>Semicrystalline Polymer</td>
+                                        <td>Volume via chronic foreign body response</td>
+                                        <td>Risk of nodules; acidic local environment</td>
+                                        <td rowspan="2" class="align-middle border-l border-white/10"><span class="highlight-text">Natural pH buffering</span> that neutralizes inflammation from acidic by-products.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-white font-bold">PDLLA</span></td>
+                                        <td>Amorphous (Porous)</td>
+                                        <td>Fibroblast activation via degradation</td>
+                                        <td>Produced acidic by-products; variable duration</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="text-cyan-400 font-bold">CHITOGEN™</span></td>
+                                        <td><span class="highlight-text">Natural Polycation</span></td>
+                                        <td><span class="highlight-text">Cationic Adhesion & Buffer</span></td>
+                                        <td>N/A</td>
+                                        <td><span class="highlight-text">Direct cell adhesion + 2x collagen density + Antimicrobial.</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2: Quantitative Superiority -->
+                <div class="deep-dive-card">
+                    <span class="faq-badge">Question 02</span>
+                    <h3 class="orbitron text-xl text-white mb-6">What are the quantitative benchmarks proving Chitosan's superior regenerative power?</h3>
+                    <div class="space-y-6 text-white/70 text-sm md:text-base leading-relaxed">
+                        <p>Unlike materials that rely on simple volume filling, CHITOGEN™ is verified through measurable regenerative performance:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                            <div class="bg-white/5 p-5 rounded-2xl border border-white/5">
+                                <h5 class="text-cyan-400 font-bold text-xs uppercase mb-2">Collagen Density Enhancement</h5>
+                                <p class="text-xs">Masson's Trichrome analysis reveals a <span class="highlight-text">2x increase</span> in collagen density ($\approx 41.9\%$) compared to control groups.</p>
+                            </div>
+                            <div class="bg-white/5 p-5 rounded-2xl border border-white/5">
+                                <h5 class="text-cyan-400 font-bold text-xs uppercase mb-2">Hemostatic Speed</h5>
+                                <p class="text-xs">Reduces clinical clotting time to just <span class="highlight-text">2 minutes</span>, ensuring a cleaner workspace for healing.</p>
+                            </div>
+                            <div class="bg-white/5 p-5 rounded-2xl border border-white/5">
+                                <h5 class="text-cyan-400 font-bold text-xs uppercase mb-2">Inflammatory Control</h5>
+                                <p class="text-xs">Significant downregulation of $\text{TNF-}\alpha$ and $\text{IL-6}$ while boosting $\text{SOD}$ activity for antioxidant defense.</p>
+                            </div>
+                            <div class="bg-white/5 p-5 rounded-2xl border border-white/5">
+                                <h5 class="text-cyan-400 font-bold text-xs uppercase mb-2">Antimicrobial Defense</h5>
+                                <p class="text-xs"><span class="highlight-text">99.9% reduction</span> in bacteria within 24 hours, preventing the MMP over-expression that halts regeneration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Summary -->
+                <div class="mt-12 p-8 text-center bg-white/5 rounded-3xl border border-white/10">
+                    <p class="orbitron text-cyan-400 text-xs font-bold mb-4 uppercase tracking-[0.3em]">Scientific Conclusion</p>
+                    <p class="text-lg md:text-2xl font-light leading-relaxed italic text-white/90">
+                        "CHITOGEN™ is a <span class="highlight-text">Platform Biomaterial</span> that neutralizes the acidic risks of PLA<br class="hidden md:block"> 
+                        and provides the structural persistence lacking in PDRN and Exosomes."
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- 브라우저 뒤로 가기 시 인덱스 페이지의 특정 섹션으로 이동하도록 보장하는 스크립트 (선택 사항) -->
+    <!-- Script for back navigation -->
     <script>
-        // 사용자가 직접 URL을 입력해서 들어온 경우에도 뒤로 가기 시 메인 섹션으로 유도
         window.addEventListener('load', function () {
             if (window.history.length <= 1) {
                 window.history.pushState(null, "", window.location.href);
