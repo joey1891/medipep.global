@@ -10,6 +10,17 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- MathJax for High-Quality Molecular Notation Rendering -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
             --cyan-accent: #00f2ff;
@@ -46,6 +57,58 @@
             border-left: 2px solid var(--cyan-accent);
             padding-left: 1.5rem;
             margin-bottom: 2rem;
+        }
+
+        .deep-dive-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 242, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .tech-table th {
+            background: rgba(0, 242, 255, 0.05);
+            color: var(--cyan-accent);
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tech-table td {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .highlight-text {
+            color: var(--cyan-accent);
+            font-weight: 600;
+        }
+
+        .faq-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--cyan-accent);
+            border-radius: 2rem;
+            font-size: 0.65rem;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -154,7 +217,7 @@
             </div>
 
             <!-- Additional Technical Data -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 mb-32">
                 <div class="p-8 border border-white/5 bg-white/5 rounded-3xl">
                     <h5 class="orbitron text-cyan-400 text-xs font-bold mb-4 uppercase tracking-widest">Synergy Concept
                     </h5>
@@ -170,6 +233,108 @@
                         versatility as a medical-grade regenerative solution.</p>
                 </div>
             </div>
+
+            <!-- Technical FAQ Section -->
+            <div id="faq" class="border-t border-white/10 pt-24">
+                <div class="mb-16">
+                    <h2 class="orbitron text-3xl md:text-5xl font-bold tracking-tighter uppercase mb-4">Technical <span class="text-cyan-400">FAQs</span></h2>
+                    <p class="text-white/40 text-sm uppercase tracking-[0.3em]">Molecular Synergy & Regeneration Proof</p>
+                </div>
+
+                <!-- FAQ 1 -->
+                <div class="deep-dive-card">
+                    <span class="faq-badge">Question 01</span>
+                    <h3 class="orbitron text-xl text-white mb-6">How does CHITOGENIX™ establish a regenerative microenvironment?</h3>
+                    <div class="space-y-6 text-white/70 text-sm md:text-base leading-relaxed">
+                        <p>
+                            The platform utilizes the unique <span class="highlight-text">polycationic nature</span> of Chitosan. Its primary amine groups ($-NH_2$) become protonated into $\text{-NH}_3^+$ in physiological environments ($pK_a \approx 6.3\text{--}6.5$).
+                        </p>
+                        <p>
+                            This positive charge creates electrostatic attraction with the negatively charged phospholipids of mammalian cell membranes, significantly promoting <span class="highlight-text">cell adhesion, proliferation, and differentiation</span>.
+                        </p>
+                        
+                        <p class="font-bold text-white mb-2 uppercase text-xs tracking-widest">Clinical Indicators after Application:</p>
+                        <table class="tech-table">
+                            <thead>
+                                <tr>
+                                    <th>Indicator</th>
+                                    <th>Significance</th>
+                                    <th>Quantitative Trend</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$\text{TNF-}\alpha$</td>
+                                    <td>Pro-inflammatory cytokine</td>
+                                    <td>Significant decrease ($p < 0.05$)</td>
+                                </tr>
+                                <tr>
+                                    <td>$\text{IL-6}$</td>
+                                    <td>Inflammatory response amplifier</td>
+                                    <td>Stabilized to baseline</td>
+                                </tr>
+                                <tr>
+                                    <td>$\text{SOD}$</td>
+                                    <td>Antioxidant enzyme activity</td>
+                                    <td>Significant increase ($p < 0.05$)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="deep-dive-card">
+                    <span class="faq-badge">Question 02</span>
+                    <h3 class="orbitron text-xl text-white mb-6">What "biological signals" are delivered by the dECM component?</h3>
+                    <div class="space-y-6 text-white/70 text-sm md:text-base leading-relaxed">
+                        <p>
+                            REGENTRIX™ (dECM) delivers a "cocktail" of synergistic proteins and growth factors that act as <span class="highlight-text">molecular work instructions</span> for the cells.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                                <p class="text-xs font-bold text-cyan-400 mb-1">Angiogenesis (VEGF)</p>
+                                <p class="text-xs">Binds to $\text{VEGFR}$ to restore blood supply and nutrient delivery.</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                                <p class="text-xs font-bold text-cyan-400 mb-1">Proliferation (bFGF)</p>
+                                <p class="text-xs">Induces fibroblast activity and commands new ECM synthesis.</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                                <p class="text-xs font-bold text-cyan-400 mb-1">Remodeling ($\text{TGF-}\beta$)</p>
+                                <p class="text-xs">Promotes collagen synthesis via the $\text{SMAD}$ signaling pathway.</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                                <p class="text-xs font-bold text-cyan-400 mb-1">Epithelialization (HGF)</p>
+                                <p class="text-xs">Stimulates epithelial cell migration while inhibiting scar formation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="deep-dive-card border-cyan-400/20 bg-cyan-400/5">
+                    <span class="faq-badge">Question 03</span>
+                    <h3 class="orbitron text-xl text-white mb-6">Why is the hybrid combination of Chitosan and dECM necessary?</h3>
+                    <div class="space-y-6 text-white/70 text-sm md:text-base leading-relaxed">
+                        <p>The synergy is based on a mutually complementary mechanism:</p>
+                        <ul class="list-disc list-inside space-y-4 text-sm">
+                            <li><span class="highlight-text">Stabilization:</span> Chitosan forms a "nano-reservoir" around growth factors, protecting them from enzymatic inactivation and extending their half-life dozens of times.</li>
+                            <li><span class="highlight-text">Mechanical Reinforcement:</span> Chitosan strengthens the physical skeleton of the dECM hydrogel through chain entanglement, preventing it from being washed away in clinical settings.</li>
+                            <li><span class="highlight-text">Timed Release:</span> As the complex degrades at a rate synchronized with tissue regeneration, it ensures a sustained and controlled release of signaling proteins.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Final Summary -->
+                <div class="mt-12 p-8 text-center bg-white/5 rounded-3xl border border-white/10">
+                    <p class="orbitron text-cyan-400 text-xs font-bold mb-4 uppercase tracking-[0.3em]">Scientific Conclusion</p>
+                    <p class="text-lg md:text-2xl font-light leading-relaxed italic text-white/90">
+                        "CHITOGEN™ builds the <span class="highlight-text">Safe Workspace</span>,<br class="hidden md:block"> 
+                        while REGENTRIX™ provides the <span class="highlight-text">Precise Blueprints</span> for healing."
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -178,14 +343,11 @@
          * 뒤로 가기 감지 및 메인 페이지 섹션 이동 로직
          */
         window.addEventListener('load', function () {
-            // 사용자가 히스토리 없이 직접 들어온 경우를 위해 상태 추가
             if (window.history.length <= 1) {
                 window.history.pushState({ page: 'chitogenix' }, "", window.location.href);
             }
 
-            // popstate 이벤트를 통해 뒤로 가기 행위 포착
             window.onpopstate = function (event) {
-                // 특정 해시(#core-techs)를 포함하여 메인으로 이동
                 window.location.href = "index.html#core-techs";
             };
         });
