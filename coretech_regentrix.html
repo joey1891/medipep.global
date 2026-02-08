@@ -10,6 +10,17 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- MathJax for High-Quality Molecular Notation Rendering -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         :root {
             --cyan-accent: #00f2ff;
@@ -46,6 +57,58 @@
             border-left: 2px solid var(--cyan-accent);
             padding-left: 1.5rem;
             margin-bottom: 2rem;
+        }
+
+        .deep-dive-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 242, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .tech-table th {
+            background: rgba(0, 242, 255, 0.05);
+            color: var(--cyan-accent);
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tech-table td {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .highlight-text {
+            color: var(--cyan-accent);
+            font-weight: 600;
+        }
+
+        .faq-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--cyan-accent);
+            border-radius: 2rem;
+            font-size: 0.65rem;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -160,7 +223,7 @@
             </div>
 
             <!-- Additional Technical Data -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 mb-32">
                 <div class="p-8 border border-white/5 bg-white/5 rounded-3xl">
                     <h5 class="orbitron text-cyan-400 text-xs font-bold mb-4 uppercase tracking-widest">Core Concept
                     </h5>
@@ -175,8 +238,120 @@
                         decellularization.</p>
                 </div>
             </div>
+
+            <!-- Technical FAQ Section -->
+            <div id="faq" class="border-t border-white/10 pt-24">
+                <div class="mb-16">
+                    <h2 class="orbitron text-3xl md:text-5xl font-bold tracking-tighter uppercase mb-4">Technical <span class="text-cyan-400">FAQs</span></h2>
+                    <p class="text-white/40 text-sm uppercase tracking-[0.3em]">Porcine vs. Human Dermal Matrix</p>
+                </div>
+
+                <!-- FAQ 1: Porcine vs Human -->
+                <div class="deep-dive-card">
+                    <span class="faq-badge">Question 01</span>
+                    <h3 class="orbitron text-xl text-white mb-6">Why does Medifab use Porcine Dermis instead of Human Dermis?</h3>
+                    <div class="space-y-6 text-white/70 text-sm md:text-base leading-relaxed">
+                        <p>
+                            While Human Allograft Dermal Matrix (HADM) is often considered a standard, Porcine Xenograft Dermal Matrix (PADM) offers significant <span class="highlight-text">structural, mechanical, and logistical advantages</span> that make it a superior regenerative platform.
+                        </p>
+                        
+                        <div class="bg-white/5 p-6 rounded-2xl border border-white/10 mb-6">
+                            <p class="font-bold text-white mb-3 text-sm uppercase tracking-wider">1. Structural & Biomechanical Superiority</p>
+                            <p class="text-xs md:text-sm">
+                                Pigs are the closest physiological match to humans in terms of skin layers, thickness, and collagen composition. Crucially, porcine dermis exhibits a highly <span class="highlight-text">anisotropic collagen arrangement</span> (Orientation Index $\approx 0.61$) compared to the isotropic human dermis ($OI \approx 0.08$). This directional alignment provides much higher tensile strength and resistance to mechanical load, which is critical for tissue reconstruction.
+                            </p>
+                        </div>
+
+                        <p class="font-bold text-white mb-2">Comparative Physical Properties:</p>
+                        <table class="tech-table">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Human Dermis (HADM)</th>
+                                    <th>Porcine Dermis (PADM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Epidermal Thickness</td>
+                                    <td>$50\text{--}120\,\mu m$</td>
+                                    <td>$30\text{--}140\,\mu m$ (Highly Similar)</td>
+                                </tr>
+                                <tr>
+                                    <td>Collagen Alignment</td>
+                                    <td>Isotropic ($OI$ 0.08)</td>
+                                    <td>Anisotropic ($OI$ 0.61)</td>
+                                </tr>
+                                <tr>
+                                    <td>Tensile Strength</td>
+                                    <td>$\approx 15.7\,MPa$</td>
+                                    <td>$\approx 7.7\text{--}10.2\,MPa$ (Predictable)</td>
+                                </tr>
+                                <tr>
+                                    <td>Supply Stability</td>
+                                    <td>Limited (Donation-based)</td>
+                                    <td>Standardized (Industrial scale)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- FAQ 2: Supercritical CO2 -->
+                <div class="deep-dive-card border-cyan-400/20 bg-cyan-400/5">
+                    <span class="faq-badge">Question 02</span>
+                    <h3 class="orbitron text-xl text-white mb-6">How does Medifab solve the immunogenicity issue of Xenografts?</h3>
+                    <div class="space-y-6 text-white/70 text-sm md:text-base leading-relaxed">
+                        <p>
+                            The biggest challenge for xenografts is the risk of immune rejection. Medifab's core innovation lies in our <span class="highlight-text">Supercritical Carbon Dioxide ($sCO_2$) processing</span>.
+                        </p>
+                        <div class="insight-point">
+                            <h4 class="text-white font-bold mb-2">Fundamental Decellularization</h4>
+                            <p class="text-sm">Unlike traditional chemical methods that can damage the matrix, $sCO_2$ penetrates deep into the tissue to effectively remove cellular components, lipids, and DNA while preserving delicate structural proteins and growth factors.</p>
+                        </div>
+                        <div class="insight-point">
+                            <h4 class="text-white font-bold mb-2">Safety & Purity</h4>
+                            <p class="text-sm">This eco-friendly process leaves zero chemical residues and achieves maximum biological safety, making it as safe as—or even safer than—human-derived tissue that carries risks of HIV or Hepatitis transmission from donors.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3: Scalability -->
+                <div class="deep-dive-card">
+                    <span class="faq-badge">Question 03</span>
+                    <h3 class="orbitron text-xl text-white mb-6">What are the economic and regulatory advantages?</h3>
+                    <div class="space-y-6 text-white/70 text-sm md:text-base leading-relaxed">
+                        <ul class="list-disc list-inside space-y-4 text-sm">
+                            <li><span class="highlight-text">Predictable Quality:</span> Human tissue quality varies wildly based on donor age and lifestyle. Porcine sources are standardized through strictly controlled breeding and age management, ensuring consistent clinical outcomes.</li>
+                            <li><span class="highlight-text">Scalability:</span> Porcine dermis is an industrial-scale resource, allowing for "Off-the-shelf" supply and significantly lower costs compared to expensive, donation-dependent human grafts.</li>
+                            <li><span class="highlight-text">Regulatory Compliance:</span> We adhere to strict international standards (ISO 22442) and MFDS guidelines for high-risk (Class IV) medical devices, ensuring every batch is virus-free and safe for human implantation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Final Summary -->
+                <div class="mt-12 p-8 text-center bg-white/5 rounded-3xl border border-white/10">
+                    <p class="orbitron text-cyan-400 text-xs font-bold mb-4 uppercase tracking-[0.3em]">Strategic Conclusion</p>
+                    <p class="text-lg md:text-2xl font-light leading-relaxed italic text-white/90">
+                        "By integrating <span class="highlight-text">Nature's Best Architecture</span> (Porcine Dermis)<br class="hidden md:block"> 
+                        with <span class="highlight-text">Advanced $sCO_2$ Engineering</span>, we redefine regenerative safety."
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Script for Navigation -->
+    <script>
+        window.addEventListener('load', function () {
+            if (window.history.length <= 1) {
+                window.history.pushState(null, "", window.location.href);
+                window.onpopstate = function () {
+                    window.location.href = "index.html#core-techs";
+                };
+            }
+        });
+    </script>
 
 </body>
 
