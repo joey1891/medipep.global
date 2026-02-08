@@ -67,14 +67,23 @@
             margin-bottom: 2rem;
         }
 
-        .tech-table {
+        /* Responsive Table Styles for FAQ Section */
+        .tech-table-wrapper {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 1.5rem 0;
-            font-size: 0.85rem;
+            overflow-x: auto;
             border: 1px solid rgba(0, 242, 255, 0.1);
             border-radius: 1rem;
+            margin: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tech-table {
+            width: 100%;
+            min-width: 500px; /* Forces scroll on small screens */
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.85rem;
             overflow: hidden;
         }
 
@@ -87,6 +96,7 @@
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .tech-table td {
@@ -109,6 +119,18 @@
             font-size: 0.65rem;
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 1rem;
+        }
+
+        /* Better Scrollbar for Dark UI */
+        .tech-table-wrapper::-webkit-scrollbar {
+            height: 4px;
+        }
+        .tech-table-wrapper::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .tech-table-wrapper::-webkit-scrollbar-thumb {
+            background: rgba(0, 242, 255, 0.3);
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -171,7 +193,7 @@
                     </div>
                 </div>
 
-                <!-- Comparison Table -->
+                <!-- Comparison Table (Already has overflow-x-auto) -->
                 <div class="mt-16 pt-8 border-t border-white/10">
                     <h4
                         class="orbitron text-xs font-bold text-cyan-400 mb-6 uppercase tracking-widest flex items-center gap-2">
@@ -254,32 +276,35 @@
                         </p>
                         
                         <p class="font-bold text-white mb-2 uppercase text-xs tracking-widest">Clinical Indicators after Application:</p>
-                        <table class="tech-table">
-                            <thead>
-                                <tr>
-                                    <th>Indicator</th>
-                                    <th>Significance</th>
-                                    <th>Quantitative Trend</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>$\text{TNF-}\alpha$</td>
-                                    <td>Pro-inflammatory cytokine</td>
-                                    <td>Significant decrease ($p < 0.05$)</td>
-                                </tr>
-                                <tr>
-                                    <td>$\text{IL-6}$</td>
-                                    <td>Inflammatory response amplifier</td>
-                                    <td>Stabilized to baseline</td>
-                                </tr>
-                                <tr>
-                                    <td>$\text{SOD}$</td>
-                                    <td>Antioxidant enzyme activity</td>
-                                    <td>Significant increase ($p < 0.05$)</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <!-- Updated table wrapper for horizontal scroll -->
+                        <div class="tech-table-wrapper">
+                            <table class="tech-table">
+                                <thead>
+                                    <tr>
+                                        <th>Indicator</th>
+                                        <th>Significance</th>
+                                        <th>Quantitative Trend</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>$\text{TNF-}\alpha$</td>
+                                        <td>Pro-inflammatory cytokine</td>
+                                        <td>Significant decrease ($p < 0.05$)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$\text{IL-6}$</td>
+                                        <td>Inflammatory response amplifier</td>
+                                        <td>Stabilized to baseline</td>
+                                    </tr>
+                                    <tr>
+                                        <td>$\text{SOD}$</td>
+                                        <td>Antioxidant enzyme activity</td>
+                                        <td>Significant increase ($p < 0.05$)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
