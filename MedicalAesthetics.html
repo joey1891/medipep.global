@@ -1,36 +1,116 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>의료 에스테틱 및 재생 소재 최신 동향</title>
+    <title>MEDICAL AESTHETICS INDUSTRY</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        body { font-family: 'Pretendard', sans-serif; background-color: #0a0a0a; }
-        .accordion-content { transition: max-height 0.3s ease-out, opacity 0.3s ease-out; max-height: 0; opacity: 0; overflow: hidden; }
-        .accordion-content.active { max-height: 500px; opacity: 1; }
-        
-        /* Custom Scrollbar for a premium feel */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: #333; }
-        ::-webkit-scrollbar-thumb:hover { background: #cc0000; }
+        /* Base Styles Provided */
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #111827; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+
+        /* Lock Screen Styles */
+        #lock-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #f8fafc;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 50; transition: opacity 0.3s ease;
+        }
+
+        /* Main Content hidden initially */
+        #main-content { display: none; opacity: 0; transition: opacity 0.5s ease; }
+
+        .table-container { 
+            border: 1px solid #e5e7eb;
+            border-radius: 0; 
+            max-height: 70vh; 
+            overflow-y: auto; 
+        }
+
+        .unified-table {
+            table-layout: fixed;
+            width: 100%;
+            min-width: 1200px;
+        }
+        .unified-table th, .unified-table td {
+            white-space: normal;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+        .unified-table th { border: 1px solid #374151; }
+        .unified-table td { border: 1px solid #e5e7eb; }
+
+        .unified-table thead {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+        .unified-table thead th {
+            background-color: #111827; 
+            background-clip: padding-box;
+        }
+
+        .table-container::-webkit-scrollbar { width: 8px; height: 8px; }
+        .table-container::-webkit-scrollbar-track { background: #f8fafc; }
+        .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .table-container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        .cosmetic-table tr.category-header td { border-left: none; border-right: none; border-top: none; border-bottom: 2px solid #111827 !important; }
+        .cosmetic-table tr.sub-category-header td { border-left: none; border-right: none; border-top: 1px solid #e5e7eb !important; border-bottom: 1px solid #e5e7eb !important; }
+        .cosmetic-table tr.type-header td { border-left: none; border-right: none; border-top: none; border-bottom: 1px solid #f3f4f6 !important; }
+
+        .unified-table tr.loading-row td { border: none; border-bottom: 1px solid #e5e7eb; }
+        .unified-table tr.note-row td { border-left: none; border-right: none; border-bottom: none; border-top: 1px solid #e5e7eb; }
+        .cosmetic-table tr:hover:not(.category-header):not(.sub-category-header):not(.type-header) { background-color: #f9fafb; transition: background-color 0.2s ease; }
+
+        .currency-cell { display: flex; justify-content: space-between; width: 100%; min-width: 65px; }
+        .product-img { width: 36px; height: 36px; object-fit: cover; border-radius: 4px; border: 1px solid #e5e7eb; }
+        .med-product-img { width: 44px; height: 44px; object-fit: contain; }
+        .placeholder-img { width: 36px; height: 36px; border-radius: 4px; background-color: #f3f4f6; border: 1px dashed #d1d5db; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 10px; font-weight: bold; }
+
+        /* Print Styles */
+        .print-only, .print-only-cell, .print-only-inline { display: none; }
+
+        @media print {
+            body { background-color: #ffffff; margin: 0; padding: 0; }
+            #lock-screen, #ai-chat-container, #ai-fab, #toast-container, .no-print, .nav-header { display: none !important; }
+            #main-content { padding: 0 !important; margin: 0 !important; display: block !important; }
+            #main-content > div { display: none !important; }
+            #main-content > div.print-active-section { display: block !important; margin-top: 0 !important; padding-top: 0 !important; border: none !important; }
+            .print-area-wrapper { box-shadow: none !important; padding: 0 !important; margin: 0 auto !important; width: 100% !important; max-width: 100% !important; }
+            .print-only { display: block !important; }
+            .print-only-cell { display: table-cell !important; }
+            .print-only-inline { display: inline !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+            .legal-contract { font-family: 'Times New Roman', Times, serif; font-size: 11pt; line-height: 1.6; color: #000; text-align: justify; max-width: 210mm; margin: 0 auto; padding: 20mm; }
+            .legal-contract h1 { font-size: 16pt; text-align: center; font-weight: bold; margin-bottom: 24pt; text-transform: uppercase; }
+            .legal-contract h2 { font-size: 12pt; font-weight: bold; margin-top: 18pt; margin-bottom: 6pt; }
+            .legal-contract h3 { font-size: 11pt; font-weight: bold; margin-top: 14pt; margin-bottom: 6pt; }
+            .legal-contract p { margin-bottom: 10pt; }
+            .legal-contract .clause { margin-left: 20pt; margin-bottom: 8pt; }
+            .legal-contract table { width: 100%; border-collapse: collapse; margin-top: 10pt; margin-bottom: 15pt; page-break-inside: avoid; }
+            .legal-contract th, .legal-contract td { border: 1px solid #000; padding: 6pt; text-align: left; }
+            .legal-contract th { background-color: #f0f0f0; font-weight: bold; }
+            .page-break { page-break-before: always; }
+        }
     </style>
 </head>
-<body class="text-gray-300 antialiased selection:bg-red-900 selection:text-white">
+<body class="antialiased selection:bg-blue-100 selection:text-blue-900" style="display: block; opacity: 1;"> <!-- Overriding #main-content logic for preview visibility -->
 
-    <!-- Header (Consulting Firm Style) -->
-    <header class="bg-[#111111] sticky top-0 z-50 border-b-2 border-red-700">
+    <!-- Header -->
+    <header class="bg-white sticky top-0 z-40 border-b border-gray-200 nav-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-5 flex justify-between items-center">
-            <h1 class="text-lg md:text-2xl font-bold text-white tracking-tight uppercase leading-snug">
-                메디컬 에스테틱 산업 <span class="hidden sm:inline text-red-600 mx-2">></span><br class="sm:hidden"><span class="sm:hidden text-red-600 mr-1.5"><i class="fa-solid fa-chevron-right text-sm"></i></span> 스킨부스터 소재 소개
+            <h1 class="font-montserrat text-lg md:text-2xl font-bold tracking-tight uppercase leading-snug">
+                MEDICAL AESTHETICS INDUSTRY
             </h1>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-400 uppercase tracking-wider">
-                <a href="#basics" class="hover:text-white transition">톡신/HA필러</a>
-                <a href="#boosters" class="hover:text-white transition">스킨부스터</a>
-                <a href="#medifab" class="text-red-500 font-bold">메디팹 혁신소재</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-600 uppercase tracking-wider font-montserrat">
+                <a href="#basics" class="hover:text-blue-600 transition">BOTOX / FILLER</a>
+                <a href="#boosters" class="hover:text-blue-600 transition">SKIN BOOSTERS</a>
+                <a href="#medifab" class="text-red-600 font-bold hover:text-red-700 transition">MEDIFAB PATENTED MATERIALS</a>
             </nav>
         </div>
     </header>
@@ -38,50 +118,54 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 space-y-12 md:space-y-16">
 
         <!-- Basic Aesthetics (Toxin & HA) -->
-        <section id="basics">
+        <section id="basics" class="print-active-section">
             <div class="mb-6 md:mb-8 flex items-center gap-3 md:gap-4">
-                <div class="w-6 md:w-8 h-1 bg-red-600"></div>
-                <h3 class="text-xl md:text-2xl font-bold text-white uppercase tracking-wide">기초 에스테틱 치료 분석</h3>
+                <div class="w-6 md:w-8 h-1 bg-blue-600"></div>
+                <h3 class="font-montserrat text-xl md:text-2xl font-bold uppercase tracking-wide">BOTOX / FILLER</h3>
             </div>
             
             <div class="grid lg:grid-cols-2 gap-6">
                 <!-- Botulinum Toxin -->
-                <div class="bg-[#151515] p-5 md:p-8 border border-[#2a2a2a] border-t-4 border-t-red-600 hover:border-gray-500 transition duration-300">
+                <div class="bg-white p-5 md:p-8 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200">
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-5 md:mb-6">
-                        <h4 class="text-lg md:text-xl font-bold text-white">보툴리눔 톡신</h4>
-                        <span class="self-start sm:self-auto text-white text-[10px] md:text-xs px-2 py-1 border border-white uppercase tracking-wider font-bold">근육 이완 / 주름 개선</span>
+                        <div class="flex items-center gap-3">
+                            <h4 class="font-montserrat text-lg md:text-xl font-bold">Botulinum Toxin</h4>
+                        </div>
+                        <span class="self-start sm:self-auto text-blue-600 text-[10px] md:text-xs px-2 py-1 border border-blue-600 uppercase tracking-wider font-bold">Muscle Relaxation / Wrinkle Reduction</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        신경전달물질인 아세틸콜린(Acetylcholine)의 분비를 억제하여 근육을 일시적으로 마비시키는 원리입니다. 표정 주름 개선, 사각턱 축소, 체형 교정 등에 광범위하게 사용됩니다.
+                    <p class="text-sm mb-6 leading-relaxed opacity-90">
+                        Temporarily paralyzes muscles by inhibiting the secretion of acetylcholine, a neurotransmitter. Broadly applied for dynamic facial wrinkle improvement, masseter reduction, and body contouring.
                     </p>
-                    <div class="text-xs text-gray-500 space-y-3 border-t border-[#2a2a2a] pt-4 md:pt-5">
-                        <p class="font-bold text-gray-300 uppercase tracking-wider">Reference Videos</p>
+                    <div class="text-xs space-y-3 border-t border-gray-200 pt-4 md:pt-5">
+                        <p class="font-bold font-montserrat uppercase tracking-wider">Reference Videos</p>
                         <div class="flex flex-wrap gap-2">
-                            <a href="https://www.youtube.com/shorts/YcYFHOHMEsg" target="_blank" class="inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2 md:py-1.5 transition border border-[#333]"><i class="fa-solid fa-play text-red-600 text-xs"></i> 영상 시청 1</a>
-                            <a href="https://www.youtube.com/shorts/zNDZ1De0-S0" target="_blank" class="inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2 md:py-1.5 transition border border-[#333]"><i class="fa-solid fa-play text-red-600 text-xs"></i> 영상 시청 2</a>
-                            <a href="https://www.youtube.com/shorts/pQ84InwHP8U" target="_blank" class="inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2 md:py-1.5 transition border border-[#333]"><i class="fa-solid fa-play text-red-600 text-xs"></i> 영상 시청 3</a>
-                            <a href="https://www.youtube.com/shorts/fuC8BxElSh0" target="_blank" class="inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2 md:py-1.5 transition border border-[#333]"><i class="fa-solid fa-play text-red-600 text-xs"></i> 영상 시청 4</a>
-                            <a href="https://www.youtube.com/shorts/gme7mSyJXNk" target="_blank" class="inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2 md:py-1.5 transition border border-[#333]"><i class="fa-solid fa-play text-red-600 text-xs"></i> 영상 시청 5</a>
+                            <a href="https://www.youtube.com/shorts/YcYFHOHMEsg" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 1</a>
+                            <a href="https://www.youtube.com/shorts/zNDZ1De0-S0" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 2</a>
+                            <a href="https://www.youtube.com/shorts/pQ84InwHP8U" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 3</a>
+                            <a href="https://www.youtube.com/shorts/fuC8BxElSh0" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 4</a>
+                            <a href="https://www.youtube.com/shorts/gme7mSyJXNk" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 5</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- HA Filler -->
-                <div class="bg-[#151515] p-5 md:p-8 border border-[#2a2a2a] border-t-4 border-t-red-600 hover:border-gray-500 transition duration-300">
+                <div class="bg-white p-5 md:p-8 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200">
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-5 md:mb-6">
-                        <h4 class="text-lg md:text-xl font-bold text-white">HA 필러</h4>
-                        <span class="self-start sm:self-auto text-white text-[10px] md:text-xs px-2 py-1 border border-white uppercase tracking-wider font-bold">볼륨 형성 / 수분 공급</span>
+                        <div class="flex items-center gap-3">
+                            <h4 class="font-montserrat text-lg md:text-xl font-bold">HA Filler</h4>
+                        </div>
+                        <span class="self-start sm:self-auto text-blue-600 text-[10px] md:text-xs px-2 py-1 border border-blue-600 uppercase tracking-wider font-bold">Volumizing / Hydration</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        인체 구성 성분과 동일한 히알루론산을 가교(Cross-linking)하여 체내 점탄성을 높인 물질입니다. 즉각적인 볼륨 형성에 탁월하며, 히알루로니다제(Hyaluronidase)를 통해 언제든 녹일 수 있다는 높은 안전성이 논문을 통해 입증된 골드 스탠다드 필러입니다.
+                    <p class="text-sm mb-6 leading-relaxed opacity-90">
+                        A substance that increases viscoelasticity in the body by cross-linking hyaluronic acid, a natural component of the human body. It excels in immediate volumization and is the gold standard filler, with proven high safety as it can be dissolved at any time using hyaluronidase.
                     </p>
-                    <div class="text-xs text-gray-500 space-y-3 border-t border-[#2a2a2a] pt-4 md:pt-5">
-                        <p class="font-bold text-gray-300 uppercase tracking-wider">Reference Videos</p>
+                    <div class="text-xs space-y-3 border-t border-gray-200 pt-4 md:pt-5">
+                        <p class="font-bold font-montserrat uppercase tracking-wider">Reference Videos</p>
                         <div class="flex flex-wrap gap-2">
-                            <a href="https://www.youtube.com/shorts/ilAhfYy8aw4" target="_blank" class="inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2 md:py-1.5 transition border border-[#333]"><i class="fa-solid fa-play text-red-600 text-xs"></i> 영상 시청 1</a>
-                            <a href="https://www.youtube.com/shorts/TIt55eKrjrY" target="_blank" class="inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2 md:py-1.5 transition border border-[#333]"><i class="fa-solid fa-play text-red-600 text-xs"></i> 영상 시청 2</a>
-                            <a href="https://www.youtube.com/shorts/UBB_Cm4Jv9Q" target="_blank" class="inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2 md:py-1.5 transition border border-[#333]"><i class="fa-solid fa-play text-red-600 text-xs"></i> 영상 시청 3</a>
-                            <a href="https://www.youtube.com/shorts/5OHzNIH4o-g" target="_blank" class="inline-flex items-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2 md:py-1.5 transition border border-[#333]"><i class="fa-solid fa-play text-red-600 text-xs"></i> 영상 시청 4</a>
+                            <a href="https://www.youtube.com/shorts/ilAhfYy8aw4" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 1</a>
+                            <a href="https://www.youtube.com/shorts/TIt55eKrjrY" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 2</a>
+                            <a href="https://www.youtube.com/shorts/UBB_Cm4Jv9Q" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 3</a>
+                            <a href="https://www.youtube.com/shorts/5OHzNIH4o-g" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 4</a>
                         </div>
                     </div>
                 </div>
@@ -89,167 +173,153 @@
         </section>
 
         <!-- Skin Boosters (Polymers) -->
-        <section id="boosters">
+        <section id="boosters" class="print-active-section">
             <div class="mb-6 md:mb-8 flex items-center gap-3 md:gap-4">
-                <div class="w-6 md:w-8 h-1 bg-red-600"></div>
-                <h3 class="text-xl md:text-2xl font-bold text-white uppercase tracking-wide">스킨부스터 생분해성 소재 분석</h3>
+                <div class="w-6 md:w-8 h-1 bg-blue-600"></div>
+                <h3 class="font-montserrat text-xl md:text-2xl font-bold uppercase tracking-wide">SKIN BOOSTERS</h3>
             </div>
             
-            <div class="space-y-2">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- PMMA -->
-                <div class="border border-[#2a2a2a] bg-[#111111] transition duration-300 hover:border-gray-500">
-                    <button class="accordion-header w-full flex justify-between items-center p-4 md:p-5 focus:outline-none" onclick="toggleAccordion(this)">
-                        <span class="font-bold text-base md:text-lg text-white tracking-wide text-left">
-                            1. PMMA <span class="block sm:inline text-xs md:text-sm font-normal text-gray-500 sm:ml-2 mt-1 sm:mt-0">Polymethyl methacrylate</span>
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-red-600 transition-transform duration-300 ml-2"></i>
-                    </button>
-                    <div class="accordion-content bg-[#0a0a0a] px-4 md:px-5">
-                        <div class="py-4 md:py-5 text-sm text-gray-400 border-t border-[#2a2a2a]">
-                            <strong class="text-gray-200">특징:</strong> 비분해성 미세구(Microsphere)로 구성되어 반영구적인 효과를 냅니다. 콜라겐 캡슐 형성을 유도하여 결손 부위를 채웁니다.
-                            <div class="mt-5 flex flex-wrap gap-2">
-                                <a href="https://www.youtube.com/shorts/l_jiJxFi2eM" target="_blank" class="inline-flex items-center gap-1.5 bg-[#151515] hover:bg-[#222] hover:text-white text-gray-300 px-3 py-2 md:py-1.5 text-xs transition border border-[#333] hover:border-red-600"><i class="fa-solid fa-play text-red-600"></i> 영상 시청 1</a>
-                                <a href="https://www.youtube.com/shorts/rj9NlvoK4JY" target="_blank" class="inline-flex items-center gap-1.5 bg-[#151515] hover:bg-[#222] hover:text-white text-gray-300 px-3 py-2 md:py-1.5 text-xs transition border border-[#333] hover:border-red-600"><i class="fa-solid fa-play text-red-600"></i> 영상 시청 2</a>
-                            </div>
-                        </div>
+                <div class="bg-white p-5 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200 flex flex-col">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="font-montserrat font-bold text-base md:text-lg tracking-wide">PMMA</h4>
+                    </div>
+                    <p class="text-xs md:text-sm font-normal text-gray-500 mb-4">Polymethyl methacrylate</p>
+                    <p class="text-sm mb-5 leading-relaxed flex-grow opacity-90">
+                        <strong>Features:</strong> Composed of non-degradable microspheres, providing semi-permanent effects. Induces the formation of a collagen capsule to fill volume deficits.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <a href="https://www.youtube.com/shorts/l_jiJxFi2eM" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 1</a>
+                        <a href="https://www.youtube.com/shorts/rj9NlvoK4JY" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 2</a>
                     </div>
                 </div>
 
                 <!-- PLLA -->
-                <div class="border border-[#2a2a2a] bg-[#111111] transition duration-300 hover:border-gray-500">
-                    <button class="accordion-header w-full flex justify-between items-center p-4 md:p-5 focus:outline-none" onclick="toggleAccordion(this)">
-                        <span class="font-bold text-base md:text-lg text-white tracking-wide text-left">
-                            2. PLLA <span class="block sm:inline text-xs md:text-sm font-normal text-gray-500 sm:ml-2 mt-1 sm:mt-0">Poly-L-lactic acid</span>
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-red-600 transition-transform duration-300 ml-2"></i>
-                    </button>
-                    <div class="accordion-content bg-[#0a0a0a] px-4 md:px-5">
-                        <div class="py-4 md:py-5 text-sm text-gray-400 border-t border-[#2a2a2a]">
-                            <strong class="text-gray-200">특징:</strong> 생분해성 합성 폴리머로, 체내에서 점진적으로 분해되며 이물 반응을 통해 강력한 자가 콜라겐 생성을 유도합니다. (대표제품: 스컬트라)
-                            <div class="mt-5">
-                                <a href="https://www.youtube.com/shorts/xZXSi_fmhEE" target="_blank" class="inline-flex items-center gap-1.5 bg-[#151515] hover:bg-[#222] hover:text-white text-gray-300 px-3 py-2 md:py-1.5 text-xs transition border border-[#333] hover:border-red-600"><i class="fa-solid fa-play text-red-600"></i> 영상 시청</a>
-                            </div>
-                        </div>
+                <div class="bg-white p-5 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200 flex flex-col">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="font-montserrat font-bold text-base md:text-lg tracking-wide">PLLA</h4>
+                    </div>
+                    <p class="text-xs md:text-sm font-normal text-gray-500 mb-4">Poly-L-lactic acid</p>
+                    <p class="text-sm mb-5 leading-relaxed flex-grow opacity-90">
+                        <strong>Features:</strong> A biodegradable synthetic polymer that gradually degrades in the body, inducing robust autologous collagen production through a foreign body reaction. (e.g., Sculptra)
+                    </p>
+                    <div class="mt-auto">
+                        <a href="https://www.youtube.com/shorts/xZXSi_fmhEE" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video</a>
                     </div>
                 </div>
 
                 <!-- CaHA -->
-                <div class="border border-[#2a2a2a] bg-[#111111] transition duration-300 hover:border-gray-500">
-                    <button class="accordion-header w-full flex justify-between items-center p-4 md:p-5 focus:outline-none" onclick="toggleAccordion(this)">
-                        <span class="font-bold text-base md:text-lg text-white tracking-wide text-left">
-                            3. CaHA <span class="block sm:inline text-xs md:text-sm font-normal text-gray-500 sm:ml-2 mt-1 sm:mt-0">Calcium Hydroxylapatite</span>
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-red-600 transition-transform duration-300 ml-2"></i>
-                    </button>
-                    <div class="accordion-content bg-[#0a0a0a] px-4 md:px-5">
-                        <div class="py-4 md:py-5 text-sm text-gray-400 border-t border-[#2a2a2a]">
-                            <strong class="text-gray-200">특징:</strong> 뼈와 치아를 구성하는 미네랄 성분으로, 주입 즉시 볼륨을 형성함과 동시에 콜라겐 생성을 자극합니다. (대표제품: 레디어스)
-                            <div class="mt-5">
-                                <a href="https://www.youtube.com/shorts/GWDYVu4ZMAI" target="_blank" class="inline-flex items-center gap-1.5 bg-[#151515] hover:bg-[#222] hover:text-white text-gray-300 px-3 py-2 md:py-1.5 text-xs transition border border-[#333] hover:border-red-600"><i class="fa-solid fa-play text-red-600"></i> 영상 시청</a>
-                            </div>
-                        </div>
+                <div class="bg-white p-5 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200 flex flex-col">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="font-montserrat font-bold text-base md:text-lg tracking-wide">CaHA</h4>
+                    </div>
+                    <p class="text-xs md:text-sm font-normal text-gray-500 mb-4">Calcium Hydroxylapatite</p>
+                    <p class="text-sm mb-5 leading-relaxed flex-grow opacity-90">
+                        <strong>Features:</strong> Composed of minerals found in bones and teeth. Provides immediate volume upon injection while simultaneously stimulating collagen production. (e.g., Radiesse)
+                    </p>
+                    <div class="mt-auto">
+                        <a href="https://www.youtube.com/shorts/GWDYVu4ZMAI" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video</a>
                     </div>
                 </div>
 
                 <!-- PCL -->
-                <div class="border border-[#2a2a2a] bg-[#111111] transition duration-300 hover:border-gray-500">
-                    <button class="accordion-header w-full flex justify-between items-center p-4 md:p-5 focus:outline-none" onclick="toggleAccordion(this)">
-                        <span class="font-bold text-base md:text-lg text-white tracking-wide text-left">
-                            4. PCL <span class="block sm:inline text-xs md:text-sm font-normal text-gray-500 sm:ml-2 mt-1 sm:mt-0">Polycaprolactone</span>
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-red-600 transition-transform duration-300 ml-2"></i>
-                    </button>
-                    <div class="accordion-content bg-[#0a0a0a] px-4 md:px-5">
-                        <div class="py-4 md:py-5 text-sm text-gray-400 border-t border-[#2a2a2a]">
-                            <strong class="text-gray-200">특징:</strong> HA필러의 즉각적 효과와 PLLA의 콜라겐 생성 효과를 결합한 완전 생분해성 물질입니다. 유지기간이 1~4년으로 매우 긴 편입니다. (대표제품: 엘란쎄)
-                            <div class="mt-5">
-                                <a href="https://www.youtube.com/shorts/CGi6Z7XXieM" target="_blank" class="inline-flex items-center gap-1.5 bg-[#151515] hover:bg-[#222] hover:text-white text-gray-300 px-3 py-2 md:py-1.5 text-xs transition border border-[#333] hover:border-red-600"><i class="fa-solid fa-play text-red-600"></i> 영상 시청</a>
-                            </div>
-                        </div>
+                <div class="bg-white p-5 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200 flex flex-col">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="font-montserrat font-bold text-base md:text-lg tracking-wide">PCL</h4>
+                    </div>
+                    <p class="text-xs md:text-sm font-normal text-gray-500 mb-4">Polycaprolactone</p>
+                    <p class="text-sm mb-5 leading-relaxed flex-grow opacity-90">
+                        <strong>Features:</strong> A fully biodegradable material combining the immediate effects of HA fillers with the collagen-stimulating properties of PLLA. Offers an extended duration of 1 to 4 years. (e.g., Ellansé)
+                    </p>
+                    <div class="mt-auto">
+                        <a href="https://www.youtube.com/shorts/CGi6Z7XXieM" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video</a>
                     </div>
                 </div>
 
                 <!-- PDO -->
-                <div class="border border-[#2a2a2a] bg-[#111111] transition duration-300 hover:border-gray-500">
-                    <button class="accordion-header w-full flex justify-between items-center p-4 md:p-5 focus:outline-none" onclick="toggleAccordion(this)">
-                        <span class="font-bold text-base md:text-lg text-white tracking-wide text-left">
-                            5. PDO <span class="block sm:inline text-xs md:text-sm font-normal text-gray-500 sm:ml-2 mt-1 sm:mt-0">Polydioxanone</span>
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-red-600 transition-transform duration-300 ml-2"></i>
-                    </button>
-                    <div class="accordion-content bg-[#0a0a0a] px-4 md:px-5">
-                        <div class="py-4 md:py-5 text-sm text-gray-400 border-t border-[#2a2a2a]">
-                            <strong class="text-gray-200">특징:</strong> 전통적으로 수술용 녹는 실(리프팅 실)로 사용되던 안전한 소재를 미세 분말화(Microsphere)하여 주사제로 만든 형태입니다. (대표제품: 울트라콜)
-                            <div class="mt-5 flex flex-wrap gap-2">
-                                <a href="https://www.youtube.com/shorts/M34YjROMxL0" target="_blank" class="inline-flex items-center gap-1.5 bg-[#151515] hover:bg-[#222] hover:text-white text-gray-300 px-3 py-2 md:py-1.5 text-xs transition border border-[#333] hover:border-red-600"><i class="fa-solid fa-play text-red-600"></i> 영상 시청 1</a>
-                                <a href="https://www.youtube.com/shorts/YhvnGbtFyNI" target="_blank" class="inline-flex items-center gap-1.5 bg-[#151515] hover:bg-[#222] hover:text-white text-gray-300 px-3 py-2 md:py-1.5 text-xs transition border border-[#333] hover:border-red-600"><i class="fa-solid fa-play text-red-600"></i> 영상 시청 2</a>
-                            </div>
-                        </div>
+                <div class="bg-white p-5 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200 flex flex-col">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="font-montserrat font-bold text-base md:text-lg tracking-wide">PDO</h4>
+                    </div>
+                    <p class="text-xs md:text-sm font-normal text-gray-500 mb-4">Polydioxanone</p>
+                    <p class="text-sm mb-5 leading-relaxed flex-grow opacity-90">
+                        <strong>Features:</strong> An injectable form created by micro-pulverizing (microspheres) a highly safe material traditionally used for surgical dissolving sutures (lifting threads). (e.g., UltraCol)
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <a href="https://www.youtube.com/shorts/M34YjROMxL0" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 1</a>
+                        <a href="https://www.youtube.com/shorts/YhvnGbtFyNI" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video 2</a>
                     </div>
                 </div>
 
                 <!-- PDLLA -->
-                <div class="border border-[#2a2a2a] bg-[#111111] transition duration-300 hover:border-gray-500">
-                    <button class="accordion-header w-full flex justify-between items-center p-4 md:p-5 focus:outline-none" onclick="toggleAccordion(this)">
-                        <span class="font-bold text-base md:text-lg text-white tracking-wide text-left">
-                            6. PDLLA <span class="block sm:inline text-xs md:text-sm font-normal text-gray-500 sm:ml-2 mt-1 sm:mt-0">Poly-D,L-lactic acid</span>
-                        </span>
-                        <i class="fa-solid fa-chevron-down text-red-600 transition-transform duration-300 ml-2"></i>
-                    </button>
-                    <div class="accordion-content bg-[#0a0a0a] px-4 md:px-5">
-                        <div class="py-4 md:py-5 text-sm text-gray-400 border-t border-[#2a2a2a]">
-                            <strong class="text-gray-200">특징:</strong> PLLA의 이성질체로, 입자가 날카롭지 않고 둥글며 내부에 기공(Porous)이 있는 해면체 구조를 가집니다. (대표제품: 쥬베룩)
-                            <div class="mt-5">
-                                <a href="https://www.youtube.com/shorts/C2CPOEvGHdE" target="_blank" class="inline-flex items-center gap-1.5 bg-[#151515] hover:bg-[#222] hover:text-white text-gray-300 px-3 py-2 md:py-1.5 text-xs transition border border-[#333] hover:border-red-600"><i class="fa-solid fa-play text-red-600"></i> 영상 시청</a>
-                            </div>
-                        </div>
+                <div class="bg-white p-5 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200 flex flex-col">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h4 class="font-montserrat font-bold text-base md:text-lg tracking-wide">PDLLA</h4>
+                    </div>
+                    <p class="text-xs md:text-sm font-normal text-gray-500 mb-4">Poly-D,L-lactic acid</p>
+                    <p class="text-sm mb-5 leading-relaxed flex-grow opacity-90">
+                        <strong>Features:</strong> An isomer of PLLA featuring smooth, round particles with a porous, sponge-like internal structure, minimizing tissue irritation. (e.g., Juvelook)
+                    </p>
+                    <div class="mt-auto">
+                        <a href="https://www.youtube.com/shorts/C2CPOEvGHdE" target="_blank" class="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition">Watch Video</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Medifab Specialized Section -->
-        <section id="medifab" class="bg-[#111111] p-5 md:p-8 border border-[#333] border-l-4 border-l-red-600 relative overflow-hidden">
-            <!-- Subtle background accent -->
-            <div class="absolute -top-20 -right-20 w-80 h-80 bg-red-900 rounded-full filter blur-[100px] opacity-20 pointer-events-none"></div>
+        <section id="medifab" class="print-active-section">
+            <div class="mb-6 md:mb-8 flex items-center gap-3 md:gap-4">
+                <div class="w-6 md:w-8 h-1 bg-red-600"></div>
+                <h3 class="font-montserrat text-xl md:text-2xl font-bold uppercase tracking-wide">MEDIFAB PATENTED MATERIALS</h3>
+            </div>
             
-            <div class="relative z-10">
-                <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6 md:mb-8">
-                    <div>
-                        <span class="inline-block bg-red-700 text-white text-[10px] md:text-xs font-bold px-3 py-1 mb-2 tracking-widest uppercase">Proprietary Technology</span>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight uppercase leading-snug">메디팹(MEDIFAB)<br class="sm:hidden"> 혁신 소재 포트폴리오</h2>
-                    </div>
-                    <a href="https://www.youtube.com/watch?v=zToScW5PM_g&t=6s" target="_blank" class="sm:ml-auto inline-flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 border border-[#333] text-gray-200 px-4 py-2.5 md:py-2 text-xs font-bold uppercase tracking-wider transition w-full sm:w-auto mt-2 sm:mt-0"><i class="fa-solid fa-play text-red-600"></i> 기업 브리핑 영상</a>
-                </div>
-
-                <div class="grid lg:grid-cols-3 gap-5 md:gap-6">
-                    <!-- Chitogen -->
-                    <div class="bg-[#0a0a0a] p-5 md:p-6 border border-[#2a2a2a] hover:border-red-700 transition duration-300">
-                        <h4 class="text-base md:text-lg font-bold text-white mb-3 uppercase tracking-wide">키토젠 <span class="text-xs md:text-sm font-normal text-gray-500">Chitogen™</span></h4>
-                        <p class="text-sm text-gray-400 mb-5 md:mb-6 leading-relaxed">
-                            <strong class="text-gray-200">LTG (Liquid To Gel) 기술</strong>이 적용된 키토산 기반 바이오 하이드로젤입니다.
-                        </p>
-                        <a href="https://www.youtube.com/shorts/Csaaw7KEr9I" target="_blank" class="inline-flex items-center justify-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2.5 md:py-2 text-xs transition border border-[#333] w-full sm:w-auto"><i class="fa-solid fa-play text-red-600"></i> 기술 요약 시청</a>
+            <div class="bg-white p-5 md:p-8 rounded-none border border-gray-200 relative overflow-hidden">
+                <div class="relative z-10">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6 md:mb-8">
+                        <div>
+                            <span class="inline-block bg-red-600 text-white text-[10px] md:text-xs font-bold px-3 py-1 mb-2 tracking-widest uppercase">Proprietary Technology</span>
+                            <h2 class="font-montserrat text-2xl md:text-3xl font-bold tracking-tight uppercase leading-snug">MEDIFAB<br class="sm:hidden"> PATENTED MATERIALS</h2>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=zToScW5PM_g&t=6s" target="_blank" class="sm:ml-auto inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 md:py-2 text-xs font-bold uppercase tracking-wider transition w-full sm:w-auto mt-2 sm:mt-0">Corporate Briefing Video</a>
                     </div>
 
-                    <!-- Regentrix -->
-                    <div class="bg-[#0a0a0a] p-5 md:p-6 border border-[#2a2a2a] hover:border-red-700 transition duration-300">
-                        <h4 class="text-base md:text-lg font-bold text-white mb-3 uppercase tracking-wide">리젠트릭스 <span class="text-xs md:text-sm font-normal text-gray-500">Regentrix™</span></h4>
-                        <p class="text-sm text-gray-400 mb-5 md:mb-6 leading-relaxed">
-                            초임계 이산화탄소 공정을 이용한 <strong class="text-gray-200">탈세포화 세포외기질(dECM)</strong>입니다.
-                        </p>
-                        <a href="https://www.youtube.com/shorts/86CJ5mwLQNk" target="_blank" class="inline-flex items-center justify-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2.5 md:py-2 text-xs transition border border-[#333] w-full sm:w-auto"><i class="fa-solid fa-play text-red-600"></i> 기술 요약 시청</a>
-                    </div>
+                    <div class="grid lg:grid-cols-3 gap-5 md:gap-6">
+                        <!-- Chitogen -->
+                        <div class="bg-[#f8fafc] p-5 md:p-6 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200 flex flex-col">
+                            <div class="flex items-center gap-3 mb-2">
+                                <h4 class="font-montserrat text-base md:text-lg font-bold uppercase tracking-wide">Chitogen <span class="text-xs md:text-sm font-normal text-gray-500">Chitogen™</span></h4>
+                            </div>
+                            <p class="text-sm mb-5 md:mb-6 leading-relaxed flex-grow opacity-90">
+                                A chitosan-based bio-hydrogel utilizing <strong>LTG (Liquid To Gel) technology</strong>.
+                            </p>
+                            <a href="https://www.youtube.com/shorts/Csaaw7KEr9I" target="_blank" class="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition w-full sm:w-auto mt-auto">Watch Tech Summary</a>
+                        </div>
 
-                    <!-- Chitogenics -->
-                    <div class="bg-[#0a0a0a] p-5 md:p-6 border border-[#2a2a2a] hover:border-red-700 transition duration-300">
-                        <h4 class="text-base md:text-lg font-bold text-white mb-3 uppercase tracking-wide">키토제닉스 <span class="text-xs md:text-sm font-normal text-gray-500">Chitogenics™</span></h4>
-                        <p class="text-sm text-gray-400 mb-5 md:mb-6 leading-relaxed">
-                            우수한 기술력(키토젠 + 리젠트릭스)을 에스테틱 분야에 최적화하여 융합한 <strong class="text-gray-200">고급 제형 기술</strong>입니다.
-                        </p>
-                        <div class="flex flex-col gap-2 md:gap-2.5">
-                            <a href="https://www.youtube.com/watch?v=VPaTUq7Y_Lg" target="_blank" class="inline-flex items-center justify-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2.5 md:py-2 text-xs transition border border-[#333] w-full sm:w-auto sm:justify-start"><i class="fa-solid fa-play text-red-600"></i> 기술 요약 시청</a>
-                            <a href="https://www.youtube.com/shorts/M-IO69et3zE" target="_blank" class="inline-flex items-center justify-center gap-1.5 bg-[#1a1a1a] hover:bg-[#2a2a2a] hover:border-red-600 text-gray-300 px-3 py-2.5 md:py-2 text-xs transition border border-[#333] w-full sm:w-auto sm:justify-start"><i class="fa-solid fa-play text-red-600"></i> 초임계 이산화탄소 공정 시청</a>
+                        <!-- Regentrix -->
+                        <div class="bg-[#f8fafc] p-5 md:p-6 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200 flex flex-col">
+                            <div class="flex items-center gap-3 mb-2">
+                                <h4 class="font-montserrat text-base md:text-lg font-bold uppercase tracking-wide">Regentrix <span class="text-xs md:text-sm font-normal text-gray-500">Regentrix™</span></h4>
+                            </div>
+                            <p class="text-sm mb-5 md:mb-6 leading-relaxed flex-grow opacity-90">
+                                A <strong>decellularized extracellular matrix (dECM)</strong> produced via a supercritical carbon dioxide process.
+                            </p>
+                            <a href="https://www.youtube.com/shorts/86CJ5mwLQNk" target="_blank" class="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition w-full sm:w-auto mt-auto">Watch Tech Summary</a>
+                        </div>
+
+                        <!-- Chitogenics -->
+                        <div class="bg-[#f8fafc] p-5 md:p-6 rounded-none border border-gray-200 hover:border-gray-300 transition duration-200 flex flex-col">
+                            <div class="flex items-center gap-3 mb-2">
+                                <h4 class="font-montserrat text-base md:text-lg font-bold uppercase tracking-wide">Chitogenics <span class="text-xs md:text-sm font-normal text-gray-500">Chitogenics™</span></h4>
+                            </div>
+                            <p class="text-sm mb-5 md:mb-6 leading-relaxed flex-grow opacity-90">
+                                An <strong>advanced formulation technology</strong> that optimally merges superior proprietary technologies (Chitogen + Regentrix) specifically for the aesthetic field.
+                            </p>
+                            <div class="flex flex-col gap-2 md:gap-2.5 mt-auto">
+                                <a href="https://www.youtube.com/watch?v=VPaTUq7Y_Lg" target="_blank" class="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition w-full sm:w-auto sm:justify-start">Watch Tech Summary</a>
+                                <a href="https://www.youtube.com/shorts/M-IO69et3zE" target="_blank" class="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-[#111827] border border-gray-300 px-4 py-2 text-xs font-medium transition w-full sm:w-auto sm:justify-start">Supercritical CO2 Process</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -258,30 +328,5 @@
 
     </main>
 
-    <!-- Accordion Script -->
-    <script>
-        function toggleAccordion(element) {
-            const content = element.nextElementSibling;
-            const icon = element.querySelector('i');
-            
-            // Toggle current content
-            if (content.classList.contains('active')) {
-                content.classList.remove('active');
-                icon.style.transform = 'rotate(0deg)';
-                element.classList.remove('border-b', 'border-[#2a2a2a]');
-            } else {
-                // Close others
-                document.querySelectorAll('.accordion-content').forEach(el => {
-                    el.classList.remove('active');
-                    el.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
-                    el.previousElementSibling.classList.remove('border-b', 'border-[#2a2a2a]');
-                });
-                
-                content.classList.add('active');
-                icon.style.transform = 'rotate(180deg)';
-                element.classList.add('border-b', 'border-[#2a2a2a]');
-            }
-        }
-    </script>
 </body>
 </html>
